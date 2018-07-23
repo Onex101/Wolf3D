@@ -21,13 +21,39 @@
 # define M_WIDTH 24
 # define M_HEIGHT 24
 
+# define WIDTH 320
+# define HEIGHT 200
+
+typedef struct	s_vec2
+{
+	double 		x;
+	double		y;
+}				t_vec2;
+
 typedef struct	s_player
 {
 	double		pos_x;
 	double		pos_y;
 	double		dir_x;
 	double		dir_y;
+	double		fov;
+	double		height;
 }				t_player;
+
+// typedef struct	s_plane
+// {
+// 	int			proj_plane;
+// 	int			cent_x;
+// 	int			cent_y;
+// 	double		dist_plane;
+// 	double		angle_rays;
+// }				t_plane;
+
+typedef struct	s_plane
+{
+	double		x;
+	double		y;
+}				t_plane;
 
 typedef struct	s_window
 {

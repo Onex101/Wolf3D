@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 int			world_map[m_WIDTH][M_HEIGHT] =
 {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -46,14 +45,29 @@ void		init_player(t_player *p)
 	p->angle = 0;
 	p->dir_x = -1;
 	p->dir_y = 0;
-	p->plane_x = 0;
-	p->plane_y = 0.66;
+	p->fov = 60;
 }
 
 void		init_window(t_window *w)
 {
 	w->mlx = mlx_init();
 	w->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "Wolf3D");
+}
+
+// void		init_plane(t_plane *plane)
+// {
+// 	plane->proj_plane = WIDTH * HEIGHT;
+// 	plane->cent_x = WIDTH / 2;
+// 	plane->cent_y = HEIGHT / 2;
+// 	plane->dist_plane = (WIDTH / 2) / tan(30);
+// 	plane->angle_rays = 60 / WIDTH;
+// 	plane->fov = 60;
+// }
+
+void		init_plane(t_plane *plane)
+{
+	plane->x = 0;
+	plane->y = 0.66;
 }
 
 void	game_loop
@@ -74,6 +88,6 @@ int			main(void)
 
 	while (!done)
 	{
-
+		game_loop();
 	}
 }
