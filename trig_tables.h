@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 08:07:23 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/24 08:57:41 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 # include "wolf3d.h"
 
 # define ANGLE_60 WIDTH
-# define ANGLE_30 WIDTH / 2
-# define ANGLE_15 ANGLE_30 / 2
-# define ANGLE_90 ANGLE_30 * 3
-# define ANGLE_180 ANGLE_90 * 2
-# define ANGLE_270 ANGLE_90 * 3
-# define ANGLE_360 ANGLE_180 * 2
+# define ANGLE_30 round(WIDTH / 2)
+# define ANGLE_15 round(ANGLE_30 / 2)
+# define ANGLE_90 round(ANGLE_30 * 3)
+# define ANGLE_180 round(ANGLE_90 * 2)
+# define ANGLE_270 round(ANGLE_90 * 3)
+# define ANGLE_360 round(ANGLE_180 * 2)
 # define ANGLE_0 0
-# define ANGLE_10 ANGLE_30 / 10
-# define ANGLE_45 ANGLE_15 * 3
+# define ANGLE_10 round(ANGLE_30 / 10)
+# define ANGLE_45 round(ANGLE_15 * 3)
 
-typedef	struct	s_trig_tab
+typedef	struct	s_tables
 {
-	double		t_sin[ANGLE_360 + 1];
-	double		t_cos[ANGLE_360 + 1];
-	double		t_tan[ANGLE_360 + 1];
-	double		t_isin[ANGLE_360 + 1];
-	double		t_icos[ANGLE_360 + 1];
-	double		t_itan[ANGLE_360 + 1];
-	double		t_fish[ANGLE_360 + 1];
-	double		t_step_x[ANGLE_360 + 1];
-	double		t_step_y[ANGLE_360 + 1];
-}				t_trig_tab;
+	int			t_sin[ANGLE_360 + 1];
+	int			t_cos[ANGLE_360 + 1];
+	int			t_tan[ANGLE_360 + 1];
+	int			t_isin[ANGLE_360 + 1];
+	int			t_icos[ANGLE_360 + 1];
+	int			t_itan[ANGLE_360 + 1];
+	int			t_fish[ANGLE_360 + 1];
+	int			t_step_x[ANGLE_360 + 1];
+	int			t_step_y[ANGLE_360 + 1];
+}				t_tables;
 
 #endif
