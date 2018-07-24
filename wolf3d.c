@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 07:58:08 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/23 13:01:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/24 08:07:21 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int			world_map[m_WIDTH][M_HEIGHT] =
 
 void		init_player(t_player *p)
 {
-	p->pos_x = 22;
-	p->pos_y = 12;
+	p->position.x = 22;
+	p->position.y = 12;
+	p->view_angle = 0;
+	p->direction.x = -1;
+	p->direction.y = 0;
+	p->height = WALL_HEIGHT / 2;
 	p->angle = 0;
-	p->dir_x = -1;
-	p->dir_y = 0;
-	p->fov = 60;
 }
 
 void		init_window(t_window *w)
@@ -54,25 +55,27 @@ void		init_window(t_window *w)
 	w->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "Wolf3D");
 }
 
-// void		init_plane(t_plane *plane)
-// {
-// 	plane->proj_plane = WIDTH * HEIGHT;
-// 	plane->cent_x = WIDTH / 2;
-// 	plane->cent_y = HEIGHT / 2;
-// 	plane->dist_plane = (WIDTH / 2) / tan(30);
-// 	plane->angle_rays = 60 / WIDTH;
-// 	plane->fov = 60;
-// }
-
 void		init_plane(t_plane *plane)
 {
-	plane->x = 0;
-	plane->y = 0.66;
+	plane->proj_plane = WIDTH * HEIGHT;
+	plane->centre.x = WIDTH / 2;
+	plane->centre.y = HEIGHT / 2;
+	plane->dist_plane = (WIDTH / 2) / tan(30);
+	plane->angle_rays = 60 / WIDTH;
 }
 
 void	game_loop
 {
+	int i;
+	vec2 camera;
+	vec2 ray_direction;
+	vec2 map_box;
 
+	i = 0;
+	while (i < WIDTH)
+	{
+		
+	}
 }
 
 int			main(void)
