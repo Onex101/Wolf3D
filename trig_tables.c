@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 09:55:01 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/24 09:59:56 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,11 @@ void	init_step_tables(t_tables *tables)
 				tables->t_step_y[i] *= -1;
 		}
 	}
+}
+
+void	init_tables(t_tables *tables)
+{
+	init_step_tables(tables);
+	init_fish_table(tables);
+	init_trig_tables(tables);
 }
