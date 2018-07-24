@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 08:57:41 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/24 09:57:11 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ typedef	struct	s_tables
 	int			t_step_x[ANGLE_360 + 1];
 	int			t_step_y[ANGLE_360 + 1];
 }				t_tables;
+
+void	init_step_tables(t_tables *tables);
+void	init_fish_table(t_tables *tables);
+void	init_trig_tables(t_tables *tables);
 
 #endif
