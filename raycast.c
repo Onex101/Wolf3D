@@ -10,6 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "wolf3d.h"
+
+int		ft_isup(double theta)
+{
+	if (theta >= 0 && theta < 90)
+		return (1);
+	else if (theta >= -360 && theta < -270)
+		return (1);
+	else if (theta > -90 && theta <= 0)
+		return (1);
+	else if (theta > 270 && theta <= 360)
+		return (1);
+	else
+		return (0);
+}
+
+int		ft_isdown(double theta)
+{
+	if (theta > 90 && theta <= 180)
+		return (1);
+	else if (theta > -270 && theta <= -180)
+		return (1);
+	else if (theta < 270 && theta >= 180)
+		return (1);
+	else if (theta < -90 && theta >= -180)
+		return (1);
+	else
+		return (0);
+}
+
+int		ft_isleft(double theta)
+{
+	if (theta < 0 && theta > -180)
+		return (1);
+	else if (theta < 360 && theta > 180)
+		return (1);
+	else
+		return (0);
+}
+
+int		ft_isright(double theta)
+{
+	if (theta > 0 && theta < 180)
+		return (1);
+	else if (theta > -360 && theta < -180)
+		return (1);
+	else
+		return (0);
+}
+
 int		ft_horizontal_check(t_player *p)
 {
 	int		ya;
@@ -17,18 +67,18 @@ int		ft_horizontal_check(t_player *p)
 	int		inter_x;
 	int		inter_y;
 
-	if (theta > -90 && theta < 90)
+	if (ft_isup(theta))
 		ay = (p->pos.y/64) * (64) - 1;
-	else if (theta < -90 && theta > 90)
+	else if (ft_isdown(theta))
 		ay = (p->pos.y / 64) * 64 + 64;
 	inter_y = ay / 64;
 	ax = p->pos.x + (p->pos.y - ay) / tan(FOV);
 	inter_x = ax / 64;
 
 	//Find Ya
-	if (theta > -90 && < 90)
+	if (ft_isup(theta))
 		ya = -64;
-	else if (theta < -90 && > 90)
+	else if (ft_isdown(theta))
 		ya = 64;
 	xa = 64 / tan(FOV); //xa = 36;
 
@@ -50,20 +100,20 @@ int		ft_vertical_check(t_player *p)
 	int		inter_x;
 	int		inter_y;
 
-	if (theta > 0 && theta < 180)
+	if (ft_isright(theta))
 		ay = (p->pos.y/64) * (64) - 1;
-	else if (theta < 0 && theta > 90)
+	else if (ft_isleft(theta))
 		ay = (p->pos.y / 64) * 64 + 64;
 	inter_y = ay / 64;
 	ax = p->pos.x + (p->pos.y - ay) / tan(FOV);
 	inter_x = ax / 64;
 
-	//Find Ya
-	if (theta > -90 && < 90)
-		ya = -64;
-	else if (theta < -90 && > 90)
-		ya = 64;
-	xa = 64 / tan(FOV); //xa = 36;
+	//Find Xa
+	if (ft_isright(theta))
+		xa = 64;
+	else if (ft_isleft(theta))
+		xa = -64;
+	ya = 64 / tan(FOV); //ya = 36;
 
 	while (grid(inter_y)(inter_x) != 'X')
 	{
