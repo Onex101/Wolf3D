@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   basic_raycast.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 15:50:37 by xeno              #+#    #+#             */
-/*   Updated: 2018/07/24 16:42:45 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/25 07:52:15 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double ray_dist(vec2 start, vec2 end) 
+#include "wolf3d.h"
+
+double ray_dist(t_vec2 start, t_vec2 end) 
 {
 	return	(sqrt(
 			(end.x - start.x) * (end.x - start.x) + 
-			(end.y - start.y) * (end.y - start.y));
+			(end.y - start.y) * (end.y - start.y)));
 }
 
-double get_raycast(vec2 ray_start, double ray_cos, double ray_sin, t_line line) 
+double get_raycast(t_vec2 ray_start, double ray_cos, double ray_sin, t_line line) 
 {
-	vec2	ray_end;
-	vec2	l_diff;
-	vec2	ray_col;
+	t_vec2	ray_end;
+	t_vec2	l_diff;
+	t_vec2	ray_col;
 	double	s;
 	double	t;
 
@@ -33,7 +35,7 @@ double get_raycast(vec2 ray_start, double ray_cos, double ray_sin, t_line line)
 		ray_end.x * (ray_start.y - line.y1)) / 
 		(-l_diff.x * ray_end.y + ray_end.x * l_diff.y);
 	t = (l_diff.x * (ray_start.y - line.y1) - l_diff.y * (ray_start.x - line.x1)) / 
-		(-l_diff.x * ray_end.y + ray_end.x * l_diff.y)
+		(-l_diff.x * ray_end.y + ray_end.x * l_diff.y);
 	if (s >= 0 && s <= 1 && t >= 0 && t <= 1) 
 	{
 		// Collision detected

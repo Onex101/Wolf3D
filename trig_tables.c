@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 09:59:56 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/25 08:15:34 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	init_trig_tables(t_tables *tables)
 		tables->t_sin[i] = sin(rad);
 		tables->t_cos[i] = cos(rad);
 		tables->t_tan[i] = tan(rad);
-		tables->t_isin[i] = 1 / table->t_sin[i];
-		tables->t_icos[i] = 1 / table->t_cos[i];
-		tables->t_itan[i] = 1 / table->t_tan[i];
+		tables->t_isin[i] = 1 / tables->t_sin[i];
+		tables->t_icos[i] = 1 / tables->t_cos[i];
+		tables->t_itan[i] = 1 / tables->t_tan[i];
 	}
 }
 
@@ -39,7 +39,7 @@ void	init_fish_table(t_tables *tables)
 	while (i < ANGLE_30)
 	{
 		rad = (i * M_PI) / ANGLE_180;
-		tables->fish[i + ANGLE_30] = (1 / cos(rad));
+		tables->t_fish[(int)ANGLE_30 + i] = (1 / cos(rad));
 	}
 }
 
@@ -47,9 +47,10 @@ void	init_step_tables(t_tables *tables)
 {
 	int i;
 
+	i = 0;
 	while (i < ANGLE_360)
 	{
-		if (i >= ANGLE_90 && i <= ANGLE270)
+		if (i >= ANGLE_90 && i <= ANGLE_270)
 		{
 			tables->t_step_x[i] = WALL_HEIGHT / tables->t_tan[i];
 			if (tables->t_step_x[i] > 0)
@@ -81,4 +82,18 @@ void	init_tables(t_tables *tables)
 	init_step_tables(tables);
 	init_fish_table(tables);
 	init_trig_tables(tables);
+}
+
+t_tables	*get_tables(void)
+{
+	static t_tables *t;
+
+	if (!t)
+	{
+		t = (t_tables *)malloc(sizeof(t_tables));
+		if (!t)
+			return (NULL);
+		init_tables(t);
+	}
+	return (t);
 }
