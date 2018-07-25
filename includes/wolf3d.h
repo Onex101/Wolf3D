@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 06:47:33 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/25 12:49:48 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define M_WIDTH 24
 # define M_HEIGHT 24
 
-# define WIDTH 320
-# define HEIGHT 200
+# define WIDTH 640
+# define HEIGHT 400
 # define FOV	60
 # define WALL_HEIGHT 64
 
@@ -32,6 +32,20 @@ typedef struct	s_vec2
 	double		x;
 	double		y;
 }				t_vec2;
+
+typedef struct	s_pnt
+{
+	int			x;
+	int			y;
+}				t_pnt;
+
+typedef struct	s_line
+{
+	double		x1;
+	double		y1;
+	double		x2;
+	double		y2;
+}				t_line;
 
 typedef struct	s_player
 {
@@ -54,5 +68,16 @@ typedef struct	s_window
 	void		*win;
 	void		*mlx;
 }				t_window;
+
+typedef struct	s_line_p
+{
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+}				t_line_p;
+
+void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_window *p);
+void			draw_square(t_pnt *s, t_window *w);
 
 #endif
