@@ -125,3 +125,6 @@ int		ft_vertical_check(t_player *p)
 			exit (0);
 	}
 }
+
+//distance needs to be calculate, check fish eye code already made
+//return t_point for where the wall occurs, use tpoint in the declarations
