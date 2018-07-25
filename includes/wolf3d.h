@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 08:34:48 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/25 06:47:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef struct	s_vec2
 
 typedef struct	s_player
 {
-	t_vec2		position;
-	t_vec2		direction;
-	double		view_angle;
-	double		height;
+	t_vec2		pos;
+	t_vec2		dir;
+	double		v_angle;
+	double		hght;
 }				t_player;
 
 typedef struct	s_plane
@@ -46,7 +46,7 @@ typedef struct	s_plane
 	int			proj_plane;
 	t_vec2		centre;
 	double		dist_plane;
-	double		angle_rays;
+	double		angl_rays;
 }				t_plane;
 
 typedef struct	s_window
