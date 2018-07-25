@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 13:44:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/25 18:14:10 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <fcntl.h>
 
 void	init_win(t_window *w)
 {
@@ -33,27 +34,32 @@ int		draw_to_screen(t_window *w)
 		x = 0;
 		while (s.x < WIDTH)
 		{
-			x = s.x + 64;
+			x = s.x + SCALE;
 			if (s.y == 0 || s.x == 0 || x == WIDTH || y == HEIGHT)
 				draw_square(&s, w);
 			s.x = x;
 			s.y = y;
 		}
-		s.y += 64;
+		s.y += SCALE;
 	}
 	return (0);
 }
 
+//int		main(int argc, char **argv)
 int		main(void)
 {
 	t_window *win;
+	//t_map	 *map;
 
-	if (!(win = (t_window *)malloc(sizeof(t_window))))
-		return (-1);
-	init_win(win);
-
-	mlx_loop_hook(win->mlx, draw_to_screen, win);
-	mlx_loop(win->mlx);
-
+	//if (argc == 2)
+	//{
+		if (!(win = (t_window *)malloc(sizeof(t_window))))
+			return (-1);
+		//if(!(map = read_map(open(argv[1], O_RDONLY))))
+		//	return (-1);
+		init_win(win);
+		mlx_loop_hook(win->mlx, draw_to_screen, win);
+		mlx_loop(win->mlx);
+	//}
 	return (0);
 }

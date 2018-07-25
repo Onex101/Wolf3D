@@ -6,7 +6,7 @@
 #    By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/25 16:22:59 by xeno             ###   ########.fr        #
+#    Updated: 2018/07/25 17:49:28 by xeno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ FILES = 	main.c	\
 			trig_tables.c	\
 			draw_line.c	\
 			draw_square.c	\
+			read_map.c	\
+			vertex.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 

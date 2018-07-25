@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_square.c                                      :+:      :+:    :+:   */
+/*   vertex.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 16:52:57 by xeno             ###   ########.fr       */
+/*   Created: 2018/06/27 06:26:00 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/07/25 17:50:32 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	draw_square(t_pnt *s, t_window *w)
+t_vec3	*new_vertex(double x, double y, double z)
 {
-	t_pnt e;
+	t_vec3 *vertex;
 
-	e.x = s->x + SCALE;
-	e.y = s->y;
-	draw_line(&e, s, w);
-	e.y = s->y + SCALE;
-	e.x = s->x;
-	draw_line(&e, s, w);
-	s->x += SCALE;
-	s->y += SCALE;
-	e.x = s->x - SCALE;
-	e.y = s->y;
-	draw_line(&e, s, w);
-	e.x = s->x;
-	e.y = s->y - SCALE;
-	draw_line(&e, s, w);
+	vertex = (t_vec3 *)malloc(sizeof(t_vec3));
+	if (!vertex)
+		return (NULL);
+	vertex->x = x;
+	vertex->y = y;
+	vertex->z = z;
+	return (vertex);
+}
+
+t_vec3	*vertex_copy(t_vec3 *vec)
+{
+	t_vec3 *cpy;
+
+	cpy = new_vertex(vec->x, vec->y, vec->z);
+	return (cpy);
+}
+
+void	del_vertex(t_vec3 *vertex)
+{
+	if (vertex)
+		free(vertex);
 }
