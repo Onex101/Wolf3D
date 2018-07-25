@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 07:58:08 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/24 08:07:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/25 06:51:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int			world_map[m_WIDTH][M_HEIGHT] =
 
 void		init_player(t_player *p)
 {
-	p->position.x = 22;
-	p->position.y = 12;
-	p->view_angle = 0;
-	p->direction.x = -1;
-	p->direction.y = 0;
-	p->height = WALL_HEIGHT / 2;
+	p->pos.x = 22;
+	p->pos.y = 12;
+	p->v_angle = 0;
+	p->dir.x = -1;
+	p->dir.y = 0;
+	p->hght = WALL_HEIGHT / 2;
 	p->angle = 0;
 }
 
@@ -61,7 +61,7 @@ void		init_plane(t_plane *plane)
 	plane->centre.x = WIDTH / 2;
 	plane->centre.y = HEIGHT / 2;
 	plane->dist_plane = (WIDTH / 2) / tan(30);
-	plane->angle_rays = 60 / WIDTH;
+	plane->angl_rays = 60 / WIDTH;
 }
 
 void	game_loop
