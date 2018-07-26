@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/26 10:03:08 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/26 16:46:50 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p);
 void			draw_square(t_pnt *s, t_param *p, int scale_x, int scale_y);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
+void			draw_map(t_param *p, int x_scale, int y_scale);
 
 #endif

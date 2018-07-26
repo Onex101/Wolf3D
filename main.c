@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/26 09:42:21 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/26 16:49:36 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,13 @@ void	init_win(t_param *p)
 
 int		draw_to_screen(t_param *p)
 {
-	t_pnt	s;
 	int		x_scale;
 	int		y_scale;
-	int		i;
-	int		total;
 
-	i = 0;
+	mlx_clear_window(p->mlx, p->win);
 	x_scale = WIDTH / p->map->max_x;
 	y_scale = HEIGHT / p->map->max_y;
-	total = vector_total(p->map->ver_vec);
-	while (i < total)
-	{
-		s.x = (x_scale * ((t_vec3 *)vector_get(p->map->ver_vec, i))->x);
-		s.y = (y_scale * ((t_vec3 *)vector_get(p->map->ver_vec, i))->y);
-		if (((t_vec3 *)vector_get(p->map->ver_vec, i))->z > 0)
-			draw_square(&s, p, x_scale, y_scale);
-		i++;
-	}
+	draw_map(p, x_scale, y_scale);
 	return (0);
 }
 
