@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 16:52:57 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/26 09:42:02 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	draw_square(t_pnt *s, t_window *w)
+void	draw_square(t_pnt *s, t_param *p, int scale_x, int scale_y)
 {
 	t_pnt e;
 
-	e.x = s->x + SCALE;
+	e.x = s->x + scale_x;
 	e.y = s->y;
-	draw_line(&e, s, w);
-	e.y = s->y + SCALE;
+	draw_line(&e, s, p);
+	e.y = s->y + scale_y;
 	e.x = s->x;
-	draw_line(&e, s, w);
-	s->x += SCALE;
-	s->y += SCALE;
-	e.x = s->x - SCALE;
+	draw_line(&e, s, p);
+	s->x += scale_x;
+	s->y += scale_y;
+	e.x = s->x - scale_x;
 	e.y = s->y;
-	draw_line(&e, s, w);
+	draw_line(&e, s, p);
 	e.x = s->x;
-	e.y = s->y - SCALE;
-	draw_line(&e, s, w);
+	e.y = s->y - scale_y;
+	draw_line(&e, s, p);
 }

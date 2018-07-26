@@ -3,63 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 18:14:10 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/26 09:42:21 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include <fcntl.h>
 
-void	init_win(t_window *w)
+void	init_win(t_param *p)
 {
-	w->mlx = mlx_init();
-	w->win = mlx_new_window(w->mlx, WIDTH, HEIGHT, "Wolf3D");
+	p->mlx = mlx_init();
+	p->win = mlx_new_window(p->mlx, WIDTH, HEIGHT, "Wolf3D");
 }
 
-int		draw_to_screen(t_window *w)
+int		draw_to_screen(t_param *p)
 {
 	t_pnt	s;
-	int		x;
-	int		y;
+	int		x_scale;
+	int		y_scale;
+	int		i;
+	int		total;
 
-	s.y = 0;
-	y = 0;
-	while (s.y < HEIGHT)
+	i = 0;
+	x_scale = WIDTH / p->map->max_x;
+	y_scale = HEIGHT / p->map->max_y;
+	total = vector_total(p->map->ver_vec);
+	while (i < total)
 	{
-		y = s.y;
-		s.x = 0;
-		x = 0;
-		while (s.x < WIDTH)
-		{
-			x = s.x + SCALE;
-			if (s.y == 0 || s.x == 0 || x == WIDTH || y == HEIGHT)
-				draw_square(&s, w);
-			s.x = x;
-			s.y = y;
-		}
-		s.y += SCALE;
+		s.x = (x_scale * ((t_vec3 *)vector_get(p->map->ver_vec, i))->x);
+		s.y = (y_scale * ((t_vec3 *)vector_get(p->map->ver_vec, i))->y);
+		if (((t_vec3 *)vector_get(p->map->ver_vec, i))->z > 0)
+			draw_square(&s, p, x_scale, y_scale);
+		i++;
 	}
 	return (0);
 }
 
-//int		main(int argc, char **argv)
-int		main(void)
+int		main(int argc, char **argv)
+/*int		main(void)*/
 {
-	t_window *win;
-	//t_map	 *map;
+	t_map	 *map;
+	t_param	 *param;
 
-	//if (argc == 2)
-	//{
-		if (!(win = (t_window *)malloc(sizeof(t_window))))
+	if (argc == 2)
+	{
+		if(!(map = read_map(open(argv[1], O_RDONLY))))
 			return (-1);
-		//if(!(map = read_map(open(argv[1], O_RDONLY))))
-		//	return (-1);
-		init_win(win);
-		mlx_loop_hook(win->mlx, draw_to_screen, win);
-		mlx_loop(win->mlx);
-	//}
+		if (!(param = (t_param *)malloc(sizeof(t_param))))
+			return (-1);
+		param->map = map;
+		param->map->max_x = map->max_x;
+		param->map->max_y = map->max_y;
+		init_win(param);
+		mlx_loop_hook(param->mlx, draw_to_screen, param);
+		mlx_loop(param->mlx);
+	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 18:07:35 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/26 10:22:24 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,17 @@ t_map		*read_map(int fd)
 	size_t		y;
 	int			c_line;
 
-	if (!(map = (t_map *)sizeof(t_map)))
+	if (!(map = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
 	if (!(map->ver_vec = (t_vector *)malloc(sizeof(t_vector))))
 		return (NULL);
+	vector_init(map->ver_vec);
 	y = 0;
 	c_line = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		map_check(line, &c_line);
+		ft_putendl(line);
 		create_vertex_list(map, line, y);
 		y++;
 	}

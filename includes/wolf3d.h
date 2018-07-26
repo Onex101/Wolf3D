@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 18:08:28 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/26 10:03:08 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 # define M_HEIGHT 24
 
 # define WIDTH 600
-# define HEIGHT 400
+# define HEIGHT 600
 # define FOV 60
 # define WALL_HEIGHT 64
-# define SCALE (WIDTH * HEIGHT) / WALL_HEIGHT / 50
+# define SCALE_X WIDTH / 10
+# define SCALE_Y HEIGHT / 10
 
 typedef struct	s_vec2
 {
@@ -65,12 +66,6 @@ typedef struct	s_plane
 	double		angl_rays;
 }				t_plane;
 
-typedef struct	s_window
-{
-	void		*win;
-	void		*mlx;
-}				t_window;
-
 typedef struct	s_line_p
 {
 	int			dx;
@@ -82,8 +77,8 @@ typedef struct	s_line_p
 typedef struct	s_map
 {
 	t_vector	*ver_vec;
-	double		max_x;
-	double		max_y;
+	int			max_x;
+	int			max_y;
 }				t_map;
 
 typedef	struct	s_vec3
@@ -93,8 +88,15 @@ typedef	struct	s_vec3
 	double		z;
 }				t_vec3;
 
-void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_window *p);
-void			draw_square(t_pnt *s, t_window *w);
+typedef struct	s_param
+{
+	t_map		*map;
+	void		*mlx;
+	void		*win;
+}				t_param;
+
+void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p);
+void			draw_square(t_pnt *s, t_param *p, int scale_x, int scale_y);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 

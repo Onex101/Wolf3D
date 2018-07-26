@@ -6,14 +6,14 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 11:48:50 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 12:48:35 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/26 07:35:08 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include <math.h>
 
-static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_window *p)
+static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 {
 	int err;
 	int m;
@@ -38,7 +38,7 @@ static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_window *p)
 	}
 }
 
-void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_window *p)
+void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 {
 	t_line_p line;
 
