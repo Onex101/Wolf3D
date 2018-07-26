@@ -126,5 +126,17 @@ int		ft_vertical_check(t_player *p)
 	}
 }
 
+double		ft_get_distance(t_player *p)
+{
+	t_tables	*t;
+
+	t = get_tables();
+
+	h_dist = ft_abs(p->x - h_x) / cos(beta);
+	h_dist = ft_abs(p->y - h_y) / sin(beta);
+	v_dist = ft_abs(p->x - v_x) / cos(beta);
+	v_dist = ft_abs(p->y - v_y) / sin(beta);
+
+}
 //distance needs to be calculate, check fish eye code already made
 //return t_point for where the wall occurs, use tpoint in the declarations
