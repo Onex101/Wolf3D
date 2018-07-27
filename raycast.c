@@ -126,16 +126,44 @@ int		ft_vertical_check(t_player *p)
 	}
 }
 
-double		ft_get_distance(t_player *p)
+double		ft_get_distance(t_player *p, double theta)
 {
 	t_tables	*t;
+	t_vec2		*h_dist;
+	t_vec2		*v_dist;
 
 	t = get_tables();
+	if ((h_dist = ft_horizontal_check) != NULL)
+	{
+		h_dist->x = ft_abs(p->x - h_dist->x / cos(beta));
+		h_dist->y = ft_abs(p->y - h_dist->y) / sin(beta);
+	}
+	if ((v_dist = ft_vertical_check) != NULL)
+	{
+		v_dist->x = ft_abs(p->x - v_dist->x / cos(beta));
+		v_dist->y = ft_abs(p->y - v_dist->y) / sin(beta);
+	}
+	if (v_dist != NULL && h_dist != NULL)
+	{
+		if ((ft_abs(p->x - h_x) / cos(beta)) >= (ft_abs(p->y - v_y) / sin(beta)))
+			distance = ft_abs(p->x - h_dist->x) / cos(beta);
+		else
+			distance = ft_abs(p->y - v_dist->y) / sin(beta);
+	}
+	else if (v_dist == NULL && h_dist != NULL)
+		distance = ft_abs(p->x - h_dist->x) / cos(beta);
+	else if (v_dist == NULL && h_dist != NULL)
+		distance = ft_abs(p->y - v_dist->y) / sin(beta);
+	else
+		exit (0);
 
-	h_dist = ft_abs(p->x - h_x) / cos(beta);
-	h_dist = ft_abs(p->y - h_y) / sin(beta);
-	v_dist = ft_abs(p->x - v_x) / cos(beta);
-	v_dist = ft_abs(p->y - v_y) / sin(beta);
+	// h_distx = ft_abs(p->x - h_x) / cos(beta);
+	// h_disty = ft_abs(p->y - h_y) / sin(beta);
+	// v_distx = ft_abs(p->x - v_x) / cos(beta);
+	// v_disty = ft_abs(p->y - v_y) / sin(beta);
+
+	distance = distance * cos(theta)
+	return (distance);
 
 }
 //distance needs to be calculate, check fish eye code already made
