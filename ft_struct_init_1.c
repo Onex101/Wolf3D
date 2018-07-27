@@ -38,3 +38,16 @@ t_line  *ft_line_init(double x1, double y1, double x2, double y2)
     }
     return (new);
 }
+
+t_player    *ft_player_init(void)
+{
+    t_player	*p;
+
+	if (!(p = (t_player *)malloc(sizeof(t_player))
+		return (NULL);
+	p->pos = ft_vec2_init(4, 7);
+	p->dir = ft_vec2_init(0, 0);
+	p->v_angle = 0;
+	p->hght = 32;
+    return (p);
+}
