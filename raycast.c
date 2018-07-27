@@ -12,83 +12,35 @@
 
 #include "wolf3d.h"
 
-int		ft_isup(double theta)
-{
-	if (theta >= 0 && theta < 90)
-		return (1);
-	else if (theta >= -360 && theta < -270)
-		return (1);
-	else if (theta > -90 && theta <= 0)
-		return (1);
-	else if (theta > 270 && theta <= 360)
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_isdown(double theta)
-{
-	if (theta > 90 && theta <= 180)
-		return (1);
-	else if (theta > -270 && theta <= -180)
-		return (1);
-	else if (theta < 270 && theta >= 180)
-		return (1);
-	else if (theta < -90 && theta >= -180)
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_isleft(double theta)
-{
-	if (theta < 0 && theta > -180)
-		return (1);
-	else if (theta < 360 && theta > 180)
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_isright(double theta)
-{
-	if (theta > 0 && theta < 180)
-		return (1);
-	else if (theta > -360 && theta < -180)
-		return (1);
-	else
-		return (0);
-}
-
 int		ft_horizontal_check(t_player *p)
 {
+	t_vec2	*a;
+	t_pnt	*inter;
 	int		ya;
 	int		xa;
-	int		inter_x;
-	int		inter_y;
 
 	if (ft_isup(theta))
-		ay = (p->pos.y/64) * (64) - 1;
+	{
+		a->y = (p->pos.y/64) * (64) - 1;
+		ya = -64
+	}
 	else if (ft_isdown(theta))
-		ay = (p->pos.y / 64) * 64 + 64;
-	inter_y = ay / 64;
-	ax = p->pos.x + (p->pos.y - ay) / tan(FOV);
-	inter_x = ax / 64;
-
-	//Find Ya
-	if (ft_isup(theta))
-		ya = -64;
-	else if (ft_isdown(theta))
+	{
+		a->y = (p->pos.y / 64) * 64 + 64;
 		ya = 64;
+	}
+	inter->y = a->y / 64;
+	a->x = p->pos.x + (p->pos.y - a->y) / tan(FOV);
+	inter->x = a->x / 64;
 	xa = 64 / tan(FOV); //xa = 36;
 
-	while (grid(inter_y)(inter_x) != 'X')
+	while (grid(inter->y)(inter->x) != 'X')
 	{
 		ax = ax + xa;
-		inter_x = ax / 64;
+		inter->x = ax / 64;
 		ay = ay + ya;
-		inter_y = ay / 64;
-		if (inter_x < 0 || inter_x >= WIDTH || inter_y < 0 || inter_y >= HEIGHT);
+		inter->y = ay / 64;
+		if (inter->x < 0 || inter->x >= WIDTH || inter->y < 0 || inter->y >= HEIGHT);
 			exit (0);
 	}
 }
@@ -133,6 +85,8 @@ double		ft_get_distance(t_player *p, double theta)
 	t_vec2		*v_dist;
 
 	t = get_tables();
+	if(!(h_dist = ft_vec2_init(0, 0)) && !(v_dist = ft_vec2_init(0, 0)))
+		exit (0);
 	if ((h_dist = ft_horizontal_check) != NULL)
 	{
 		h_dist->x = ft_abs(p->x - h_dist->x / cos(beta));
@@ -156,15 +110,8 @@ double		ft_get_distance(t_player *p, double theta)
 		distance = ft_abs(p->y - v_dist->y) / sin(beta);
 	else
 		exit (0);
-
-	// h_distx = ft_abs(p->x - h_x) / cos(beta);
-	// h_disty = ft_abs(p->y - h_y) / sin(beta);
-	// v_distx = ft_abs(p->x - v_x) / cos(beta);
-	// v_disty = ft_abs(p->y - v_y) / sin(beta);
-
 	distance = distance * cos(theta)
 	return (distance);
-
 }
 //distance needs to be calculate, check fish eye code already made
 //return t_point for where the wall occurs, use tpoint in the declarations
