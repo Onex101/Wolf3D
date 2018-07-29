@@ -95,6 +95,8 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	t = get_tables();
 	if (!(p1 = ft_pnt_init(0, 0)) || !(p2 = ft_pnt_init(0, 0)))
 		exit (0);
+	p1->x = p->x;
+	p1->y = p->y;
 	if(!(h_dist = ft_vec2_init(0, 0)) && !(v_dist = ft_vec2_init(0, 0)))
 		exit (0);
 	if ((h_dist = ft_horizontal_check(p, t, par)) != NULL)
@@ -107,29 +109,37 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 		v_dist->x = ft_abs(p->x - v_dist->x / t->t_cos[theta]);
 		v_dist->y = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
 	}
+	//Now get the distance
 	if (v_dist != NULL && h_dist != NULL)
 	{
-		if ((ft_abs(p->x - h_x) / t->t_cos[theta]) >= (ft_abs(p->y - v_y) / t->t_sin[theta]))
+		if ((ft_abs(p->x - h_dist->x) / t->t_cos[theta]) >= (ft_abs(p->y - v_dist->y) / t->t_sin[theta]))
 		{
-			p2->x = (int)
+			p2->x = (int)h_dist->x;
+			p2->y = (int)h_dist->y;
 			distance = ft_abs(p->x - h_dist->x) / t->t_cos[theta];
 		}
 		else
 		{
+			p2->x = (int)v_dist->x;
+			p2->y = (int)v_dist->y;
 			distance = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
 		}
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
+		p2->x = (int)h_dist->x;
+		p2->y = (int)h_dist->y;
 		distance = ft_abs(p->x - h_dist->x) / t->t_cos[theta];
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
-		draw_line((int)p->x *)
+		p2->x = (int)v_dist->x;
+		p2->y = (int)v_dist->y;
 		distance = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
 	}
 	else
 		exit (0);
+	drawline(p1, p2, p);
 	distance = distance * t->t_cos[theta];
 	return (distance);
 }
