@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 06:48:25 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 07:43:28 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # define HEIGHT 600
 # define FOV 60
 # define WALL_HEIGHT 64
-# define SCALE_X WIDTH / 10
-# define SCALE_Y HEIGHT / 10
 
 typedef struct	s_vec2
 {
