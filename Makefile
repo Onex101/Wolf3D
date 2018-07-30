@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/30 09:01:17 by shillebr         ###   ########.fr        #
+#    Updated: 2018/07/30 09:05:03 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ FILES = 	main.c	\
 			ft_check_ray.c	\
 			ft_struct_init_1.c	\
 			raycast.c	\
+			a_ind.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 

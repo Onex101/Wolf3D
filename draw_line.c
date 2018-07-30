@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 11:48:50 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/26 07:35:08 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 08:55:59 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 	err = line.dx + line.dy;
 	while (1)
 	{
-		mlx_pixel_put(p->mlx, p->win, pnt1->x, pnt1->y, 0xFFFFFF);
+		mlx_pixel_put(p->mlx, p->win, pnt1->x, pnt1->y, line.c);
 		if (pnt1->x == pnt2->x && pnt1->y == pnt2->y)
 			break ;
 		m = 2 * err;
@@ -38,7 +38,7 @@ static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 	}
 }
 
-void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p)
+void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c)
 {
 	t_line_p line;
 
@@ -46,5 +46,6 @@ void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 	line.dy = -(abs(pnt2->y - pnt1->y));
 	line.sx = pnt1->x < pnt2->x ? 1 : -1;
 	line.sy = pnt1->y < pnt2->y ? 1 : -1;
+	line.c = c;
 	d_line(line, pnt1, pnt2, p);
 }
