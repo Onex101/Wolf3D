@@ -33,7 +33,7 @@ CFLAGS	= -Wall -Wextra -Werror -g
 
 MLX_INC	= -I /usr/X11/include -g
 MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
-#MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+# MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 FT		= ./libft/
 FT_LIB	= $(addprefix $(FT),libft.a)

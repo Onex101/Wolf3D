@@ -6,11 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2018/07/30 14:34:47 by shillebr         ###   ########.fr       */
-=======
-/*   Updated: 2018/07/30 10:15:13 by xrhoda           ###   ########.fr       */
->>>>>>> 0a51f07c89c16a50f2b274168bb522b55a1df80d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +107,7 @@ void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
 int				a_ind(double d);
 //
+double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
