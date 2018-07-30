@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 06:57:38 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 09:12:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "trig_tables.h"
 #include <fcntl.h>
 
 void	init_param(t_param *p, char *str)
@@ -25,8 +26,11 @@ void	init_param(t_param *p, char *str)
 
 int		draw_to_screen(t_param *p)
 {
+	int		i;
+
 	mlx_clear_window(p->mlx, p->win);
 	draw_map(p);
+	i = ft_rays(p);
 	//draw_player(); // wrtie draw_player;
 	return (0);
 }

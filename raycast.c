@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/30 09:01:12 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 09:12:06 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,46 +104,46 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 		exit (0);
 	if ((h_dist = ft_hori_check(p, t, par, theta)) != NULL)
 	{
-		h_dist->x = fabs((p->pos).x - h_dist->x / t->t_cos[theta]);
-		h_dist->y = fabs((p->pos).y - h_dist->y) / t->t_sin[theta];
+		h_dist->x = fabs((p->pos).x - h_dist->x / t->t_cos[a_ind(theta)]);
+		h_dist->y = fabs((p->pos).y - h_dist->y) / t->t_sin[a_ind(theta)];
 	}
 	if ((v_dist = ft_vert_check(p, t, par, theta)) != NULL)
 	{
-		v_dist->x = fabs((p->pos).x - v_dist->x / t->t_cos[theta]);
-		v_dist->y = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
+		v_dist->x = fabs((p->pos).x - v_dist->x / t->t_cos[a_ind(theta)]);
+		v_dist->y = fabs((p->pos).y - v_dist->y) / t->t_sin[a_ind(theta)];
 	}
 	//Now get the distance
 	if (v_dist != NULL && h_dist != NULL)
 	{
-		if ((fabs((p->pos).x - h_dist->x) / t->t_cos[theta]) >= (fabs((p->pos).y - v_dist->y) / t->t_sin[theta]))
+		if ((fabs((p->pos).x - h_dist->x) / t->t_cos[a_ind(theta)]) >= (fabs((p->pos).y - v_dist->y) / t->t_sin[a_ind(theta)]))
 		{
 			p2->x = (int)h_dist->x;
 			p2->y = (int)h_dist->y;
-			distance = fabs((p->pos).x - h_dist->x) / t->t_cos[theta];
+			distance = fabs((p->pos).x - h_dist->x) / t->t_cos[a_ind(theta)];
 		}
 		else
 		{
 			p2->x = (int)v_dist->x;
 			p2->y = (int)v_dist->y;
-			distance = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
+			distance = fabs((p->pos).y - v_dist->y) / t->t_sin[a_ind(theta)];
 		}
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
 		p2->x = (int)h_dist->x;
 		p2->y = (int)h_dist->y;
-		distance = fabs((p->pos).x - h_dist->x) / t->t_cos[theta];
+		distance = fabs((p->pos).x - h_dist->x) / t->t_cos[a_ind(theta)];
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
 		p2->x = (int)v_dist->x;
 		p2->y = (int)v_dist->y;
-		distance = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
+		distance = fabs((p->pos).y - v_dist->y) / t->t_sin[a_ind(theta)];
 	}
 	else
 		exit (0);
-	draw_line(p1, p2, par);
-	distance = distance * t->t_cos[theta];
+	draw_line(p1, p2, par, SQR_COL);
+	distance = distance * t->t_cos[a_ind(theta)];
 	return (distance);
 }
 
