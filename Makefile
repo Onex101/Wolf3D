@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/30 09:05:03 by shillebr         ###   ########.fr        #
+#    Updated: 2018/07/30 10:15:02 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-FILES = 	main.c	\
+FILES =		main.c	\
 			basic_raycast.c \
 			trig_tables.c	\
 			draw_line.c	\
@@ -24,6 +24,7 @@ FILES = 	main.c	\
 			ft_struct_init_1.c	\
 			raycast.c	\
 			a_ind.c	\
+			input.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 

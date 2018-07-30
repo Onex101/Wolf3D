@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/07/30 14:34:47 by shillebr         ###   ########.fr       */
+=======
+/*   Updated: 2018/07/30 10:15:13 by xrhoda           ###   ########.fr       */
+>>>>>>> 0a51f07c89c16a50f2b274168bb522b55a1df80d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +31,8 @@
 # define HEIGHT 600
 # define FOV 60
 # define WALL_HEIGHT 64
-# define SQR_COL 0xFFFF00
+# define WALL_COL 0xAAAAAA
+# define SPC_COL 0x555555
 
 typedef struct	s_vec2
 {
@@ -103,7 +108,7 @@ void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
-void			draw_f_square(t_pnt *s, t_param *p);
+void			draw_f_square(t_pnt *s, t_param *p, int c);
 int				a_ind(double d);
 //
 t_vec2  		*ft_vec2_init(double x, double y);
@@ -114,5 +119,7 @@ int				ft_isup(double theta);
 int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
+
+int				key_hook(int keycode, t_param *p);
 
 #endif
