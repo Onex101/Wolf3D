@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/07/30 06:51:30 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 08:03:07 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		draw_map(t_param *p)
 		s.x = (p->x_scale * v->x);
 		s.y = (p->y_scale * v->y);
 		if (v->z > 0)
-			draw_square(&s, p);
+			draw_f_square(&s, p);
 		i++;
 	}
 }
