@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/30 09:12:06 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 10:06:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	}
 	else
 		exit (0);
-	draw_line(p1, p2, par, SQR_COL);
+	draw_line(p1, p2, par, WALL_COL);
 	distance = distance * t->t_cos[a_ind(theta)];
 	return (distance);
 }

@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/07/30 09:42:00 by xrhoda           ###   ########.fr       */
-=======
-/*   Updated: 2018/07/30 09:12:24 by shillebr         ###   ########.fr       */
->>>>>>> 379ff54766860855e531f0c31e8c107ab66e28a9
+/*   Updated: 2018/07/30 10:16:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +26,11 @@ void	init_param(t_param *p, char *str)
 
 int		draw_to_screen(t_param *p)
 {
-	int		i;
+	//int		i;
 
 	mlx_clear_window(p->mlx, p->win);
 	draw_map(p);
-	i = ft_rays(p);
+	//i = ft_rays(p);
 	//draw_player(); // wrtie draw_player;
 	return (0);
 }
@@ -49,6 +45,7 @@ int		main(int argc, char **argv)
 		init_param(param, argv[1]);
 		if (!param->mlx)
 			return (-1);
+		mlx_key_hook(param->win, key_hook, param);
 		mlx_loop_hook(param->mlx, draw_to_screen, param);
 		mlx_loop(param->mlx);
 	}

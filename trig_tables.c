@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:41:57 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 10:22:15 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_trig_tables(t_tables *tables)
 		tables->t_isin[i] = 1 / tables->t_sin[i];
 		tables->t_icos[i] = 1 / tables->t_cos[i];
 		tables->t_itan[i] = 1 / tables->t_tan[i];
+		i++;
 	}
 }
 
@@ -40,6 +41,7 @@ void	init_fish_table(t_tables *tables)
 	{
 		rad = (i * M_PI) / ANGLE_180;
 		tables->t_fish[(int)ANGLE_30 + i] = (1 / cos(rad));
+		i++;
 	}
 }
 
@@ -74,6 +76,7 @@ void	init_step_tables(t_tables *tables)
 			if (tables->t_step_y[i] > 0)
 				tables->t_step_y[i] *= -1;
 		}
+		i++;
 	}
 }
 
