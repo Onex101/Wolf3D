@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:45:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 09:49:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,15 @@ t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
+int				a_ind(double d);
+//
+t_vec2  		*ft_vec2_init(double x, double y);
+t_pnt  			*ft_pnt_init(int x, int y);
+t_line			*ft_line_init(double x1, double y1, double x2, double y2);
+t_player		*ft_player_init(void);
+int				ft_isup(double theta);
+int				ft_isdown(double theta);
+int				ft_isleft(double theta);
+int				ft_isright(double theta);
 
 #endif

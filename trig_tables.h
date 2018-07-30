@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   trig_tables.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/07/30 09:41:59 by xrhoda           ###   ########.fr       */
+=======
+/*   Updated: 2018/07/30 09:01:25 by shillebr         ###   ########.fr       */
+>>>>>>> 379ff54766860855e531f0c31e8c107ab66e28a9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +48,10 @@ void			init_fish_table(t_tables *tables);
 void			init_trig_tables(t_tables *tables);
 void			init_tables(t_tables *tables);
 t_tables		*get_tables(void);
+//
+t_vec2			*ft_hori_check(t_player *p, t_tables *t, t_param *par, double theta);
+t_vec2			*ft_vert_check(t_player *p, t_tables *t, t_param *par, double theta);
+double			ft_get_distance(t_player *p, double theta, t_param *par);
+int				ft_rays(t_param *par);
 
 #endif
