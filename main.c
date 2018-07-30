@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:12:24 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 14:34:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int		draw_to_screen(t_param *p)
 
 	mlx_clear_window(p->mlx, p->win);
 	draw_map(p);
-	i = ft_rays(p);
+	//ft_putendl("test1");
+	//i = ft_rays(p);
+	//ft_putendl("test2");
 	//draw_player(); // wrtie draw_player;
 	return (0);
 }
