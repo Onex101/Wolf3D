@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/26 16:46:50 by xeno             ###   ########.fr       */
+/*   Updated: 2018/07/30 06:48:25 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,17 @@ typedef	struct	s_vec3
 typedef struct	s_param
 {
 	t_map		*map;
+	t_player	*player;
+	int			x_scale;
+	int			y_scale;
 	void		*mlx;
 	void		*win;
 }				t_param;
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p);
-void			draw_square(t_pnt *s, t_param *p, int scale_x, int scale_y);
+void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
-void			draw_map(t_param *p, int x_scale, int y_scale);
+void			draw_map(t_param *p);
 
 #endif
