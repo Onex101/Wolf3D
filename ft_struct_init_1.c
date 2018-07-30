@@ -6,11 +6,11 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/30 07:43:22 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 09:01:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d."
+#include "wolf3d.h"
 
 t_vec2  *ft_vec2_init(double x, double y)
 {
@@ -45,8 +45,10 @@ t_line  *ft_line_init(double x1, double y1, double x2, double y2)
     new = NULL;
     if ((new = (t_line *)malloc(sizeof(t_line))))
     {
-        new->x = x;
-        new->y = y;
+        new->x1 = x1;
+        new->y1 = y1;
+        new->x2 = x2;
+        new->y2 = y2;
     }
     return (new);
 }
@@ -55,10 +57,10 @@ t_player    *ft_player_init(void)
 {
     t_player	*p;
 
-	if (!(p = (t_player *)malloc(sizeof(t_player))
+	if (!(p = (t_player *)malloc(sizeof(t_player))))
 		return (NULL);
-	p->pos = ft_vec2_init(4, 7);
-	p->dir = ft_vec2_init(0, 0);
+	p->pos = *ft_vec2_init(4, 7);
+	p->dir = *ft_vec2_init(0, 0);
 	p->v_angle = 0;
 	p->hght = 32;
     return (p);

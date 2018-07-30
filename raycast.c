@@ -6,13 +6,15 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/30 07:27:44 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 09:01:12 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "trig_tables.h"
+#include <stdio.h>
 
-t_vec2	*ft_horizontal_check(t_player *p, t_tables *t, t_param *p)
+t_vec2	*ft_hori_check(t_player *p, t_tables *t, t_param *par, double theta)
 {
 	t_vec2	*a;
 	t_pnt	*inter;
@@ -24,7 +26,7 @@ t_vec2	*ft_horizontal_check(t_player *p, t_tables *t, t_param *p)
 	if (ft_isup(theta))
 	{
 		a->y = (p->pos.y/64) * (64) - 1;
-		ya = -64
+		ya = -64;
 	}
 	else if (ft_isdown(theta))
 	{
@@ -36,19 +38,19 @@ t_vec2	*ft_horizontal_check(t_player *p, t_tables *t, t_param *p)
 	inter->x = a->x / 64;
 	xa = 64 / t->t_tan[FOV]; //xa = 36;
 
-	while ((t_vec3 *)(vector_get(par->map, (par->x_scale * inter_y + inter_x)))->z != 0)
+	while ((((t_vec3 *)(vector_get(par->map->ver_vec, (par->x_scale * inter->y + inter->x))))->z) != 0)
 	{
 		a->x = a->x + xa;
 		inter->x = a->x / 64;
 		a->y = a->y + ya;
 		inter->y = a->y / 64;
-		if (inter->x < 0 || inter->x >= WIDTH || inter->y < 0 || inter->y >= HEIGHT);
+		if (inter->x < 0 || inter->x >= WIDTH || inter->y < 0 || inter->y >= HEIGHT)
 			return (NULL);
 	}
 	return (a);
 }
 
-t_vec2	*ft_vertical_check(t_player *p, t_tables *t, , t_param *par)
+t_vec2	*ft_vert_check(t_player *p, t_tables *t, t_param *par, double theta)
 {
 	t_vec2	*a;
 	t_pnt	*inter;
@@ -67,21 +69,21 @@ t_vec2	*ft_vertical_check(t_player *p, t_tables *t, , t_param *par)
 		a->y = (p->pos.y / 64) * 64 + 64;
 		xa = -64;
 	}
-	inter_y = a->y / 64;
+	inter->y = a->y / 64;
 	a->x = p->pos.x + (p->pos.y - a->y) / t->t_tan[FOV];
-	inter_x = a->x / 64;
+	inter->x = a->x / 64;
 	ya = 64 / t->t_tan[FOV]; //ya = 36;
 
-	while ((par->map)[inter_y][inter_x] != '0')
+	while ((((t_vec3 *)(vector_get(par->map->ver_vec, (par->x_scale * inter->y + inter->x))))->z) != 0)
 	{
 		a->x = a->x + xa;
-		inter_x = a->x / 64;
+		inter->x = a->x / 64;
 		a->y = a->y + ya;
-		inter_y = a->y / 64;
-		if (inter_x < 0 || inter_x >= WIDTH || inter_y < 0 || inter_y >= HEIGHT);
+		inter->y = a->y / 64;
+		if (inter->x < 0 || inter->x >= WIDTH || inter->y < 0 || inter->y >= HEIGHT)
 			return (NULL);
 	}
-	return (inter);
+	return (a);
 }
 
 double		ft_get_distance(t_player *p, double theta, t_param *par)
@@ -91,55 +93,56 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	t_vec2		*v_dist;
 	t_pnt		*p1;
 	t_pnt		*p2;
+	double		distance;
 
 	t = get_tables();
 	if (!(p1 = ft_pnt_init(0, 0)) || !(p2 = ft_pnt_init(0, 0)))
 		exit (0);
-	p1->x = p->x;
-	p1->y = p->y;
+	p1->x = (p->pos).x;
+	p1->y = (p->pos).y;
 	if(!(h_dist = ft_vec2_init(0, 0)) && !(v_dist = ft_vec2_init(0, 0)))
 		exit (0);
-	if ((h_dist = ft_horizontal_check(p, t, par)) != NULL)
+	if ((h_dist = ft_hori_check(p, t, par, theta)) != NULL)
 	{
-		h_dist->x = ft_abs(p->x - h_dist->x / t->t_cos[theta]);
-		h_dist->y = ft_abs(p->y - h_dist->y) / t->t_sin[theta];
+		h_dist->x = fabs((p->pos).x - h_dist->x / t->t_cos[theta]);
+		h_dist->y = fabs((p->pos).y - h_dist->y) / t->t_sin[theta];
 	}
-	if ((v_dist = ft_vertical_check(p, t, par)) != NULL)
+	if ((v_dist = ft_vert_check(p, t, par, theta)) != NULL)
 	{
-		v_dist->x = ft_abs(p->x - v_dist->x / t->t_cos[theta]);
-		v_dist->y = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
+		v_dist->x = fabs((p->pos).x - v_dist->x / t->t_cos[theta]);
+		v_dist->y = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
 	}
 	//Now get the distance
 	if (v_dist != NULL && h_dist != NULL)
 	{
-		if ((ft_abs(p->x - h_dist->x) / t->t_cos[theta]) >= (ft_abs(p->y - v_dist->y) / t->t_sin[theta]))
+		if ((fabs((p->pos).x - h_dist->x) / t->t_cos[theta]) >= (fabs((p->pos).y - v_dist->y) / t->t_sin[theta]))
 		{
 			p2->x = (int)h_dist->x;
 			p2->y = (int)h_dist->y;
-			distance = ft_abs(p->x - h_dist->x) / t->t_cos[theta];
+			distance = fabs((p->pos).x - h_dist->x) / t->t_cos[theta];
 		}
 		else
 		{
 			p2->x = (int)v_dist->x;
 			p2->y = (int)v_dist->y;
-			distance = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
+			distance = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
 		}
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
 		p2->x = (int)h_dist->x;
 		p2->y = (int)h_dist->y;
-		distance = ft_abs(p->x - h_dist->x) / t->t_cos[theta];
+		distance = fabs((p->pos).x - h_dist->x) / t->t_cos[theta];
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
 		p2->x = (int)v_dist->x;
 		p2->y = (int)v_dist->y;
-		distance = ft_abs(p->y - v_dist->y) / t->t_sin[theta];
+		distance = fabs((p->pos).y - v_dist->y) / t->t_sin[theta];
 	}
 	else
 		exit (0);
-	drawline(p1, p2, p);
+	draw_line(p1, p2, par);
 	distance = distance * t->t_cos[theta];
 	return (distance);
 }
@@ -150,11 +153,11 @@ int		ft_rays(t_param *par)
 	double		angle;
 	double		distance;
 
-	if (!(p = ft_player_init()));
+	if (!(p = ft_player_init()))
 		return (0);
 	angle = p->v_angle - (FOV / 2);
 
-	while (anlge <= (p->v_angle + (FOV / 2)))
+	while (angle <= (p->v_angle + (FOV / 2)))
 	{
 		distance = ft_get_distance(p, angle, par);
 		printf("distance = %f for angle = %f\n", distance, angle);
