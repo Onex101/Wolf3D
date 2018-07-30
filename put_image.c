@@ -6,11 +6,11 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 09:53:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/25 10:26:01 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 09:42:03 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	clear_image(t_window *win)
+void	clear_image(void *image)
 {
 	int i;
 	int j;
@@ -21,7 +21,7 @@ void	clear_image(t_window *win)
 		i = 0;
 		while (i < WIDTH)
 		{
-			_pixel(win->mlx, i, j, 0x0);
+			pixel(win->mlx, i, j, 0x0);
 			i++;
 		}
 		j++;
@@ -41,5 +41,4 @@ void	put_image(t_window *w)
 	{
 		clear_image(image);
 	}
-
 }

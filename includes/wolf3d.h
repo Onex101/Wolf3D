@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 08:59:11 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 09:45:54 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 # define HEIGHT 600
 # define FOV 60
 # define WALL_HEIGHT 64
-# define SQR_COL 0xFFFF00
+# define WALL_COL 0xAAAAAA
+# define SPC_COL 0x555555
 
 typedef struct	s_vec2
 {
@@ -103,6 +104,6 @@ void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
-void			draw_f_square(t_pnt *s, t_param *p);
+void			draw_f_square(t_pnt *s, t_param *p, int c);
 
 #endif
