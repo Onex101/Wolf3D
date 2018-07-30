@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/27 19:01:21 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/30 07:27:44 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_vec2	*ft_horizontal_check(t_player *p, t_tables *t, t_param *p)
 	inter->x = a->x / 64;
 	xa = 64 / t->t_tan[FOV]; //xa = 36;
 
-	while ((par->map)[inter_y][inter_x] != '0')
+	while ((t_vec3 *)(vector_get(par->map, (par->x_scale * inter_y + inter_x)))->z != 0)
 	{
 		a->x = a->x + xa;
 		inter->x = a->x / 64;
@@ -162,5 +162,3 @@ int		ft_rays(t_param *par)
 	}
 	return (1);
 }
-//distance needs to be calculate, check fish eye code already made
-//return t_point for where the wall occurs, use tpoint in the declarations
