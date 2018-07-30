@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2018/07/30 10:06:33 by xrhoda           ###   ########.fr       */
+=======
 /*   Updated: 2018/07/30 14:34:50 by shillebr         ###   ########.fr       */
+>>>>>>> 6f2982132e3ed06c1820ff2cd78715705ce8b3e0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,11 +193,21 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	{
 		ft_putendl("Exiting!");
 		exit (0);
+<<<<<<< HEAD
+	draw_line(p1, p2, par, WALL_COL);
+=======
 	}
 	printf("p1 x = %d (%d)\np1 y = %d (%d)\np2 x = %d (%d)\np2 y = %d (%d)\n", p1->x, (p1->x / 64), p1->y, (p1->y / 64), p2->x, (p2->x / 64), p2->y, (p2->y / 64));
 	ft_putendl("gd test4");
+<<<<<<< HEAD
 	draw_line(p1, p2, par, 0xFFFFFF);
 	// distance = distance * (n * t->t_cos[a_ind(theta)]);
+=======
+	draw_line(p1, p2, par, SQR_COL);
+	ft_putendl("gd test4_1");
+>>>>>>> 6f2982132e3ed06c1820ff2cd78715705ce8b3e0
+	distance = distance * t->t_cos[a_ind(theta)];
+>>>>>>> 3dd25077d057e70c5b5e12a5ff2113bbb10f9e66
 	ft_putendl("gd test5");
 	return (distance);
 }
