@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 07:43:28 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/30 08:02:54 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
+void			draw_f_square(t_pnt *s, t_param *p);
 
 #endif

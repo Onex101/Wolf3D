@@ -6,7 +6,7 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/27 06:06:10 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/07/30 08:27:20 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ FILES = 	main.c	\
 			read_map.c	\
 			vertex.c	\
 			draw_map.c	\
+			a_ind.c		\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 
