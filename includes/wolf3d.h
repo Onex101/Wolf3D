@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 14:34:47 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/31 09:37:50 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define M_WIDTH 24
 # define M_HEIGHT 24
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 640
+# define HEIGHT 640
 # define FOV 60
 # define WALL_HEIGHT 64
 # define WALL_COL 0xAAAAAA
@@ -116,7 +116,8 @@ int				ft_isup(double theta);
 int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
-
+void			ft_draw_player(t_player *p, t_param *par);
+//
 int				key_hook(int keycode, t_param *p);
 
 #endif

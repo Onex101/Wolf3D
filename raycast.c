@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 06:40:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/07/31 06:54:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/07/31 09:37:27 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ t_vec2	*ft_hori_check(t_player *p, t_tables *t, t_param *par, double theta)
 	int		xa;
 
 	if (!(a = ft_vec2_init(0, 0)) || !(inter = ft_pnt_init(0, 0)))
-	{
-		ft_putendl("Hori check failed to init");
 		return (NULL);
-	}
 	if (ft_isup(theta))
 	{
 		a->y = (int)(p->pos.y / 64) * (64) - 1;
@@ -43,7 +40,6 @@ t_vec2	*ft_hori_check(t_player *p, t_tables *t, t_param *par, double theta)
 
 	while ((((t_vec3 *)(vector_get(par->map->ver_vec, (par->x_scale * inter->y + inter->x))))->z) == 0)
 	{
-		ft_putendl("enter horizontal loop");
 		a->x = a->x + xa;
 		inter->x = a->x / 64;
 		a->y = a->y + ya;
@@ -72,7 +68,7 @@ t_vec2	*ft_vert_check(t_player *p, t_tables *t, t_param *par, double theta)
 	int		ya;
 	int		xa;
 
-	ft_putendl("v test1");
+	// ft_putendl("v test1");
 	if (!(a = ft_vec2_init(0, 0)) || !(inter = ft_pnt_init(0, 0)))
 		return (NULL);
 	if (ft_isright(theta))
@@ -92,12 +88,12 @@ t_vec2	*ft_vert_check(t_player *p, t_tables *t, t_param *par, double theta)
 
 	while ((((t_vec3 *)(vector_get(par->map->ver_vec, (par->x_scale * inter->y + inter->x))))->z) == 0)
 	{
-		ft_putendl("Entered vert loop");
+		// ft_putendl("Entered vert loop");
 		a->x = a->x + xa;
 		inter->x = a->x / 64;
 		a->y = a->y + ya;
 		inter->y = a->y / 64;
-		printf("Vert Inter x = %d\ny = %d\n", inter->x, inter->y);
+		// printf("Vert Inter x = %d\ny = %d\n", inter->x, inter->y);
 		if (inter->x < 0 || inter->x > par->x_scale || inter->y < 0 || inter->y > par->y_scale)
 			return (NULL);
 	}
@@ -141,21 +137,21 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	h_distance = 0;
 	if ((h_dist = ft_hori_check(p, t, par, n * theta)) != NULL)
 	{
-		printf("before fisheye h dist x = %f, y = %f\n", h_dist->x, h_dist->y);
+		// printf("before fisheye h dist x = %f, y = %f\n", h_dist->x, h_dist->y);
 		h_distance = sqrt(((((p->pos).x - h_dist->x) * (p->pos).x - h_dist->x)) + (((p->pos).y - h_dist->y) * ((p->pos).y - h_dist->y)));
-		printf("horizontal distance = %f", h_distance);
+		// printf("horizontal distance = %f", h_distance);
 	}
 	if ((v_dist = ft_vert_check(p, t, par, n * theta)) != NULL)
 	{
-		printf("before fisheye v dist x = %f, y = %f\n", v_dist->x, v_dist->y);
+		// printf("before fisheye v dist x = %f, y = %f\n", v_dist->x, v_dist->y);
 		v_distance = sqrt(((((p->pos).x - v_dist->x) * (p->pos).x - v_dist->x)) + (((p->pos).y - v_dist->y) * ((p->pos).y - v_dist->y)));
-		printf("vertical distance = %f\n", v_distance);
+		// printf("vertical distance = %f\n", v_distance);
 	}
-	ft_putendl("gd test3");
+	// ft_putendl("gd test3");
 	//Now get the distance
 	if (v_dist != NULL && h_dist != NULL)
 	{
-		ft_putendl("v_dist and h_dist are valid");
+		// ft_putendl("v_dist and h_dist are valid");
 		if (h_distance >= v_distance)
 		{
 			printf("h_dist x = %f, y = %f\n", h_dist->x, h_dist->y);
@@ -173,14 +169,14 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 	}
 	else if (v_dist == NULL && h_dist != NULL)
 	{
-		ft_putendl("h_dist is valid");
+		// ft_putendl("h_dist is valid");
 		p2->x = (int)h_dist->x;
 		p2->y = (int)h_dist->y;
 		distance = h_distance / (n * t->t_cos[a_ind(ft_diff(p, theta))]);
 	}
 	else if (v_dist != NULL && h_dist == NULL)
 	{
-		ft_putendl("v_dist is valid");
+		// ft_putendl("v_dist is valid");
 		p2->x = (int)v_dist->x;
 		p2->y = (int)v_dist->y;
 		distance = v_distance / (n * t->t_cos[a_ind(ft_diff(p, theta))]);
@@ -192,12 +188,27 @@ double		ft_get_distance(t_player *p, double theta, t_param *par)
 
 	}
 	printf("p1 x = %d (%d)\np1 y = %d (%d)\np2 x = %d (%d)\np2 y = %d (%d)\n", p1->x, (p1->x / 64), p1->y, (p1->y / 64), p2->x, (p2->x / 64), p2->y, (p2->y / 64));
-	ft_putendl("gd test4");
+	// ft_putendl("gd test4");
+	p1->x = p1->x;
+	p1->y = p1->y;
+	p2->x = p2->x;
+	p2->y = p2->y;
 	draw_line(p1, p2, par, 0xFFFFFF);
 	distance = distance * (n * t->t_cos[a_ind(theta)]);
 	// distance = distance * t->t_cos[a_ind(theta)];
-	ft_putendl("gd test5");
+	// ft_putendl("gd test5");
 	return (distance);
+}
+
+void	ft_draw_player(t_player *p, t_param *par)
+{
+	t_pnt		*p1;
+
+	if (!(p1 = ft_pnt_init((p->pos).x, (p->pos).y)))
+		exit (0);
+	draw_f_square(p1, par, 0xFFFF00);
+	// draw_line(p1, p2, par, 0xFFFF00);
+	free(p1);
 }
 
 int		ft_rays(t_param *par)
@@ -209,6 +220,9 @@ int		ft_rays(t_param *par)
 	if (!(p = ft_player_init()))
 		return (0);
 	angle = p->v_angle - (FOV / 2);
+	// ft_draw_player(p, par);
+	// (p->pos).x = (p->pos).x / 2.55;
+	// (p->pos).y = (p->pos).y / 2.55;
 	ft_putendl("ray test2");
 	while (angle <= (p->v_angle + (FOV / 2)))
 	{
