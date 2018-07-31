@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/07/30 09:41:54 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/07/31 09:20:17 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,13 @@ void		draw_map(t_param *p)
 			draw_f_square(&s, p, SPC_COL);
 		i++;
 	}
+}
+
+void	draw_player(t_param *p)
+{
+	t_pnt s;
+
+	s.x = (p->player->pos.x);
+	s.y = (p->player->pos.y);
+	draw_f_square(&s, p, P_COL);
 }
