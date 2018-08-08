@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_ind.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 08:24:10 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/07 14:01:05 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 08:58:15 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ double	ft_dist_calc(t_player *p, t_vec2 *dist)
 	double	a;
 	double	b;
 
-	a = ((p->pos).x - dist->x) * ((p->pos).x - dist->x);
-	b = ((p->pos).y - dist->y) * ((p->pos).y - dist->y);
+	a = ((p->pos)->x - dist->x) * ((p->pos)->x - dist->x);
+	b = ((p->pos)->y - dist->y) * ((p->pos)->y - dist->y);
 	distance = sqrt(a + b);
 	return (distance);
 }

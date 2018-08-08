@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ray_checks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 07:15:38 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 08:57:59 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	(*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale;
+	(*ret)->col->y = (int)(p->pos->y / par->y_scale) * par->y_scale;
 	if (ft_isup((*d)->n * (*d)->a))
 		(*ret)->ya = -(par->y_scale);
 	else if (ft_isdown((*d)->n * (*d)->a))
@@ -69,12 +69,12 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	// printf("At angle %f, tan = %f\n", (*d)->n * (*d)->a, ang);
 	if (ang ==  0 || (*d)->a == 0 || (*d)->a == 180)
 	{
-		(*ret)->col->x = p->pos.x;
+		(*ret)->col->x = p->pos->x;
 		(*ret)->xa = 0;
 	}
 	else
 	{
-		(*ret)->col->x = p->pos.x + fabs(p->pos.y - (*ret)->col->y) / ang;
+		(*ret)->col->x = p->pos->x + fabs(p->pos->y - (*ret)->col->y) / ang;
 		(*ret)->xa = fabs((*ret)->ya) / ang;
 	}
 	return (1);
@@ -113,7 +113,7 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	(*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale;
+	(*ret)->col->x = (int)(p->pos->x / par->x_scale) * par->x_scale;
 	if (ft_isleft((*d)->n * (*d)->a))
 		(*ret)->xa = -(par->x_scale);
 	else if (ft_isright((*d)->n * (*d)->a))
@@ -124,12 +124,12 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	// printf("At angle %f, tan = %f\n", (*d)->n * (*d)->a, ang);
 	if (ang ==  0 || (*d)->a == 90 || (*d)->a == 270)
 	{
-		(*ret)->col->y = p->pos.y;
+		(*ret)->col->y = p->pos->y;
 		(*ret)->ya = 0;
 	}
 	else
 	{
-		(*ret)->col->y = p->pos.y + (fabs(p->pos.x - (*ret)->col->x) * ang);
+		(*ret)->col->y = p->pos->y + (fabs(p->pos->x - (*ret)->col->x) * ang);
 		(*ret)->ya = -abs(par->y_scale) * ang;//I've messed up thge angle uin a_ind
 	}
 	return (1);

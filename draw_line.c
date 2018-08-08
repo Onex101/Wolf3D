@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 11:48:50 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:41:55 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/08 08:21:48 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 	err = line.dx + line.dy;
 	while (1)
 	{
-		mlx_pixel_put(p->mlx, p->win, pnt1->x, pnt1->y, line.c);
+		pixel_put_image(p, pnt1->x, pnt1->y, line.c);
 		if (pnt1->x == pnt2->x && pnt1->y == pnt2->y)
 			break ;
 		m = 2 * err;

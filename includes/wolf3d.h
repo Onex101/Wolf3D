@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/07 08:49:47 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 08:53:26 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define WALL_HEIGHT 64
 # define WALL_COL 0xAAAAAA
 # define SPC_COL 0x555555
+# define TILE_SIZE 64
+# define P_COL 0xFF0000
 
 typedef struct	s_vec2
 {
@@ -52,10 +54,11 @@ typedef struct	s_line
 
 typedef struct	s_player
 {
-	t_vec2		pos;
-	t_vec2		dir;
-	double		v_angle;
+	t_vec2		*pos;
+	t_vec2		*dir;
+	int			v_angle;
 	double		hght;
+	int			spd;
 }				t_player;
 
 typedef struct	s_plane
@@ -97,6 +100,8 @@ typedef struct	s_param
 	int			y_scale;
 	void		*mlx;
 	void		*win;
+	int			*buf;
+	void		*image;
 }				t_param;
 //
 
@@ -114,12 +119,17 @@ typedef struct		s_check
 //
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
-void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
+void			draw_player(t_param *p);
+void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
 int				a_ind(double d);
+void			pixel_put_image(t_param *p, int x, int y, int c);
+void			clear_image(t_param *p);
+int				key_press(int keycode, t_param *p);
+
 //
 double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);

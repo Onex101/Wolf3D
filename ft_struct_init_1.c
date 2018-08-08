@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_struct_init_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 07:19:28 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 09:17:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ t_player	*ft_player_init(t_param *par)
 
 	if (!(p = (t_player *)malloc(sizeof(t_player))))
 		return (NULL);
-	p->pos = *ft_vec2_init(4 * par->x_scale, 4 * par->y_scale);
-	p->dir = *ft_vec2_init(0, 0);
-	p->v_angle = 180;
+	p->pos = ft_vec2_init(4 * par->x_scale, 4 * par->y_scale);
+	p->dir = ft_vec2_init(0, 0);
+	p->v_angle = 90;
 	p->hght = 32;
+	p->spd = 16;
 	return (p);
 }
 
@@ -77,7 +78,7 @@ t_dist	*ft_init_dist(t_player *p)
 			return (NULL);
 		dist->h_dist = NULL;
 		dist->v_dist = NULL;
-		if(!(dist->p1 = ft_pnt_init((p->pos).x, (p->pos).y)))
+		if(!(dist->p1 = ft_pnt_init((p->pos)->x, (p->pos)->y)))
 			return (NULL);
 		dist->p2 = NULL;
 		dist->h_distance = 0;

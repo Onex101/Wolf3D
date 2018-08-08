@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/08 07:15:53 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/08 08:40:32 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FILES =		main.c	\
 			basic_raycast.c \
 			trig_tables.c	\
 			draw_line.c	\
-			draw_square.c	\
+			draw.c	\
 			read_map.c	\
 			vertex.c	\
 			draw_map.c	\
@@ -26,6 +26,7 @@ FILES =		main.c	\
 			ft_ray_checks.c	\
 			a_ind.c	\
 			input.c	\
+			image.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 
