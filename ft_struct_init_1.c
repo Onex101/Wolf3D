@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 07:19:28 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 07:33:28 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ t_player	*ft_player_init(t_param *par)
 {
 	t_player	*p;
 
-	if (!(p = (t_player *)malloc(sizeof(t_player))))
+	if (!(p = (t_player *)malloc(sizeof(t_player))) || !par)
 		return (NULL);
-	p->pos = *ft_vec2_init(4 * par->x_scale, 4 * par->y_scale);
+	p->pos = *ft_vec2_init(360, 360);
 	p->dir = *ft_vec2_init(0, 0);
 	p->v_angle = 180;
 	p->hght = 32;

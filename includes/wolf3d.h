@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/07 08:49:47 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 07:41:34 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
 double			ft_dist_calc(t_player *p, t_vec2 *dist);
+//
 //
 int				key_hook(int keycode, t_param *p);
 
