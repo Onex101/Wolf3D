@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
+#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/30 10:15:02 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/08 07:15:53 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ FILES =		main.c	\
 			draw_map.c	\
 			ft_check_ray.c	\
 			ft_struct_init_1.c	\
-			raycast.c	\
+			ft_raycast.c	\
+			ft_ray_checks.c	\
 			a_ind.c	\
 			input.c	\
 

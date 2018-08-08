@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 14:34:47 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/07 08:49:47 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define M_WIDTH 24
 # define M_HEIGHT 24
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 640
+# define HEIGHT 640
 # define FOV 60
 # define WALL_HEIGHT 64
 # define WALL_COL 0xAAAAAA
@@ -98,6 +98,20 @@ typedef struct	s_param
 	void		*mlx;
 	void		*win;
 }				t_param;
+//
+
+
+typedef struct		s_check
+{
+	t_vec2			*col;
+	t_pnt			*arr;
+	double			ya;
+	double			xa;
+	void			*pos;
+	int				vu;
+	int				hl;
+}					t_check;
+//
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 void			draw_square(t_pnt *s, t_param *p);
@@ -111,12 +125,13 @@ double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
-t_player		*ft_player_init(void);
+t_player		*ft_player_init(t_param *par);
 int				ft_isup(double theta);
 int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
-
+double			ft_dist_calc(t_player *p, t_vec2 *dist);
+//
 int				key_hook(int keycode, t_param *p);
 
 #endif
