@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 07:17:46 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 18:38:12 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,6 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 		d->h_dist = NULL;
 	if (d->v_dist != NULL && d->h_dist != NULL)
 	{
-		// ft_putstr("h_dist x = ");
-		// ft_putnbr(d->h_dist->x / par->x_scale);
-		// ft_putstr(" y = ");
-		// ft_putnbr(d->h_dist->y / par->y_scale);
-		// ft_putendl("");
-
-		// ft_putstr("v_dist x = ");
-		// ft_putnbr(d->v_dist->x / par->x_scale);
-		// ft_putstr(" y = ");
-		// ft_putnbr(d->v_dist->y / par->y_scale);
-		// ft_putendl("");
 		if (d->h_distance <= d->v_distance)
 			dist = ft_dist(p, &p2, d->h_dist, d->h_distance, d);
 		else
@@ -65,20 +54,10 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	}
 	else if (d->v_dist == NULL && d->h_dist != NULL)
 	{
-		// ft_putstr("h_dist x = ");
-		// ft_putnbr(d->h_dist->x / par->x_scale);
-		// ft_putstr(" y = ");
-		// ft_putnbr(d->h_dist->y / par->y_scale);
-		// ft_putendl("");
 		dist = ft_dist(p, &p2, d->h_dist, d->h_distance, d);
 	}
 	else if (d->v_dist != NULL && d->h_dist == NULL)
 	{
-		// ft_putstr("v_dist x = ");
-		// ft_putnbr(d->v_dist->x);
-		// ft_putstr(" y = ");
-		// ft_putnbr(d->v_dist->y);
-		// ft_putendl("");
 		dist = ft_dist(p, &p2, d->v_dist, d->v_distance, d);
 	}
 	else
@@ -97,25 +76,33 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	free(p2);
 	return (dist);
 }
+void	ft_angle(t_dist **d, double angle)
+{
+	while (angle > 180)
+		angle = angle - 360;
+	(*d)->a = angle;
+	if ((*d)->a < 0)
+	{
+		(*d)->n = -1;
+		(*d)->a = fabs((*d)->a);
+	}
+}
 
 int     ft_rays(t_param *par)
 {
 	t_player	*p;
 	t_dist		*d;
 	double     	dist;
+	double		angle;
 
 	if (!(p = ft_player_init(par)))
 		return (0);
 	d = ft_init_dist(p);
 	if (!(d))
 		return (0);
-	d->a = p->v_angle - (FOV / 2);
-	if (d->a < 0)
-	{
-		d->n = -1;
-		d->a = fabs(d->a);
-	}
-	while (d->n * d->a <= p->v_angle + (FOV / 2))
+	angle = p->v_angle - (FOV / 2);
+	ft_angle(&d, angle);
+	while (angle <= p->v_angle + (FOV / 2))
 	{
 		ft_putstr("_______________\nangle = ");
 		ft_putnbr(d->n * d->a);
@@ -125,8 +112,9 @@ int     ft_rays(t_param *par)
 			ft_putendl("_______________");
 		if (d->a == 0 && d->n == -1)
 			d->n = 1;
-		// d->a = fabs((d->n * d->a) + 1);
-		d->a = fabs((d->n * d->a)+ (1 /(ANGLE_360 / 360)));
+		angle = angle + 1;
+		// angle = angle + (1 / 10);
+		ft_angle(&d, angle);
 	}
 	free(d);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 07:41:22 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/08 18:38:03 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef	struct	s_tables
 {
 	double		t_sin[WIDTH * 6 + 1];
 	double		t_cos[WIDTH * 6 + 1];
-	double		t_tan[WIDTH * 6 + 1];
+	double		t_tan[3600 + 1];
 	double		t_isin[WIDTH * 6 + 1];
 	double		t_icos[WIDTH * 6 + 1];
 	double		t_itan[WIDTH * 6 + 1];
@@ -58,6 +58,7 @@ void			init_trig_tables(t_tables *tables);
 void			init_tables(t_tables *tables);
 t_tables		*get_tables(void);
 //
+double			ft_tan(t_dist **d);
 t_dist			*ft_init_dist(t_player *p);
 t_check			*ft_init_check(void);
 double			ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d);
@@ -67,6 +68,7 @@ int				ft_hori_check(t_player *p, t_dist **d, t_param *par);
 int				ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par);
 int				ft_vert_check(t_player *p, t_dist **d, t_param *par);
 double 			ft_get_dist(t_player *p, t_dist *d, t_param *par);
+void			ft_angle(t_dist **d, double angle);
 int				ft_rays(t_param *par);
 
 #endif
