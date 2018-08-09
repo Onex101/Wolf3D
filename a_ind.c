@@ -43,14 +43,14 @@ double		ft_tan(t_dist **d)
 	double	a;
 	double	ret;
 
-	a = (*d)->a;
+	a = (*d)->n * (*d)->a;
 	if (a > 0 && a < 90)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((90 - a) * 10)];
-	else if ((*d)->a > 90 && (*d)->a < 180)
+	else if (a > 90 && a < 180)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
-	else if ((*d)->a > 180 && (*d)->a < 270)
+	else if (a > 180 && a < 270)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
-	else if ((*d)->a > 270 && (*d)->a < 360)
+	else if (a > 270 && a < 360)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 270) * 10)];
 	else
 		ret = (*d)->n * (*d)->t->t_tan[(int)(a * 10)];

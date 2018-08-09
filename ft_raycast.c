@@ -105,7 +105,7 @@ int     ft_rays(t_param *par)
 	while (angle <= p->v_angle + (FOV / 2))
 	{
 		// ft_putstr("_______________\nangle = ");
-		// ft_putnbr(d->n * d->a);
+		// printf("d->a angle = %f\n", d->n * d->a);
 		// ft_putchar('\n');
 		printf("_________\nangle = %f\n", angle);
 		dist = ft_get_dist(p, d, par);

@@ -33,7 +33,7 @@ int		draw_to_screen(t_param *p)
 	// ft_putendl("test1");
 	if(!(ft_rays(p)))
 		return (0);
-	// sleep (0.5);
+	sleep (5);
 	// ft_putendl("test2");
 	// draw_player(); // wrtie draw_player;
 	return (0);

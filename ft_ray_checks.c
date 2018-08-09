@@ -23,8 +23,8 @@ t_vec2		*ft_find_wall(t_check **h, t_param *par)
 	printf("col->x  = %f xa = %f col->y  = %f ya = %f\n_________________\n", a->x, (*h)->xa, a->y, (*h)->ya);
 	if (a->x < 0 || a->y < 0)
 		return (NULL);
-	(*h)->arr->x = (a->x + (*h)->hl) / par->x_scale;
-	(*h)->arr->y = (a->y + (*h)->vu) / par->y_scale;
+	(*h)->arr->x = (a->x) / par->x_scale;
+	(*h)->arr->y = (a->y) / par->y_scale;
 	if (!((*h)->pos = vector_get(par->map->ver_vec, (par->map->max_x * (*h)->arr->y + (*h)->arr->x))))
 	{
 		// ft_putendl("find wall vec get failed");
@@ -63,12 +63,18 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	(*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale;
+	// (*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale;
 	// (*ret)->col->y = p->pos.y + (p->pos.y - (*ret)->col->y);
 	if (ft_isup((*d)->n * (*d)->a))
+	{
 		(*ret)->ya = (par->y_scale);
+		(*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale + par->y_scale;
+	}
 	else if (ft_isdown((*d)->n * (*d)->a))
+	{
 		(*ret)->ya = -par->y_scale;
+		(*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale - 1;
+	}
 	else
 		return (0);
 	ang = ft_tan(d);
@@ -89,9 +95,9 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 {
 	t_check	*h;
-	double	a;
+	// double	a;
 
-	a = (*d)->n * (*d)->a;
+	// a = (*d)->n * (*d)->a;
 	ft_putendl("hori check");
 	if (!(h = ft_init_check()))
 		return (0);
@@ -117,15 +123,22 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	(*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale;
+	// (*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale;
 	// (*ret)->col->x = p->pos.x + (p->pos.x - (*ret)->col->x);
 	if (ft_isleft((*d)->n * (*d)->a))
+	{
 		(*ret)->xa = -(par->x_scale);
+		(*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale - 1;
+	}
 	else if (ft_isright((*d)->n * (*d)->a))
+	{
 		(*ret)->xa = par->x_scale;
+		(*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale + par->x_scale;
+	}
 	else
 		return (0);
 	ang = ft_tan(d);
+	printf("tan angle = %f\n", ang);
 	if (ang ==  0 || (*d)->a == 90 || (*d)->a == 270)
 	{
 		(*ret)->col->y = p->pos.y;
@@ -142,10 +155,10 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 {
 	t_check	*h;
-	double	a;
+	// double	a;
 
 	// ft_putendl("vert check");
-	a = (*d)->n * (*d)->a;
+	// a = (*d)->n * (*d)->a;
 	if (!(h = ft_init_check()))
 		return (0);
 	if (!(h->col = ft_vec2_init(0, 0)) || !(h->arr = ft_pnt_init(0, 0)))
