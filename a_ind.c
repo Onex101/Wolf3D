@@ -6,12 +6,13 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 08:24:10 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 18:38:02 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/09 14:06:17 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
+#include <stdio.h>
 
 int		a_ind(double d)
 {
@@ -29,22 +30,30 @@ int		a_ind(double d)
 	return (a * 10);
 }
 
+void		ft_flip(t_check **h, t_player *p)
+{
+	printf("Col x = %f xa = %f, Col y = %f ya = %f\n", (*h)->col->x, (*h)->xa, (*h)->col->y, (*h)->ya);
+	(*h)->col->y =  p->pos.y + (-((*h)->col->y - p->pos.y));
+	(*h)->ya = -(*h)->ya;
+	printf("Col x = %f xa = %f, Col y = %f ya = %f\n", (*h)->col->x, (*h)->xa, (*h)->col->y, (*h)->ya);
+}
+
 double		ft_tan(t_dist **d)
 {
 	double	a;
 	double	ret;
 
 	a = (*d)->a;
-	if ((*d)->a > 0 && (*d)->a < 90)
-		ret = (*d)->n * (*d)->t->t_tan[(int)((90 - (*d)->a) * 10)];
+	if (a > 0 && a < 90)
+		ret = (*d)->n * (*d)->t->t_tan[(int)((90 - a) * 10)];
 	else if ((*d)->a > 90 && (*d)->a < 180)
-		ret = (*d)->n * (*d)->t->t_tan[(int)(((*d)->a - 90) * 10)];
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
 	else if ((*d)->a > 180 && (*d)->a < 270)
-		ret = (*d)->n * (*d)->t->t_tan[(int)(((*d)->a - 90) * 10)];
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
 	else if ((*d)->a > 270 && (*d)->a < 360)
-		ret = (*d)->n * (*d)->t->t_tan[(int)(((*d)->a - 180) * 10)];
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 270) * 10)];
 	else
-		ret = (*d)->n * (*d)->t->t_tan[(int)(((*d)->a) * 10)];
+		ret = (*d)->n * (*d)->t->t_tan[(int)(a * 10)];
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 18:38:12 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/09 14:06:11 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 }
 void	ft_angle(t_dist **d, double angle)
 {
-	while (angle > 180)
-		angle = angle - 360;
+	// while (angle > 180)
+	// 	angle = angle - 360;
 	(*d)->a = angle;
 	if ((*d)->a < 0)
 	{
@@ -104,9 +104,10 @@ int     ft_rays(t_param *par)
 	ft_angle(&d, angle);
 	while (angle <= p->v_angle + (FOV / 2))
 	{
-		ft_putstr("_______________\nangle = ");
-		ft_putnbr(d->n * d->a);
-		ft_putchar('\n');
+		// ft_putstr("_______________\nangle = ");
+		// ft_putnbr(d->n * d->a);
+		// ft_putchar('\n');
+		printf("_________\nangle = %f\n", angle);
 		dist = ft_get_dist(p, d, par);
 		if (dist > 1)
 			ft_putendl("_______________");
@@ -116,6 +117,7 @@ int     ft_rays(t_param *par)
 		// angle = angle + (1 / 10);
 		ft_angle(&d, angle);
 	}
+	// exit (0);
 	free(d);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 18:38:15 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/09 14:06:12 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_line		*ft_line_init(double x1, double y1, double x2, double y2)
 {
 	t_line	*new;
 
+
 	new = NULL;
 	if ((new = (t_line *)malloc(sizeof(t_line))))
 	{
@@ -60,9 +61,9 @@ t_player	*ft_player_init(t_param *par)
 
 	if (!(p = (t_player *)malloc(sizeof(t_player))) || !par)
 		return (NULL);
-	p->pos = *ft_vec2_init(360, 360);
+	p->pos = *ft_vec2_init(360, 300);
 	p->dir = *ft_vec2_init(0, 0);
-	p->v_angle = 90;
+	p->v_angle = 0;
 	p->hght = 32;
 	return (p);
 }

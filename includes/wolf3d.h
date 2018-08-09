@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 18:38:04 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/09 09:11:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
 int				a_ind(double d);
 //
+void			ft_flip(t_check **h, t_player *p);
 double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);

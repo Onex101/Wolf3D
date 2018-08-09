@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 18:38:03 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/09 10:34:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 typedef	struct	s_tables
 {
-	double		t_sin[WIDTH * 6 + 1];
-	double		t_cos[WIDTH * 6 + 1];
+	double		t_sin[3600 + 1];
+	double		t_cos[3600 + 1];
 	double		t_tan[3600 + 1];
 	double		t_isin[WIDTH * 6 + 1];
 	double		t_icos[WIDTH * 6 + 1];
