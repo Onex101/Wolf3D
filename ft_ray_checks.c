@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/09 14:06:10 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/10 13:20:54 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	// (*ret)->col->y = (int)(p->pos.y / par->y_scale) * par->y_scale;
-	// (*ret)->col->y = p->pos.y + (p->pos.y - (*ret)->col->y);
 	if (ft_isup((*d)->n * (*d)->a))
 	{
 		(*ret)->ya = (par->y_scale);
@@ -78,6 +76,7 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	else
 		return (0);
 	ang = ft_tan(d);
+	printf("tan angle = %f\n", ang);
 	if (ang ==  0 || (*d)->a == 0 || (*d)->a == 180)
 	{
 		(*ret)->col->x = p->pos.x;
@@ -85,8 +84,8 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	}
 	else
 	{
-		(*ret)->col->x = p->pos.x + (p->pos.y - (*ret)->col->y) / ang;
-		(*ret)->xa = fabs((*ret)->ya) / ang;
+		(*ret)->col->x = p->pos.x + -(p->pos.y - (*ret)->col->y) / ang;
+		(*ret)->xa = par->x_scale / ang;
 	}
 	// (*ret)->ya = -(*ret)->ya;
 	return (1);
@@ -123,8 +122,6 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 {
 	double	ang;
 
-	// (*ret)->col->x = (int)(p->pos.x / par->x_scale) * par->x_scale;
-	// (*ret)->col->x = p->pos.x + (p->pos.x - (*ret)->col->x);
 	if (ft_isleft((*d)->n * (*d)->a))
 	{
 		(*ret)->xa = -(par->x_scale);
@@ -146,8 +143,11 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	}
 	else
 	{
-		(*ret)->col->y = p->pos.y + (p->pos.x - (*ret)->col->x) * ang;
-		(*ret)->ya = fabs((*ret)->xa) * ang;
+		(*ret)->col->y = p->pos.y + -(p->pos.x - (*ret)->col->x) * ang;
+		// if ((*d)->n * (*d)->a > 90 && (*d)->n * (*d)->a < 180)
+		// 	(*ret)->ya = (par->y_scale) * -ang;
+		// else
+		(*ret)->ya = (par->y_scale) * ang;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 08:24:10 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/09 14:06:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/10 13:20:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ double		ft_tan(t_dist **d)
 	double	a;
 	double	ret;
 
-	a = (*d)->n * (*d)->a;
+	a = (*d)->a;
 	if (a > 0 && a < 90)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((90 - a) * 10)];
 	else if (a > 90 && a < 180)
-		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
+		ret = (*d)->n * ((*d)->t->t_tan[(int)((a - 90) * 10)]);
 	else if (a > 180 && a < 270)
 		ret = (*d)->n * (*d)->t->t_tan[(int)((a - 90) * 10)];
 	else if (a > 270 && a < 360)
