@@ -33,12 +33,3 @@ void		draw_map(t_param *p)
 		i++;
 	}
 }
-
-void	draw_player(t_param *p)
-{
-	t_pnt s;
-
-	s.x = (p->player->pos.x);
-	s.y = (p->player->pos.y);
-	draw_f_square(&s, p, P_COL);
-}

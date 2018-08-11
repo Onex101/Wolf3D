@@ -6,24 +6,27 @@
 #    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/07/30 17:03:46 by xrhoda           ###   ########.fr        #
+#    Updated: 2018/08/08 08:40:32 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 FILES =		main.c	\
+			basic_raycast.c \
 			trig_tables.c	\
 			draw_line.c	\
-			draw_square.c	\
+			draw.c	\
 			read_map.c	\
 			vertex.c	\
 			draw_map.c	\
 			ft_check_ray.c	\
 			ft_struct_init_1.c	\
-			raycast.c	\
+			ft_raycast.c	\
+			ft_ray_checks.c	\
 			a_ind.c	\
 			input.c	\
+			image.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 

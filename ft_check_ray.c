@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "trig_tables.h"
 
 int		ft_isup(double theta)
 {
-	if (theta >= 0 && theta < 90)
+	if (theta > -90 && theta < 90)
 		return (1);
 	else if (theta >= -360 && theta < -270)
 		return (1);
@@ -28,14 +29,14 @@ int		ft_isup(double theta)
 
 int		ft_isdown(double theta)
 {
-	if (theta > 90 && theta <= 180)
+	if (theta > 90 && theta < 270)
 		return (1);
-	else if (theta > -270 && theta <= -180)
+	else if (theta > -270 && theta < -90)
 		return (1);
-	else if (theta < 270 && theta >= 180)
-		return (1);
-	else if (theta < -90 && theta >= -180)
-		return (1);
+	// else if (theta < 270 && theta >= 180)
+	// 	return (1);
+	// else if (theta < -90 && theta >= -180)
+	// 	return (1);
 	else
 		return (0);
 }

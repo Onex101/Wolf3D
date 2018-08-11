@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
@@ -29,6 +30,8 @@
 # define WALL_HEIGHT 64
 # define WALL_COL 0xAAAAAA
 # define SPC_COL 0x555555
+# define TILE_SIZE 64
+# define P_COL 0xFF0000
 
 typedef struct	s_vec2
 {
@@ -52,10 +55,11 @@ typedef struct	s_line
 
 typedef struct	s_player
 {
-	t_vec2		pos;
-	t_vec2		dir;
-	double		v_angle;
+	t_vec2		*pos;
+	t_vec2		*dir;
+	int			v_angle;
 	double		hght;
+	int			spd;
 }				t_player;
 
 typedef struct	s_plane
@@ -97,26 +101,47 @@ typedef struct	s_param
 	int			y_scale;
 	void		*mlx;
 	void		*win;
+	int			*buf;
+	void		*image;
 }				t_param;
+//
+
+
+typedef struct		s_check
+{
+	t_vec2			*col;
+	t_pnt			*arr;
+	double			ya;
+	double			xa;
+	void			*pos;
+	int				vu;
+	int				hl;
+}					t_check;
+//
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
-void			draw_square(t_pnt *s, t_param *p);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
 void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
+void			draw_player(t_param *p);
+void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
 int				a_ind(double d);
+void			pixel_put_image(t_param *p, int x, int y, int c);
+void			clear_image(t_param *p);
+int				key_press(int keycode, t_param *p);
+
 //
 double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
-t_player		*ft_player_init(void);
+t_player		*ft_player_init(t_param *par);
 int				ft_isup(double theta);
 int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
-void			ft_draw_player(t_player *p, t_param *par);
+double			ft_dist_calc(t_player *p, t_vec2 *dist);
 //
 int				key_hook(int keycode, t_param *p);
 

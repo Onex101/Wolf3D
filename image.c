@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_image.c                                        :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 09:53:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:42:03 by xrhoda           ###   ########.fr       */
+/*   Created: 2018/08/01 06:31:29 by xrhoda            #+#    #+#             */
+/*   Updated: 2018/08/07 11:30:12 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	clear_image(void *image)
+#include "wolf3d.h"
+
+void	clear_image(t_param *p)
 {
 	int i;
 	int j;
@@ -21,24 +23,22 @@ void	clear_image(void *image)
 		i = 0;
 		while (i < WIDTH)
 		{
-			pixel(win->mlx, i, j, 0x0);
+			if (p->buf[j * WIDTH + i] != 0x000000)
+				p->buf[j * WIDTH + i] = 0x000000;
 			i++;
 		}
 		j++;
 	}
 }
 
-void	put_image(t_window *w)
+void	pixel_put_image(t_param *p, int x, int y, int c)
 {
-	static void *image;
+	static int bpp;
+	static int s_line;
+	static int end;
 
-	if (!image)
-	{
-		if (!(image = mlx_new_image(w->mlx, WIDTH, HEIGHT)))
-			return ;
-	}
-	else
-	{
-		clear_image(image);
-	}
+	if (!s_line)
+		p->buf = (int *)mlx_get_data_addr(p->image, &bpp, &s_line, &end);
+	if (WIDTH * y + x < s_line * HEIGHT && WIDTH * y + x >= 0)
+		p->buf[WIDTH * y + x] = mlx_get_color_value(p->mlx, c);
 }
