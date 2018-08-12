@@ -84,8 +84,8 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	}
 	else
 	{
-		(*ret)->col->x = p->pos.x + -(p->pos.y - (*ret)->col->y) / ang;
-		(*ret)->xa = par->x_scale / ang;
+		(*ret)->col->x = p->pos.x + ((*ret)->col->y - p->pos.y) / ang;
+		(*ret)->xa = (*ret)->ya / ang;
 	}
 	// (*ret)->ya = -(*ret)->ya;
 	return (1);
@@ -143,11 +143,11 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	}
 	else
 	{
-		(*ret)->col->y = p->pos.y + -(p->pos.x - (*ret)->col->x) * ang;
+		(*ret)->col->y = p->pos.y + ((*ret)->col->x - p->pos.x) * ang;
 		// if ((*d)->n * (*d)->a > 90 && (*d)->n * (*d)->a < 180)
 		// 	(*ret)->ya = (par->y_scale) * -ang;
 		// else
-		(*ret)->ya = (par->y_scale) * ang;
+		(*ret)->ya = (*ret)->xa * ang;
 	}
 	return (1);
 }
@@ -157,7 +157,7 @@ int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 	t_check	*h;
 	// double	a;
 
-	// ft_putendl("vert check");
+	ft_putendl("vert check");
 	// a = (*d)->n * (*d)->a;
 	if (!(h = ft_init_check()))
 		return (0);

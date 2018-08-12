@@ -63,7 +63,7 @@ t_player	*ft_player_init(t_param *par)
 		return (NULL);
 	p->pos = *ft_vec2_init(360, 300);
 	p->dir = *ft_vec2_init(0, 0);
-	p->v_angle = 0;
+	p->v_angle = 105;
 	p->hght = 32;
 	return (p);
 }

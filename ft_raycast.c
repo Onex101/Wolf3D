@@ -86,6 +86,8 @@ void	ft_angle(t_dist **d, double angle)
 		(*d)->n = -1;
 		(*d)->a = fabs((*d)->a);
 	}
+	else
+		(*d)->n = 1;
 }
 
 int     ft_rays(t_param *par)
@@ -100,8 +102,10 @@ int     ft_rays(t_param *par)
 	d = ft_init_dist(p);
 	if (!(d))
 		return (0);
-	angle = p->v_angle - (FOV / 2);
+	// angle = p->v_angle - (FOV / 2);
+	angle = p->v_angle;
 	ft_angle(&d, angle);
+	// while (angle <= p->v_angle + (FOV / 2))
 	while (angle <= p->v_angle + (FOV / 2))
 	{
 		// ft_putstr("_______________\nangle = ");
@@ -111,8 +115,9 @@ int     ft_rays(t_param *par)
 		dist = ft_get_dist(p, d, par);
 		if (dist > 1)
 			ft_putendl("_______________");
-		if (d->a == 0 && d->n == -1)
-			d->n = 1;
+		ft_angle(&d, angle);
+		// if (d->a == 0 && d->n == -1)
+		// 	d->n = 1;
 		angle = angle + 1;
 		// angle = angle + (1 / 10);
 		ft_angle(&d, angle);

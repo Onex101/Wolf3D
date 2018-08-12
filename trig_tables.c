@@ -80,11 +80,11 @@ void	init_step_tables(t_tables *tables)
 	}
 }
 
-void	init_tables(t_tables *tables)
+void    init_tables(t_tables *tables)
 {
-	init_step_tables(tables);
-	init_fish_table(tables);
-	init_trig_tables(tables);
+    init_trig_tables(tables);
+    init_step_tables(tables);
+    init_fish_table(tables);
 }
 
 t_tables	*get_tables(void)
