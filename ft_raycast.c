@@ -76,6 +76,7 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	free(p2);
 	return (dist);
 }
+
 void	ft_angle(t_dist **d, double angle)
 {
 	// while (angle > 180)
