@@ -18,9 +18,9 @@ void	init_trig_tables(t_tables *tables)
 	double	rad;
 
 	i = 0;
-	while (i < ANGLE_360)
+	while (i < 3600)
 	{
-		rad = (i * M_PI) / ANGLE_180;
+		rad = (((double)i / 10) * M_PI) / 180;
 		tables->t_sin[i] = sin(rad);
 		tables->t_cos[i] = cos(rad);
 		tables->t_tan[i] = tan(rad);
@@ -80,11 +80,11 @@ void	init_step_tables(t_tables *tables)
 	}
 }
 
-void	init_tables(t_tables *tables)
+void    init_tables(t_tables *tables)
 {
-	init_step_tables(tables);
-	init_fish_table(tables);
-	init_trig_tables(tables);
+    init_trig_tables(tables);
+    init_step_tables(tables);
+    init_fish_table(tables);
 }
 
 t_tables	*get_tables(void)

@@ -12,6 +12,7 @@
 
 #include "wolf3d.h"
 #include "trig_tables.h"
+#include <stdio.h>
 
 int		a_ind(double d)
 {
@@ -21,12 +22,37 @@ int		a_ind(double d)
 	if (d > 0 && d < 90)
 		a = 90 - d;
 	else if (d > 90 && d < 180)
-		a = d - 180;
+		a = d - 90;
 	else if (d > 180 && d < 270)
-		a = d - 270;
-	else if (d >270 && d < 360)
-		a = d - 360;
-	return (a * (ANGLE_360 / 360));
+		a = d - 90;
+	else if (d > 270 && d < 360)
+		a = d - 180;
+	return (a * 10);
+}
+
+void		ft_flip(t_check **h, t_player *p)
+{
+	(*h)->col->y =  p->pos->y + (-((*h)->col->y - p->pos->y));
+	(*h)->ya = -(*h)->ya;
+}
+
+double		ft_tan(t_dist **d)
+{
+	double	a;
+	double	ret;
+
+	a = (*d)->a;
+	if (a > 0 && a < 90)
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
+	else if (a > 90 && a < 180)
+		ret = (*d)->n * ((*d)->t->t_tan[(int)((a) * 10)]);
+	else if (a > 180 && a < 270)
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
+	else if (a > 270 && a < 360)
+		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
+	else
+		ret = (*d)->n * (*d)->t->t_tan[(int)(a * 10)];
+	return (ret);
 }
 
 double	ft_dist_calc(t_player *p, t_vec2 *dist)

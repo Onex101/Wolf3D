@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 09:51:50 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/08 16:39:05 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,20 @@ void	init_param(t_param *p, char *str)
 
 int		draw_to_screen(t_param *p)
 {
+	if (p->buf)
+	{
+		sleep(1);
+		clear_image(p);
+	}
 	draw_map(p);
-	//ft_putendl("test1");
+	ft_putendl("test1");
 	if(!(ft_rays(p, p->player)))
 	 	return (0);
-	draw_player(p);
+	// draw_player(p);
 	// sleep (0.5);
-	// ft_putendl("test2");
+	ft_putendl("test2");
 	// draw_player(); // wrtie draw_player;
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
-	//sleep(1);
-	clear_image(p);
 	return (1);
 }
 

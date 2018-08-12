@@ -58,11 +58,11 @@ t_player	*ft_player_init(t_param *par)
 {
 	t_player	*p;
 
-	if (!(p = (t_player *)malloc(sizeof(t_player))))
+	if (!(p = (t_player *)malloc(sizeof(t_player))) || !par)
 		return (NULL);
-	p->pos = ft_vec2_init(4 * par->x_scale, 4 * par->y_scale);
+	p->pos = ft_vec2_init(140, 300);
 	p->dir = ft_vec2_init(0, 0);
-	p->v_angle = 90;
+	p->v_angle = 45;
 	p->hght = 32;
 	p->spd = 16;
 	return (p);

@@ -132,6 +132,7 @@ void			clear_image(t_param *p);
 int				key_press(int keycode, t_param *p);
 
 //
+void			ft_flip(t_check **h, t_player *p);
 double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
