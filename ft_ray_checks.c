@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ray_checks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/08 08:57:59 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/13 08:31:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 	if (!((*d)->h_dist = ft_find_wall(&h, par)))
 		return (0);
 	(*d)->h_distance = ft_dist_calc(p, (*d)->h_dist);
-	free(h);
+	ft_check_free(h);
+	// free(h);
 	return (1);
 }
 
@@ -136,6 +137,7 @@ int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 	if (!((*d)->v_dist = ft_find_wall(&h, par)))
 		return (0);
 	(*d)->v_distance = ft_dist_calc(p, (*d)->v_dist);
-	free(h);
+	ft_check_free(h);
+	// free(h);
 	return (1);
 }

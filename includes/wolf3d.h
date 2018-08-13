@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/31 09:37:50 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 09:07:17 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct	s_param
 	void		*win;
 	int			*buf;
 	void		*image;
+	int			s_line;
 }				t_param;
 //
 

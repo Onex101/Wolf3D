@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:41:56 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/13 10:02:46 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_map		*read_map(int fd)
 		ft_putendl("Error: File does not exist");
 		exit(0);
 	}
-	free(line);
+	// free(line);
 	map->max_y = y;
 	close(fd);
 	return (map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trig_tables.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/08 09:05:17 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/13 09:08:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ void			init_trig_tables(t_tables *tables);
 void			init_tables(t_tables *tables);
 t_tables		*get_tables(void);
 //
+void			ft_vec2_free(t_vec2 *p);
+void			ft_pnt_free(t_pnt *p);
+void			ft_line_free(t_line *p);
+void			ft_player_free(t_player *p);
+void			ft_tables_free(t_tables *p);
+void			ft_dist_free(t_dist *p);
+void			ft_check_free(t_check *p);
+//
 double			ft_tan(t_dist **d);
 t_dist			*ft_init_dist(t_player *p);
 t_check			*ft_init_check(void);
@@ -70,5 +78,6 @@ int				ft_vert_check(t_player *p, t_dist **d, t_param *par);
 double 			ft_get_dist(t_player *p, t_dist *d, t_param *par);
 void			ft_angle(t_dist **d, double angle);
 int				ft_rays(t_param *par, t_player *p);
+
 
 #endif
