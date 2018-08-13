@@ -76,6 +76,10 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 
 void	ft_angle(t_dist **d, double angle)
 {
+	while (angle > 360 && angle > -360)
+		angle -= 360;
+	while (angle < -360 && angle < 360)
+		angle += 360;
 	(*d)->a = angle;
 	if ((*d)->a < 0)
 	{
@@ -95,7 +99,7 @@ int     ft_rays(t_param *par, t_player *p)
 
 	if (!t)
 		t = get_tables();
-	ft_putendl("ray test 1");
+	// ft_putendl("ray test 1");
 	if (!(d = ft_init_dist(p, t)))
 		return (0);
 	// ft_putendl("ray test 1_1");
@@ -113,13 +117,13 @@ int     ft_rays(t_param *par, t_player *p)
 		// ft_putendl("ray test 1_6");
 		ft_angle(&d, angle);
 		// ft_putendl("ray test 1_7");
-		angle = angle + 1;
-		// angle = angle + (1 / 10);
+		// angle = angle + 1;
+		angle = angle + 0.1;
 		ft_angle(&d, angle);
 	}
 	// ft_putendl("ray test 2");
 	ft_dist_free(d);
-	ft_putendl("ray test 3");
+	// ft_putendl("ray test 3");
 	// free(d);
 	// exit (0);
 	return (1);

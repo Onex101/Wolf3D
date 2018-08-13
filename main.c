@@ -45,11 +45,11 @@ int		draw_to_screen(t_param *p)
 	draw_map(p);
 	if(!(ft_rays(p, p->player)))
 	 	return (0);
-	ft_putendl("Draw screen test 2");
+	// ft_putendl("Draw screen test 2");
 	// draw_player(p);
 	// sleep (0.5);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
-	ft_putendl("Draw screen test 3");
+	// ft_putendl("Draw screen test 3");
 
 	return (1);
 }
@@ -76,7 +76,6 @@ int		main(int argc, char **argv)
 			// mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop_hook(param->mlx, draw_to_screen, param);
 			mlx_key_hook(param->win, key_press, param);
-			// mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop(param->mlx);
 		}
 	}

@@ -81,12 +81,12 @@ void		linux_key_press(int keycode, t_param *p)
 	}
 	x_change = tab->t_cos[p->player->v_angle * 10];
 	y_change = tab->t_sin[p->player->v_angle * 10];
-	if (keycode == 13)
+	if (keycode == 119)
 	{
 		p->player->pos->x += (int)(x_change * p->player->spd) / 2;
 		p->player->pos->y += (int)(y_change * p->player->spd) / 2;
 	}
-	else if (keycode == 1)
+	else if (keycode == 115)
 	{
 		p->player->pos->x -= (int)(x_change * p->player->spd) / 2;
 		p->player->pos->y -= (int)(y_change * p->player->spd) / 2;
