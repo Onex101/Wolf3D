@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#if defined(__APPLE__) && defined(__MACH__)
+#  define OS 1
+#elif defined(__linux__)
+#  define OS 0
+#endif
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
@@ -131,6 +136,8 @@ int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);
 int				key_press(int keycode, t_param *p);
+void			mac_key_press(int keycode, t_param *p);
+void			linux_key_press(int keycode, t_param *p);
 
 //
 void			ft_flip(t_check **h, t_player *p);

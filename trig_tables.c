@@ -89,14 +89,14 @@ void    init_tables(t_tables *tables)
 
 t_tables	*get_tables(void)
 {
-	static t_tables *t;
+	// static t_tables *t;
+	t_tables *t;
 
-	if (!t)
-	{
-		t = (t_tables *)malloc(sizeof(t_tables));
-		if (!t)
-			return (NULL);
-		init_tables(t);
-	}
+	// if (!t)
+	// {
+	if (!(t = (t_tables *)malloc(sizeof(t_tables))))
+		return (NULL);
+	init_tables(t);
+	// }
 	return (t);
 }

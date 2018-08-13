@@ -30,7 +30,7 @@ int		init_param(t_param *p, char *str)
 	p->player = ft_player_init(p);
 	p->buf = (int *)mlx_get_data_addr(p->image, &bpp, &s_line, &end);
 	p->s_line = s_line;
-	exit (0);
+	// exits (0);
 	// exit(0);
 	return (1);
 }
@@ -39,7 +39,7 @@ int		draw_to_screen(t_param *p)
 {
 	if (p->buf)
 	{
-		sleep(1);
+		// sleep(1);
 		clear_image(p);
 	}
 	draw_map(p);
@@ -49,6 +49,8 @@ int		draw_to_screen(t_param *p)
 	// draw_player(p);
 	// sleep (0.5);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
+	ft_putendl("Draw screen test 3");
+
 	return (1);
 }
 
@@ -71,8 +73,10 @@ int		main(int argc, char **argv)
 			if (!param->mlx)
 				return (-1);
 			// exit (0);
-			mlx_hook(param->win, 2, 0, key_press, param);
+			// mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop_hook(param->mlx, draw_to_screen, param);
+			mlx_key_hook(param->win, key_press, param);
+			// mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop(param->mlx);
 		}
 	}
