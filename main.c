@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 11:51:04 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:53:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		init_param(t_param *p, char *str)
 	p->player = ft_player_init(p);
 	p->buf = (int *)mlx_get_data_addr(p->image, &bpp, &s_line, &end);
 	p->s_line = s_line;
+	exit (0);
 	// exit(0);
 	return (1);
 }
@@ -44,6 +45,7 @@ int		draw_to_screen(t_param *p)
 	draw_map(p);
 	if(!(ft_rays(p, p->player)))
 	 	return (0);
+	ft_putendl("Draw screen test 2");
 	// draw_player(p);
 	// sleep (0.5);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);

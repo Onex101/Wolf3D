@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/13 13:11:04 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:47:45 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	ft_putendl("get dist test 1");
 	if (!(p1 = ft_pnt_init(p->pos->x, p->pos->y)) || !(p2 = ft_pnt_init(0, 0)))
 		exit (0);
+	ft_putendl("get dist test 2");
 	if (!(ft_vert_check(p, &d, par)))
 		d->v_dist = NULL;
+	ft_putendl("get dist test 3");
 	if (!(ft_hori_check(p, &d, par)))
 		d->h_dist = NULL;
-	ft_putendl("get dist test 2");
+	ft_putendl("get dist test 4");
 	if (d->v_dist != NULL && d->h_dist != NULL)
 	{
 		if (d->h_distance <= d->v_distance)
@@ -89,9 +91,12 @@ int     ft_rays(t_param *par, t_player *p)
 	t_dist		*d;
 	double     	dist;
 	double		angle;
+	static t_tables		*t;
 
+	if (!t)
+		t = get_tables();
 	ft_putendl("ray test 1");
-	if (!(d = ft_init_dist(p)))
+	if (!(d = ft_init_dist(p, t)))
 		return (0);
 	ft_putendl("ray test 1_1");
 	angle = p->v_angle - (FOV / 2);

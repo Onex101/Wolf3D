@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 09:08:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:45:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			ft_dist_free(t_dist *p);
 void			ft_check_free(t_check *p);
 //
 double			ft_tan(t_dist **d);
-t_dist			*ft_init_dist(t_player *p);
+t_dist			*ft_init_dist(t_player *p, t_tables *t);
 t_check			*ft_init_check(void);
 double			ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d);
 t_vec2			*ft_find_wall(t_check **h, t_param *par);

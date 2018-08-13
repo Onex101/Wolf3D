@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 07:55:04 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/13 09:22:46 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:44:45 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_dist_free(t_dist *p)
 	if (p)
 	{
 		ft_pnt_free(p->p1);
+		p->t = NULL;
 		if (p->p2)
 			ft_pnt_free(p->p2);
 		free(p);

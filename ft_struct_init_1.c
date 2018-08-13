@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/13 13:13:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/13 13:44:44 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,15 @@ t_player	*ft_player_init(t_param *par)
 	return (p);
 }
 
-t_dist	*ft_init_dist(t_player *p)
+t_dist	*ft_init_dist(t_player *p, t_tables *t)
 {
 	t_dist	*dist;
 
 	if ((dist = (t_dist *)malloc(sizeof(t_dist))))
 	{
-		if (!(dist->t = get_tables()))
+		if (!t)
 			return (NULL);
+		dist->t = t;
 		dist->h_dist = NULL;
 		dist->v_dist = NULL;
 		if(!(dist->p1 = ft_pnt_init((p->pos)->x, (p->pos)->y)))
