@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trig_tables.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 10:21:47 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 06:51:46 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_trig_tables(t_tables *tables)
 	double	rad;
 
 	i = 0;
-	while (i < 3600)
+	while (i < 7200)
 	{
 		rad = (((double)i / 10) * M_PI) / 180;
 		tables->t_sin[i] = sin(rad);

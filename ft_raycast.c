@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/13 13:47:45 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 06:51:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int     ft_rays(t_param *par, t_player *p)
 		ft_angle(&d, angle);
 		// ft_putendl("ray test 1_7");
 		// angle = angle + 1;
-		angle = angle + 0.1;
+		angle = angle + 0.05;
 		ft_angle(&d, angle);
 	}
 	// ft_putendl("ray test 2");
