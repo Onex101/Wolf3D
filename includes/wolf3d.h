@@ -6,7 +6,7 @@
 /*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 16:28:15 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/14 16:32:04 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,13 @@ typedef struct	s_param
 	void		*mlx;
 	void		*win;
 	int			*buf;
+	int			*m_buf
 	void		*image;
+	void		*m_image;
 	int			s_line;
+	int			m_line;
 }				t_param;
 //
-
-
 typedef struct		s_check
 {
 	t_vec2			*col;
