@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 07:33:02 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 13:55:34 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ int     ft_rays(t_param *par, t_player *p)
 	if (!(d = ft_init_dist(p, t)))
 		return (0);
 	angle = p->v_angle - (FOV / 2);
+	// angle = p->v_angle;
 	ft_angle(&d, angle);
+	// while (angle <= p->v_angle + 10)
 	while (angle <= p->v_angle + (FOV / 2))
 	{
 		dist = ft_get_dist(p, d, par);

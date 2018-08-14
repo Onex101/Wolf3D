@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 08:24:10 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 07:34:56 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 08:10:32 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int		a_ind(double d)
 	else if (d > 270 && d < 360)
 		a = d - 180;
 	return (a * 10);
-}
-
-void		ft_flip(t_check **h, t_player *p)
-{
-	(*h)->col->y =  p->pos->y + (-((*h)->col->y - p->pos->y));
-	(*h)->ya = -(*h)->ya;
 }
 
 double		ft_tan(t_dist **d)

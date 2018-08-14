@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 09:07:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 08:10:48 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void			mac_key_press(int keycode, t_param *p);
 void			linux_key_press(int keycode, t_param *p);
 
 //
-void			ft_flip(t_check **h, t_player *p);
+// void			ft_flip(t_check **h, t_player *p);
 double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
