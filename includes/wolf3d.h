@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 09:07:17 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:20:10 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define SPC_COL 0x555555
 # define TILE_SIZE 64
 # define P_COL 0xFF0000
+# define PLANE_DIST 277
 
 typedef struct	s_vec2
 {
@@ -132,6 +133,7 @@ void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
 void			draw_player(t_param *p);
 void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
+void			draw_col(double dist, int col, t_param *p, int c);
 int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);

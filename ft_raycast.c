@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 06:51:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:17:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int     ft_rays(t_param *par, t_player *p)
 	double  		   	dist;
 	double				angle;
 	static t_tables		*t;
+	int					col;
 
 	if (!t)
 		t = get_tables();
@@ -107,19 +108,22 @@ int     ft_rays(t_param *par, t_player *p)
 	// ft_putendl("ray test 1_2");
 	ft_angle(&d, angle);
 	// ft_putendl("ray test 1_3");
-	while (angle <= p->v_angle + (FOV / 2))
+	col = 0;
+	while (angle <= p->v_angle + (FOV / 2) || col < WIDTH)
 	{
 		// ft_putendl("ray test 1_4");
 		dist = ft_get_dist(p, d, par);
 		// ft_putendl("ray test 1_5");
 		if (dist > 1)
 			ft_putstr("");
+		draw_col(dist, col, par, 0xFFFFFF);
 		// ft_putendl("ray test 1_6");
 		ft_angle(&d, angle);
 		// ft_putendl("ray test 1_7");
 		// angle = angle + 1;
 		angle = angle + 0.05;
 		ft_angle(&d, angle);
+		col++;
 	}
 	// ft_putendl("ray test 2");
 	ft_dist_free(d);

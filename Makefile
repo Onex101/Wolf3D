@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/14 06:45:33 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/14 07:21:06 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
 FILES =		main.c	\
-			basic_raycast.c \
 			trig_tables.c	\
 			draw_line.c	\
 			draw.c	\

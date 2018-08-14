@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 06:50:10 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:20:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		draw_to_screen(t_param *p)
 		// sleep(1);
 		clear_image(p);
 	}
-	draw_map(p);
+	//draw_map(p);
 	if(!(ft_rays(p, p->player)))
 	 	return (0);
 	// ft_putendl("Draw screen test 2");

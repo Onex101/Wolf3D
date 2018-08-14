@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trig_tables.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 06:51:29 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:03:12 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,5 @@ int				ft_vert_check(t_player *p, t_dist **d, t_param *par);
 double 			ft_get_dist(t_player *p, t_dist *d, t_param *par);
 void			ft_angle(t_dist **d, double angle);
 int				ft_rays(t_param *par, t_player *p);
-
 
 #endif
