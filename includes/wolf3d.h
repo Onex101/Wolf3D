@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 07:20:10 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/14 13:27:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # include "libft.h"
 # include "vector.h"
 
-# define M_WIDTH 24
-# define M_HEIGHT 24
+# define M_WIDTH 8
+# define M_HEIGHT 8
+# define MAP_SIZE 10
 
 # define WIDTH 640
 # define HEIGHT 640
@@ -38,6 +39,8 @@
 # define TILE_SIZE 64
 # define P_COL 0xFF0000
 # define PLANE_DIST 277
+# define SKY_COL 0x000055
+# define FLOOR_COL 0x550000 
 
 typedef struct	s_vec2
 {
@@ -63,6 +66,7 @@ typedef struct	s_player
 {
 	t_vec2		*pos;
 	t_vec2		*dir;
+	t_pnt		m_pos;
 	int			v_angle;
 	double		hght;
 	int			spd;
@@ -132,8 +136,10 @@ t_map			*read_map(int fd);
 void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
 void			draw_player(t_param *p);
+void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
 void			draw_col(double dist, int col, t_param *p, int c);
+void			draw_back(t_param *p, int s_col, int f_col);
 int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);

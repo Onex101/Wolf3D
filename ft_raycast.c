@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 07:17:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/14 13:48:04 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ double  ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d)
 
 	(*p2)->x = (int)(d_vec->x);
 	(*p2)->y = (int)(d_vec->y);
-	distance = dist / (d->n * d->t->t_cos[a_ind(ft_diff(p, d->a))]);
+	//distance = dist / (d->n * d->t->t_cos[(int)(ft_diff(p, d->a) * 20)]);
+	p->hght = d->n;
+	distance = dist;
 	return (distance);
 }
 
@@ -66,7 +68,7 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	}
 	else
 		exit (0);
-	draw_line(p1, p2, par, 0xFFFFFF);
+	draw_ray(p1, p2, par, 0xFFFFFF);
 	ft_pnt_free(p1);
 	ft_pnt_free(p2);
 	// free(p1);
@@ -114,8 +116,6 @@ int     ft_rays(t_param *par, t_player *p)
 		// ft_putendl("ray test 1_4");
 		dist = ft_get_dist(p, d, par);
 		// ft_putendl("ray test 1_5");
-		if (dist > 1)
-			ft_putstr("");
 		draw_col(dist, col, par, 0xFFFFFF);
 		// ft_putendl("ray test 1_6");
 		ft_angle(&d, angle);

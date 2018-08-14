@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 07:20:40 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/14 13:37:45 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		draw_to_screen(t_param *p)
 		// sleep(1);
 		clear_image(p);
 	}
-	//draw_map(p);
+	draw_back(p, SKY_COL, FLOOR_COL);
+	draw_map(p);
 	if(!(ft_rays(p, p->player)))
 	 	return (0);
 	// ft_putendl("Draw screen test 2");
@@ -73,7 +74,7 @@ int		main(int argc, char **argv)
 			if (!param->mlx)
 				return (-1);
 			// exit (0);
-			// mlx_hook(param->win, 2, 0, key_press, param);
+			//mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop_hook(param->mlx, draw_to_screen, param);
 			mlx_key_hook(param->win, key_press, param);
 			mlx_loop(param->mlx);
