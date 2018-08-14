@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/13 08:31:51 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/14 07:23:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_vec2		*ft_find_wall(t_check **h, t_param *par)
 		return (NULL);
 	if (a->x < 0 || a->y < 0)
 		return (NULL);
+	(*h)->arr->x = (a->x ) / par->x_scale;
+	(*h)->arr->y = (a->y) / par->y_scale;
 	if (!((*h)->pos = vector_get(par->map->ver_vec, (par->map->max_x * (*h)->arr->y + (*h)->arr->x))))
 		return (NULL);
 	while ((((t_vec3 *)((*h)->pos))->z) == 0)
