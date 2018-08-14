@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 13:50:35 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/14 16:23:17 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	draw_back(t_param *p, int s_col, int f_col)
 		s2.y = l;
 		draw_line(&s1, &s2, p, s_col);
 		if (l % 10 == 0)
-			s_col += 2;
+			s_col -= 2;
 		l++;
 	}
 	while (l < HEIGHT)
@@ -125,10 +125,15 @@ void	draw_back(t_param *p, int s_col, int f_col)
 		s2.x = WIDTH;
 		s2.y = l;
 		draw_line(&s1, &s2, p, f_col);
-		if (l % 10 == 0)
+		if (l % 20 == 0)
 			f_col += 2;
 		l++;
 	}
+}
+
+unsigned long create_hex(int r, int g, int b)
+{   
+    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
 void	draw_col(double dist, int col, t_param *p, int c)
@@ -137,14 +142,23 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	int top_wall;
 	t_pnt pnt1;
 	t_pnt pnt2;
+	int colour;
 
-	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist)));
+	colour = 255 - (dist / 150) * 255;
+	c = colour;
+	if (colour < 20)
+		colour = 20;
+	if (colour > 255)
+		colour = 255;
+	colour = create_hex(colour, colour, colour);
+	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
 	top_wall = HEIGHT - bot_wall;
 	if (bot_wall >= HEIGHT)
 		bot_wall = HEIGHT - 1;
+	c++;
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;
 	pnt2.y = bot_wall;
-	draw_line(&pnt1, &pnt2, p, c);
+	draw_line(&pnt1, &pnt2, p, colour);
 }

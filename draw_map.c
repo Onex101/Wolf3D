@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/14 12:57:10 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/14 15:12:02 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void		draw_map(t_param *p)
 	t_pnt	s;
 	int		i;
 	int		j;
-	int		total;
+	//int		total;
 	t_vec3	*v;
 
-	total = vector_total(p->map->ver_vec);
+	//total = vector_total(p->map->ver_vec);
 	j = 0;
 	while (j < M_HEIGHT)
 	{
