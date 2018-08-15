@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 13:55:34 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/15 07:39:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	}
 	else
 		exit (0);
-	if (p2->x == p->pos->x)
-		printf("angle = %f\n", d->n * d->a);
+	// if (p2->x == p->pos->x)
+	// 	printf("angle = %f\n", d->n * d->a);
 	draw_line(p1, p2, par, 0xFFFFFF);
 	ft_pnt_free(p1);
 	ft_pnt_free(p2);

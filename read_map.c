@@ -6,12 +6,13 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 10:02:46 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/15 19:22:17 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "wolf3d.h"
+#include <stdio.h>
 
 void		free_str_arr(char **str_arr)
 {
@@ -21,8 +22,11 @@ void		free_str_arr(char **str_arr)
 	while (str_arr[i])
 		i++;
 	while (--i)
-		free(str_arr[i]);
-	free(str_arr);
+	{
+		ft_strclr(str_arr[i]);
+		// free(str_arr[i]);
+	}
+	// free(str_arr);
 }
 
 void			map_check(char *line, int *c_line)
@@ -46,13 +50,16 @@ void		create_vertex_list(t_map *map, char *line, int y)
 	s = ft_strsplit(line, ' ');
 	while (s[x])
 	{
+		// printf("s[%zu] = %s\n", x, s[x]);
 		v = new_vertex(x, y, ft_atoi(s[x]));
 		vector_add(map->ver_vec, v);
+		free(s[x]);
 		x++;
 	}
+	free (s);
 	map->max_x = x;
 	ft_strclr(line);
-	free_str_arr(s);
+	// free_str_arr(s);
 }
 
 t_map		*read_map(int fd)
@@ -61,6 +68,7 @@ t_map		*read_map(int fd)
 	t_map		*map;
 	size_t		y;
 	int			c_line;
+	int			i;
 
 	if (!(map = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
@@ -69,20 +77,31 @@ t_map		*read_map(int fd)
 	vector_init(map->ver_vec);
 	y = 0;
 	c_line = 0;
-	while (get_next_line(fd, &line) > 0)
+	while ((i = get_next_line(fd, &line)) != 0)
 	{
+		if (i < 0)
+		{
+			ft_putendl("Error\n");
+			exit (0);
+		}
+		// printf("line = %s\n", line);
 		map_check(line, &c_line);
 		ft_putendl(line);
 		create_vertex_list(map, line, y);
 		y++;
+		ft_strclr(line);
+		free(line);
 	}
+	// exit (0);
 	if (y == 0 && c_line == 0)
 	{
 		ft_putendl("Error: File does not exist");
 		exit(0);
 	}
 	// free(line);
+	ft_putendl("readmap test\n");
 	map->max_y = y;
 	close(fd);
+	ft_putendl("readmap test2\n");
 	return (map);
 }
