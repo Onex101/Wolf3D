@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 13:37:45 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/15 08:12:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int		main(int argc, char **argv)
 			if (!param->mlx)
 				return (-1);
 			// exit (0);
-			//mlx_hook(param->win, 2, 0, key_press, param);
+			mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop_hook(param->mlx, draw_to_screen, param);
-			mlx_key_hook(param->win, key_press, param);
+			//mlx_key_hook(param->win, key_press, param);
 			mlx_loop(param->mlx);
 		}
 	}

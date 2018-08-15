@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 16:23:17 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/15 07:52:27 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,9 @@ void	draw_back(t_param *p, int s_col, int f_col)
 	}
 }
 
-unsigned long create_hex(int r, int g, int b)
-{   
-    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+unsigned long rgb_to_hex(int r, int g, int b)
+{
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
 void	draw_col(double dist, int col, t_param *p, int c)
@@ -144,13 +144,13 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	t_pnt pnt2;
 	int colour;
 
-	colour = 255 - (dist / 150) * 255;
+	colour = 127 - (dist / 250) * 127;
 	c = colour;
 	if (colour < 20)
 		colour = 20;
-	if (colour > 255)
-		colour = 255;
-	colour = create_hex(colour, colour, colour);
+	if (colour > 127)
+		colour = 127;
+	colour = rgb_to_hex(colour, 0, colour);
 	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
 	top_wall = HEIGHT - bot_wall;
 	if (bot_wall >= HEIGHT)

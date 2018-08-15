@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/14 07:03:12 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/15 08:01:23 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void			init_fish_table(t_tables *tables);
 void			init_trig_tables(t_tables *tables);
 void			init_tables(t_tables *tables);
 t_tables		*get_tables(void);
+
+double			cos_d(double i);
+double			sin_d(double i);
+double			tan_d(double i);
 //
 void			ft_vec2_free(t_vec2 *p);
 void			ft_pnt_free(t_pnt *p);

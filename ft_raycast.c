@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 16:20:42 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/15 13:53:19 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double  ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d)
 
 	(*p2)->x = (int)(d_vec->x);
 	(*p2)->y = (int)(d_vec->y);
-	//distance = dist / (d->n * d->t->t_cos[(int)(ft_diff(p, d->a) * 20)]);
+	//distance = dist * cos(((d->n * d->a) * M_PI) / 180 + 0.0001);
 	p->hght = d->n;
 	distance = dist;
 	return (distance);
@@ -110,8 +110,8 @@ int     ft_rays(t_param *par, t_player *p)
 	// ft_putendl("ray test 1_2");
 	ft_angle(&d, angle);
 	// ft_putendl("ray test 1_3");
-	col = 639;
-	while (angle <= p->v_angle + (FOV / 2) && col >= 0)
+	col = 0;
+	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
 	{
 		// ft_putendl("ray test 1_4");
 		dist = ft_get_dist(p, d, par);
@@ -125,7 +125,7 @@ int     ft_rays(t_param *par, t_player *p)
 		//printf("angle = [%f] | col = [%d]\n", angle, col);
 		angle = angle + 0.05;
 		ft_angle(&d, angle);
-		col--;
+		col++;
 	}
 	// ft_putendl("ray test 2");
 	ft_dist_free(d);
