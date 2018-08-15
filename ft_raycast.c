@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/15 13:53:19 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/15 18:14:10 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double  ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d)
 
 	(*p2)->x = (int)(d_vec->x);
 	(*p2)->y = (int)(d_vec->y);
-	//distance = dist * cos(((d->n * d->a) * M_PI) / 180 + 0.0001);
+	//distance = dist * cos_d(d->n * d->a);
 	p->hght = d->n;
 	distance = dist;
 	return (distance);
@@ -118,7 +118,7 @@ int     ft_rays(t_param *par, t_player *p)
 		// ft_putendl("ray test 1_5");
 		
 		draw_col(dist, col, par, 0xFFFFFF);
-		// ft_putendl("ray test 1_6");
+		 //ft_putendl("ray test 1_6");
 		ft_angle(&d, angle);
 		// ft_putendl("ray test 1_7");
 		// angle = angle + 1;

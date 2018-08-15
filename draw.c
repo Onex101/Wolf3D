@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 07:52:27 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/15 18:13:26 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 void	draw_f_square(t_pnt *s, t_param *p, int c)
 {
@@ -160,5 +161,8 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	pnt1.y = top_wall;
 	pnt2.x = col;
 	pnt2.y = bot_wall;
+	//printf("pnt1.x = [%d] | pnt2.y = [%d] | pnt2.x = [%d] | pnt2.y = [%d]\n", pnt1.x, pnt1.y, pnt2.x, pnt2.y);
+	//ft_putendl("Draw_line");
 	draw_line(&pnt1, &pnt2, p, colour);
+	//ft_putendl("Draw_line done");
 }

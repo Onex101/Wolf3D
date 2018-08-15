@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 08:12:31 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/15 18:23:23 by xeno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		draw_to_screen(t_param *p)
 {
 	if (p->buf)
 	{
-		// sleep(1);
 		clear_image(p);
 	}
 	draw_back(p, SKY_COL, FLOOR_COL);
@@ -51,7 +50,6 @@ int		draw_to_screen(t_param *p)
 	// sleep (0.5);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
 	// ft_putendl("Draw screen test 3");
-
 	return (1);
 }
 
@@ -76,7 +74,7 @@ int		main(int argc, char **argv)
 			// exit (0);
 			mlx_hook(param->win, 2, 0, key_press, param);
 			mlx_loop_hook(param->mlx, draw_to_screen, param);
-			//mlx_key_hook(param->win, key_press, param);
+			mlx_key_hook(param->win, key_press, param);
 			mlx_loop(param->mlx);
 		}
 	}
