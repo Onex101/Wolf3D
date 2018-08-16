@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/15 18:14:10 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/16 09:28:31 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double  ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d)
 
 	(*p2)->x = (int)(d_vec->x);
 	(*p2)->y = (int)(d_vec->y);
-	//distance = dist * cos_d(d->n * d->a);
+	//distance = dist * cos_d(90 - (d->n * d->a));
 	p->hght = d->n;
 	distance = dist;
 	return (distance);
@@ -116,10 +116,12 @@ int     ft_rays(t_param *par, t_player *p)
 		// ft_putendl("ray test 1_4");
 		dist = ft_get_dist(p, d, par);
 		// ft_putendl("ray test 1_5");
+		//if (p->v_angle == 90 || p->v_angle == 270)
+		//	printf("dist when 90 or 270 = [%f]\n", dist);
 		
 		draw_col(dist, col, par, 0xFFFFFF);
 		 //ft_putendl("ray test 1_6");
-		ft_angle(&d, angle);
+		//ft_angle(&d, angle);
 		// ft_putendl("ray test 1_7");
 		// angle = angle + 1;
 		//printf("angle = [%f] | col = [%d]\n", angle, col);

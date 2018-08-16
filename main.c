@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 18:23:23 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/16 08:57:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		draw_to_screen(t_param *p)
 	{
 		clear_image(p);
 	}
-	draw_back(p, SKY_COL, FLOOR_COL);
+	draw_back(p);
 	draw_map(p);
 	if(!(ft_rays(p, p->player)))
 	 	return (0);

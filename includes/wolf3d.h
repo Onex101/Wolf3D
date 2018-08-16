@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 18:21:13 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/16 08:57:01 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void			draw_player(t_param *p);
 void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
 void			draw_col(double dist, int col, t_param *p, int c);
-void			draw_back(t_param *p, int s_col, int f_col);
+void			draw_back(t_param *p);
 int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);

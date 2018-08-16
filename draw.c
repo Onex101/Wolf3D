@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 18:13:26 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/16 11:59:33 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	draw_f_square(t_pnt *s, t_param *p, int c)
 	int		i;
 
 	i = 0;
-	while (i <= (MAP_SIZE / 2.5))
+	while (i <= (MAP_SIZE))
 	{
-		e.x = s->x + (MAP_SIZE / 2.5);
+		e.x = s->x + (MAP_SIZE);
 		e.y = s->y;
 		draw_line(&e, s, p, c);
 		s->y++;
@@ -96,45 +96,51 @@ void	draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c)
 {
 	pnt1->x = p->player->m_pos.x; 
 	pnt1->y = p->player->m_pos.y;
-	pnt2->x = WIDTH + ((pnt2->x * MAP_SIZE) / TILE_SIZE);
-	pnt2->y = (pnt2->y * MAP_SIZE) / TILE_SIZE;
+	pnt2->x = WIDTH + ((pnt2->x * MAP_SIZE) / p->x_scale);
+	pnt2->y = (pnt2->y * MAP_SIZE) / p->y_scale;
 	draw_line(pnt1, pnt2, p, c);
-}
-
-void	draw_back(t_param *p, int s_col, int f_col)
-{
-	int l;
-	t_pnt s1;
-	t_pnt s2;
-
-	l = 0;
-	while (l < HEIGHT / 2)
-	{
-		s1.x = 0;
-		s1.y = l;
-		s2.x = WIDTH;
-		s2.y = l;
-		draw_line(&s1, &s2, p, s_col);
-		if (l % 10 == 0)
-			s_col -= 2;
-		l++;
-	}
-	while (l < HEIGHT)
-	{
-		s1.x = 0;
-		s1.y = l;
-		s2.x = WIDTH;
-		s2.y = l;
-		draw_line(&s1, &s2, p, f_col);
-		if (l % 20 == 0)
-			f_col += 2;
-		l++;
-	}
 }
 
 unsigned long rgb_to_hex(int r, int g, int b)
 {
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+}
+
+void	draw_back(t_param *p)
+{
+	int l;
+	t_pnt s1;
+	t_pnt s2;
+	int c;
+	int col;
+
+	c = 125;
+	l = 0;
+	while (l < HEIGHT / 2)
+	{
+		col = rgb_to_hex(0, 0, c);
+		s1.x = 0;
+		s1.y = l;
+		s2.x = WIDTH;
+		s2.y = l;
+		draw_line(&s1, &s2, p, col);
+		if (l % 10 == 0)
+			c -= 2;
+		l++;
+	}
+	col = 22;
+	while (l < HEIGHT)
+	{
+		col = rgb_to_hex(c, 20, 20);
+		s1.x = 0;
+		s1.y = l;
+		s2.x = WIDTH;
+		s2.y = l;
+		draw_line(&s1, &s2, p, col);
+		if (l % 10 == 0)
+			c += 2;
+		l++;
+	}
 }
 
 void	draw_col(double dist, int col, t_param *p, int c)
@@ -145,13 +151,13 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	t_pnt pnt2;
 	int colour;
 
-	colour = 127 - (dist / 250) * 127;
+	colour = 250 - (dist / 700) * 250;
 	c = colour;
 	if (colour < 20)
 		colour = 20;
-	if (colour > 127)
-		colour = 127;
-	colour = rgb_to_hex(colour, 0, colour);
+	if (colour > 250)
+		colour = 250;
+	colour = rgb_to_hex(colour, colour, colour);
 	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
 	top_wall = HEIGHT - bot_wall;
 	if (bot_wall >= HEIGHT)
