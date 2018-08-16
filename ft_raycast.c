@@ -98,9 +98,7 @@ int     ft_rays(t_param *par, t_player *p)
 	if (!(d = ft_init_dist(p, t)))
 		return (0);
 	angle = p->v_angle - (FOV / 2);
-	// angle = p->v_angle;
 	ft_angle(&d, angle);
-	// while (angle <= p->v_angle + 10)
 	while (angle <= p->v_angle + (FOV / 2))
 	{
 		dist = ft_get_dist(p, d, par);
