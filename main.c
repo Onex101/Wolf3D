@@ -39,6 +39,7 @@ int		draw_to_screen(t_param *p)
 {
 	if (p->buf)
 	{
+		// sleep (1);
 		clear_image(p);
 	}
 	draw_back(p);
@@ -47,8 +48,9 @@ int		draw_to_screen(t_param *p)
 	 	return (0);
 	// ft_putendl("Draw screen test 2");
 	// draw_player(p);
-	// sleep (0.5);
+	
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
+	
 	// ft_putendl("Draw screen test 3");
 	return (1);
 }

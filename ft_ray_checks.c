@@ -147,9 +147,9 @@ int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 		return (0);
 	if (h->ya > 0)
 	{
-		(*d)->h_dist->y = (*d)->h_dist->y - 1;//South
+		(*d)->h_dist->y = (*d)->h_dist->y + 1;//South
 		if (h->xa > 0)
-			(*d)->h_dist->x = (*d)->h_dist->x + 1;
+			(*d)->h_dist->x = (*d)->h_dist->x - 1;
 		else if (h->xa < 0)
 			(*d)->h_dist->x = (*d)->h_dist->x + 1;
 	}
@@ -157,9 +157,9 @@ int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 	{
 		(*d)->h_dist->y = (*d)->h_dist->y + 1;//North
 		if (h->xa > 0)
-			(*d)->h_dist->x = (*d)->h_dist->x - 1;
-		else if (h->xa < 0)
 			(*d)->h_dist->x = (*d)->h_dist->x + 1;
+		else if (h->xa < 0)
+			(*d)->h_dist->x = (*d)->h_dist->x - 1;
 	}
 	(*d)->h_distance = ft_dist_calc(p, (*d)->h_dist);
 	ft_check_free(h);
@@ -217,17 +217,17 @@ int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 	{
 		(*d)->v_dist->x = (*d)->v_dist->x - 1;//East
 		if (h->ya > 0)
-			(*d)->v_dist->y = (*d)->v_dist->y - 1;
-		else if (h->ya < 0)
 			(*d)->v_dist->y = (*d)->v_dist->y + 1;
+		else if (h->ya < 0)
+			(*d)->v_dist->y = (*d)->v_dist->y - 1;
 	}
 	else if (h->xa < 0)
 	{
 		(*d)->v_dist->x = (*d)->v_dist->x + 1;//West
 		if (h->ya > 0)
-			(*d)->v_dist->y = (*d)->v_dist->y - 1;
-		else if (h->ya < 0)
 			(*d)->v_dist->y = (*d)->v_dist->y + 1;
+		else if (h->ya < 0)
+			(*d)->v_dist->y = (*d)->v_dist->y - 1;
 	}
 	(*d)->v_distance = ft_dist_calc(p, (*d)->v_dist);
 	ft_check_free(h);
