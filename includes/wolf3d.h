@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/16 08:57:01 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/17 13:43:22 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 
 # define WIDTH 640
 # define HEIGHT 640
-# define FOV 60
-# define WALL_HEIGHT 64
+# define FOV 30
+// # define FOV 60
+# define WALL_HEIGHT 100
 # define WALL_COL 0xAAAAAA
 # define SPC_COL 0x555555
 # define TILE_SIZE 64
