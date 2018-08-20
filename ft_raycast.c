@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_raycast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/20 11:26:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/20 13:42:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,14 +123,7 @@ int     ft_rays(t_param *par, t_player *p)
 		dist = ft_get_dist(p, d, par);
 		// draw_col(dist, col, par, 0xFFFFFF);
 		printf("Wall = %d\n", d->wall);
-		if (d->wall == 1)
-			draw_col(dist, col, par, 0xFFFF00);
-		else if (d->wall == 2)
-			draw_col(dist, col, par, 0xFF00FF);
-		else if (d->wall == 3)
-			draw_col(dist, col, par, 0x00FFFF);
-		else if (d->wall == 4)
-			draw_col(dist, col, par, 0x5500FF);
+		draw_col(dist, col, par, d->wall);
 		// angle = angle + 0.05;
 		angle = angle + 0.1;
 		ft_angle(&d, angle);
