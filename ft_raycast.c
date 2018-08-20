@@ -29,7 +29,7 @@ double  ft_dist(t_player *p, t_pnt **p2, t_dist **d, int x)
 
 	if (x == 1)
 	{
-		if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+		if ((*d)->n * (*d)->a > 127 && (*d)->n * (*d)->a < 129)
 			printf("v_dis: x = %f, y = %f\n", (*d)->v_dist->x, (*d)->v_dist->y);
 		(*p2)->x = floor((*d)->v_dist->x);
 		(*p2)->y = floor((*d)->v_dist->y);
@@ -38,7 +38,7 @@ double  ft_dist(t_player *p, t_pnt **p2, t_dist **d, int x)
 	}
 	else
 	{
-		if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+		if ((*d)->n * (*d)->a > 127 && (*d)->n * (*d)->a < 129)
 			printf("h_dis: x = %f, y = %f\n", (*d)->h_dist->x, (*d)->h_dist->y);
 		(*p2)->x = floor((*d)->h_dist->x);
 		(*p2)->y = floor((*d)->h_dist->y);
@@ -77,7 +77,7 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	else
 		exit (0);
 	//
-	if (d->n * d->a > 134 && d->n * d->a < 136)
+	if (d->n * d->a > 127 && d->n * d->a < 129)
 	{
 		printf("Distance = [%f]\n", dist);
 		printf("Angle = [%f], p2: x = %d, y = %d\n", d->n * d->a, p2->x, p2->y);
@@ -122,12 +122,16 @@ int     ft_rays(t_param *par, t_player *p)
 	col = 0;
 	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
 	{
-		if (angle > 134 && angle < 136)
+		// if (angle > 134 && angle < 136)
+		if (angle > 127 && angle < 129)
 		{
 			printf("_________________\n");
 			printf("Angle = [%f]\n", angle);
 		}
 		dist = ft_get_dist(p, d, par);
+		// if (angle > 134 && angle < 136)
+		if (angle > 127 && angle < 129)
+			printf("Wall = %d\n", d->wall);
 		// draw_col(dist, col, par, 0xFFFFFF);
 		// printf("Wall = %d\n", d->wall);
 		if (d->wall == 1)

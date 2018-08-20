@@ -37,7 +37,6 @@ int		init_param(t_param *p, char *str)
 
 int		draw_to_screen(t_param *p)
 {
-	printf("draw_to_screen test\n");
 	if (p->buf)
 	{
 		// sleep (1);

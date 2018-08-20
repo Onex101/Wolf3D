@@ -42,16 +42,7 @@ double		ft_tan(t_dist **d)
 	double	ret;
 
 	a = (*d)->a;
-	if (a > 0 && a < 90)
-		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
-	else if (a > 90 && a < 180)
-		ret = (*d)->n * ((*d)->t->t_tan[(int)((a) * 10)]);
-	else if (a > 180 && a < 270)
-		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
-	else if (a > 270 && a < 360)
-		ret = (*d)->n * (*d)->t->t_tan[(int)((a) * 10)];
-	else
-		ret = (*d)->n * (*d)->t->t_tan[(int)(a * 10)];
+	ret = (*d)->n * (*d)->t->t_tan[(int)(a * 10)];
 	return (ret);
 }
 
@@ -61,16 +52,16 @@ double	ft_dist_calc(t_player *p, t_vec2 *dist, double ang)
 	double	a;
 	double	b;
 
-	// if (ang == 0)
-		// ft_putendl("Zero the Hero");
-	// a = (dist->x - (p->pos)->x) * (dist->x - (p->pos)->x);
-	// b = (dist->y - (p->pos)->y) * (dist->y - (p->pos)->y);
-	a = fabs((p->pos)->x - dist->x) / cos_d(fabs(ang));
-	b = fabs((p->pos)->y - dist->y) / sin_d(fabs(ang));
-	if (fabs(a) <= fabs(b))
-		distance = fabs(a);
-	else
-		distance = fabs(b);
-	// distance = sqrt(a + b);
+	if (ang == 0)
+		ft_putendl("Zero the Hero");
+	a = (dist->x - (p->pos)->x) * (dist->x - (p->pos)->x);
+	b = (dist->y - (p->pos)->y) * (dist->y - (p->pos)->y);
+	// a = fabs((p->pos)->x - dist->x) / cos_d(ang);
+	// b = fabs((p->pos)->y - dist->y) / sin_d(ang);
+	// if (fabs(a) <= fabs(b))
+	// 	distance = fabs(a);
+	// else
+	// 	distance = fabs(b);
+	distance = sqrt(a + b);
 	return (distance);
 }
