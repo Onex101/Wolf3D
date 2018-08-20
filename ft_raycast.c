@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/20 11:26:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/20 13:51:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ double  ft_dist(t_player *p, t_pnt **p2, t_dist **d, int x)
 
 	if (x == 1)
 	{
-		(*p2)->x = (int)((*d)->v_dist->x);
-		(*p2)->y = (int)((*d)->v_dist->y);
+		if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+			printf("v_dis: x = %f, y = %f\n", (*d)->v_dist->x, (*d)->v_dist->y);
+		(*p2)->x = floor((*d)->v_dist->x);
+		(*p2)->y = floor((*d)->v_dist->y);
 		distance = (*d)->v_distance;
 		(*d)->wall = (*d)->v_wall;
 	}
 	else
 	{
-		(*p2)->x = (int)((*d)->h_dist->x);
-		(*p2)->y = (int)((*d)->h_dist->y);
+		if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+			printf("h_dis: x = %f, y = %f\n", (*d)->h_dist->x, (*d)->h_dist->y);
+		(*p2)->x = floor((*d)->h_dist->x);
+		(*p2)->y = floor((*d)->h_dist->y);
 		distance = (*d)->h_distance;
 		(*d)->wall = (*d)->h_wall;
 	}
@@ -58,6 +62,7 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 		d->v_dist = NULL;
 	if (!(ft_hori_check(p, &d, par)))
 		d->h_dist = NULL;
+	//
 	if (d->v_dist != NULL && d->h_dist != NULL)
 	{
 		if (d->h_distance <= d->v_distance)
@@ -66,18 +71,15 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 			dist = ft_dist(p, &p2, &d, 1);
 	}
 	else if (d->v_dist == NULL && d->h_dist != NULL)
-	{
 		dist = ft_dist(p, &p2, &d, 2);
-	}
 	else if (d->v_dist != NULL && d->h_dist == NULL)
-	{
 		dist = ft_dist(p, &p2, &d, 1);
-	}
 	else
 		exit (0);
+	//
 	if (d->n * d->a > 134 && d->n * d->a < 136)
 	{
-		printf("Angle = [%f] Distance = [%f]\n", d->n * d->a, dist);
+		printf("Distance = [%f]\n", dist);
 		printf("Angle = [%f], p2: x = %d, y = %d\n", d->n * d->a, p2->x, p2->y);
 	}
 	// printf("new point: x = %d, y = %d\n", p2->x, p2->y);
@@ -120,9 +122,14 @@ int     ft_rays(t_param *par, t_player *p)
 	col = 0;
 	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
 	{
+		if (angle > 134 && angle < 136)
+		{
+			printf("_________________\n");
+			printf("Angle = [%f]\n", angle);
+		}
 		dist = ft_get_dist(p, d, par);
 		// draw_col(dist, col, par, 0xFFFFFF);
-		printf("Wall = %d\n", d->wall);
+		// printf("Wall = %d\n", d->wall);
 		if (d->wall == 1)
 			draw_col(dist, col, par, 0xFFFF00);
 		else if (d->wall == 2)
