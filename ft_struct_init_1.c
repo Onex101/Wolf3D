@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_struct_init_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/14 15:25:42 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/20 10:29:10 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ t_dist	*ft_init_dist(t_player *p, t_tables *t)
 		dist->v_distance = 0;
 		dist->a = 0;
 		dist->n = 1;
+		dist->wall = 0;
+		dist->v_wall = 0;
+		dist->h_wall = 0;
 		return (dist);
 	}
 	else
@@ -103,7 +106,6 @@ t_check	*ft_init_check(void)
 	ret->ya = 0;
 	ret->xa = 0;
 	ret->pos = NULL;
-	ret->vu = 0;
-	ret->hl = 0;
+	
 	return (ret);
 }

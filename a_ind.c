@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_ind.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 08:24:10 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/30 09:41:58 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/20 09:13:54 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,22 @@ double		ft_tan(t_dist **d)
 	return (ret);
 }
 
-double	ft_dist_calc(t_player *p, t_vec2 *dist)
+double	ft_dist_calc(t_player *p, t_vec2 *dist, double ang)
 {
 	double	distance;
 	double	a;
 	double	b;
 
-	a = ((p->pos)->x - dist->x) * ((p->pos)->x - dist->x);
-	b = ((p->pos)->y - dist->y) * ((p->pos)->y - dist->y);
-	distance = sqrt(a + b);
+	// if (ang == 0)
+		// ft_putendl("Zero the Hero");
+	// a = (dist->x - (p->pos)->x) * (dist->x - (p->pos)->x);
+	// b = (dist->y - (p->pos)->y) * (dist->y - (p->pos)->y);
+	a = fabs((p->pos)->x - dist->x) / cos_d(fabs(ang));
+	b = fabs((p->pos)->y - dist->y) / sin_d(fabs(ang));
+	if (fabs(a) <= fabs(b))
+		distance = fabs(a);
+	else
+		distance = fabs(b);
+	// distance = sqrt(a + b);
 	return (distance);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/16 11:59:33 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/20 11:24:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_f_square(t_pnt *s, t_param *p, int c)
 	{
 		e.x = s->x + (MAP_SIZE);
 		e.y = s->y;
-		draw_line(&e, s, p, c);
+		draw_line(&e, s, p, c); 
 		s->y++;
 		i++;
 	}
@@ -152,7 +152,7 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	int colour;
 
 	colour = 250 - (dist / 700) * 250;
-	c = colour;
+	// c = colour;
 	if (colour < 20)
 		colour = 20;
 	if (colour > 250)
@@ -169,6 +169,6 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	pnt2.y = bot_wall;
 	//printf("pnt1.x = [%d] | pnt2.y = [%d] | pnt2.x = [%d] | pnt2.y = [%d]\n", pnt1.x, pnt1.y, pnt2.x, pnt2.y);
 	//ft_putendl("Draw_line");
-	draw_line(&pnt1, &pnt2, p, colour);
+	draw_line(&pnt1, &pnt2, p, c);
 	//ft_putendl("Draw_line done");
 }

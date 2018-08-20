@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/17 13:47:08 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/20 11:15:32 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,13 @@ int		ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	{
 		(*ret)->ya = (par->y_scale);
 		(*ret)->col->y = (int)(p->pos->y / par->y_scale) * par->y_scale + par->y_scale;
+		(*d)->h_wall = 2;
 	}
 	else if (ft_isdown((*d)->n * (*d)->a))
 	{
 		(*ret)->ya = -par->y_scale;
 		(*ret)->col->y = (int)(p->pos->y / par->y_scale) * par->y_scale - 1;
+		(*d)->h_wall = 4;
 	}
 	else
 		return (0);
@@ -145,15 +147,9 @@ int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 	h->arr->x = h->col->x / par->x_scale;
 	if (!((*d)->h_dist = ft_find_wall(&h, par)))
 		return (0);
-	if (h->ya > 0)
-		(*d)->h_dist->y = (*d)->h_dist->y - 1;
-	else if (h->ya < 0)
-		(*d)->h_dist->y = (*d)->h_dist->y + 1;
-	if (h->xa > 0)
-		(*d)->h_dist->x = (*d)->h_dist->x - 1;
-	else if (h->xa < 0)
-		(*d)->h_dist->x = (*d)->h_dist->x + 1;
-	(*d)->h_distance = ft_dist_calc(p, (*d)->h_dist);
+	if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+		printf("hori: x = %f, y = %f\n", (*d)->h_dist->x, (*d)->h_dist->y);
+	(*d)->h_distance = ft_dist_calc(p, (*d)->h_dist, (*d)->n * (*d)->a);
 	ft_check_free(h);
 	return (1);
 }
@@ -166,11 +162,13 @@ int		ft_find_v_col(t_check **ret, t_player *p, t_dist **d, t_param *par)
 	{
 		(*ret)->xa = -(par->x_scale);
 		(*ret)->col->x = (int)(p->pos->x / par->x_scale) * par->x_scale - 1;
+		(*d)->v_wall = 1;
 	}
 	else if (ft_isright((*d)->n * (*d)->a))
 	{
 		(*ret)->xa = par->x_scale;
 		(*ret)->col->x = (int)(p->pos->x / par->x_scale) * par->x_scale + par->x_scale;
+		(*d)->v_wall = 3;
 	}
 	else
 		return (0);
@@ -198,36 +196,13 @@ int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 		return (0);
 	if (!(ft_find_v_col(&h, p, d, par)))
 		return (0);
-	if (h->xa < 0)
-		h->hl = -1;
 	h->arr->y = (h->col->y) / par->y_scale;
 	h->arr->x = h->col->x / par->x_scale;
 	if (!((*d)->v_dist = ft_find_wall(&h, par)))
 		return (0);
-	// printf("check_before 1\n");
-	if (h->ya > 0)
-	{
-		// printf("check_before 1_1\n");
-		(*d)->v_dist->y -=  1;
-	}
-	else if (h->ya < 0)
-	{
-		// printf("check_before 1_2\n");
-		(*d)->v_dist->y += 1;
-	}
-	// printf("check_before 2\n");
-	if (h->xa > 0)
-	{
-		// printf("check_before 2_1\n");
-		(*d)->v_dist->x -= 1;
-	}
-	else if (h->xa < 0)
-	{
-		// printf("check_before 2_2\n");
-		(*d)->v_dist->x += 1;
-	}
-	// printf("check_before 3\n");
-	(*d)->v_distance = ft_dist_calc(p, (*d)->v_dist);
+	if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
+		printf("vert: x = %f, y = %f\n", (*d)->v_dist->x, (*d)->v_dist->y);
+	(*d)->v_distance = ft_dist_calc(p, (*d)->v_dist, (*d)->n * (*d)->a);
 	// printf("check_before 4\n");
 	ft_check_free(h);
 	// printf("check_before 5\n");

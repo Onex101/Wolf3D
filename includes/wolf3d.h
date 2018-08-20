@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/17 13:43:22 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/20 10:27:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 
 # define WIDTH 640
 # define HEIGHT 640
-# define FOV 30
-// # define FOV 60
+// # define FOV 30
+# define FOV 60
 # define WALL_HEIGHT 100
 # define WALL_COL 0xAAAAAA
 # define SPC_COL 0x555555
@@ -127,8 +127,7 @@ typedef struct		s_check
 	double			ya;
 	double			xa;
 	void			*pos;
-	int				vu;
-	int				hl;
+	
 }					t_check;
 //
 
@@ -160,7 +159,8 @@ int				ft_isup(double theta);
 int				ft_isdown(double theta);
 int				ft_isleft(double theta);
 int				ft_isright(double theta);
-double			ft_dist_calc(t_player *p, t_vec2 *dist);
+// double			ft_dist_calc(t_player *p, t_vec2 *dist);
+double	ft_dist_calc(t_player *p, t_vec2 *dist, double ang);
 //
 int				key_hook(int keycode, t_param *p);
 

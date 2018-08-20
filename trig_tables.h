@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trig_tables.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 08:01:23 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/20 10:27:34 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct		s_dist
 	double			v_distance;
 	double			a;
 	int				n;
+	int				wall;
+	int				v_wall;
+	int				h_wall;
 }					t_dist;
 
 void			init_step_tables(t_tables *tables);
@@ -73,7 +76,7 @@ void			ft_check_free(t_check *p);
 double			ft_tan(t_dist **d);
 t_dist			*ft_init_dist(t_player *p, t_tables *t);
 t_check			*ft_init_check(void);
-double			ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d);
+double 			ft_dist(t_player *p, t_pnt **p2, t_dist **d, int x);
 t_vec2			*ft_find_wall(t_check **h, t_param *par);
 int				ft_find_h_col(t_check **ret, t_player *p, t_dist **d, t_param *par);
 int				ft_hori_check(t_player *p, t_dist **d, t_param *par);

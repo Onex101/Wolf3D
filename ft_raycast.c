@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/17 14:30:25 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/20 11:26:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,26 @@ double		ft_diff(t_player *p, double theta)
 		return (theta - p->v_angle);
 }
 
-double  ft_dist(t_player *p, t_pnt **p2, t_vec2 *d_vec, double dist, t_dist *d)
+double  ft_dist(t_player *p, t_pnt **p2, t_dist **d, int x)
 {
 	double  distance;
 
-	(*p2)->x = (int)(d_vec->x);
-	(*p2)->y = (int)(d_vec->y);
-	//distance = dist * cos_d(90 - (d->n * d->a));
-	p->hght = d->n;
-	distance = dist;
+	if (x == 1)
+	{
+		(*p2)->x = (int)((*d)->v_dist->x);
+		(*p2)->y = (int)((*d)->v_dist->y);
+		distance = (*d)->v_distance;
+		(*d)->wall = (*d)->v_wall;
+	}
+	else
+	{
+		(*p2)->x = (int)((*d)->h_dist->x);
+		(*p2)->y = (int)((*d)->h_dist->y);
+		distance = (*d)->h_distance;
+		(*d)->wall = (*d)->h_wall;
+	}
+	p->hght = (*d)->n;
+	
 	return (distance);
 }
 
@@ -41,39 +52,38 @@ double  ft_get_dist(t_player *p, t_dist *d, t_param *par)
 	t_pnt	*p1;
 	t_pnt	*p2;
 
-	// ft_putendl("get dist test 1");
 	if (!(p1 = ft_pnt_init(p->pos->x, p->pos->y)) || !(p2 = ft_pnt_init(0, 0)))
 		exit (0);
-	// ft_putendl("get dist test 2");
 	if (!(ft_vert_check(p, &d, par)))
 		d->v_dist = NULL;
-	// ft_putendl("get dist test 3");
 	if (!(ft_hori_check(p, &d, par)))
 		d->h_dist = NULL;
-	// ft_putendl("get dist test 4");
 	if (d->v_dist != NULL && d->h_dist != NULL)
 	{
 		if (d->h_distance <= d->v_distance)
-			dist = ft_dist(p, &p2, d->h_dist, d->h_distance, d);
+			dist = ft_dist(p, &p2, &d, 2);
 		else
-			dist = ft_dist(p, &p2, d->v_dist, d->v_distance, d);
+			dist = ft_dist(p, &p2, &d, 1);
 	}
 	else if (d->v_dist == NULL && d->h_dist != NULL)
 	{
-		dist = ft_dist(p, &p2, d->h_dist, d->h_distance, d);
+		dist = ft_dist(p, &p2, &d, 2);
 	}
 	else if (d->v_dist != NULL && d->h_dist == NULL)
 	{
-		dist = ft_dist(p, &p2, d->v_dist, d->v_distance, d);
+		dist = ft_dist(p, &p2, &d, 1);
 	}
 	else
 		exit (0);
-	printf("new point: x = %d, y = %d\n", p2->x, p2->y);
+	if (d->n * d->a > 134 && d->n * d->a < 136)
+	{
+		printf("Angle = [%f] Distance = [%f]\n", d->n * d->a, dist);
+		printf("Angle = [%f], p2: x = %d, y = %d\n", d->n * d->a, p2->x, p2->y);
+	}
+	// printf("new point: x = %d, y = %d\n", p2->x, p2->y);
 	draw_ray(p1, p2, par, 0xFFFFFF);
 	ft_pnt_free(p1);
 	ft_pnt_free(p2);
-	// free(p1);
-	// free(p2);
 	return (dist);
 }
 
@@ -103,38 +113,29 @@ int     ft_rays(t_param *par, t_player *p)
 
 	if (!t)
 		t = get_tables();
-	// ft_putendl("ray test 1");
 	if (!(d = ft_init_dist(p, t)))
 		return (0);
-	// ft_putendl("ray test 1_1");
 	angle = p->v_angle - (FOV / 2);
-	// ft_putendl("ray test 1_2");
 	ft_angle(&d, angle);
-	// ft_putendl("ray test 1_3");
 	col = 0;
 	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
 	{
-		// ft_putendl("ray test 1_4");
 		dist = ft_get_dist(p, d, par);
-		printf("angle = %f\n", angle);
-		// ft_putendl("ray test 1_5");
-		//if (p->v_angle == 90 || p->v_angle == 270)
-		//	printf("dist when 90 or 270 = [%f]\n", dist);
-		
-		draw_col(dist, col, par, 0xFFFFFF);
-		 //ft_putendl("ray test 1_6");
-		//ft_angle(&d, angle);
-		// ft_putendl("ray test 1_7");
-		// angle = angle + 1;
-		//printf("angle = [%f] | col = [%d]\n", angle, col);
-		angle = angle + 1;
+		// draw_col(dist, col, par, 0xFFFFFF);
+		printf("Wall = %d\n", d->wall);
+		if (d->wall == 1)
+			draw_col(dist, col, par, 0xFFFF00);
+		else if (d->wall == 2)
+			draw_col(dist, col, par, 0xFF00FF);
+		else if (d->wall == 3)
+			draw_col(dist, col, par, 0x00FFFF);
+		else if (d->wall == 4)
+			draw_col(dist, col, par, 0x5500FF);
+		// angle = angle + 0.05;
+		angle = angle + 0.1;
 		ft_angle(&d, angle);
 		col++;
 	}
-	// ft_putendl("ray test 2");
 	ft_dist_free(d);
-	// ft_putendl("ray test 3");
-	// free(d);
-	// exit (0);
 	return (1);
 }
