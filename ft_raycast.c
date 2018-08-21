@@ -105,48 +105,48 @@ void	ft_angle(t_dist **d, double angle)
 		(*d)->n = 1;
 }
 
-int     ft_rays(t_param *par, t_player *p)
-{
-	t_dist				*d;
-	double  		   	dist;
-	double				angle;
-	static t_tables		*t;
-	int					col;
+// int     ft_old_rays(t_param *par, t_player *p)
+// {
+// 	t_dist				*d;
+// 	double  		   	dist;
+// 	double				angle;
+// 	static t_tables		*t;
+// 	int					col;
 
-	if (!t)
-		t = get_tables();
-	if (!(d = ft_init_dist(p, t)))
-		return (0);
-	angle = p->v_angle - (FOV / 2);
-	ft_angle(&d, angle);
-	col = 0;
-	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
-	{
-		// if (angle > 127 && angle < 129)
-		if (angle > 134 && angle < 136)
-		{
-			printf("_________________\n");
-			printf("Angle = [%f]\n", angle);
-		}
-		dist = ft_get_dist(p, d, par);
-		// if (angle > 127 && angle < 129)
-		if (angle > 134 && angle < 136)
-			printf("Wall = %d\n", d->wall);
-		// draw_col(dist, col, par, 0xFFFFFF);
-		// printf("Wall = %d\n", d->wall);
-		if (d->wall == 1)
-			draw_col(dist, col, par, 0xFFFF00);
-		else if (d->wall == 2)
-			draw_col(dist, col, par, 0xFF00FF);
-		else if (d->wall == 3)
-			draw_col(dist, col, par, 0x00FFFF);
-		else if (d->wall == 4)
-			draw_col(dist, col, par, 0x5500FF);
-		// angle = angle + 0.05;
-		angle = angle + 0.1;
-		ft_angle(&d, angle);
-		col++;
-	}
-	ft_dist_free(d);
-	return (1);
-}
+// 	if (!t)
+// 		t = get_tables();
+// 	if (!(d = ft_init_dist(p, t)))
+// 		return (0);
+// 	angle = p->v_angle - (FOV / 2);
+// 	ft_angle(&d, angle);
+// 	col = 0;
+// 	while (angle <= p->v_angle + (FOV / 2) && col < WIDTH)
+// 	{
+// 		// if (angle > 127 && angle < 129)
+// 		if (angle > 134 && angle < 136)
+// 		{
+// 			printf("_________________\n");
+// 			printf("Angle = [%f]\n", angle);
+// 		}
+// 		dist = ft_get_dist(p, d, par);
+// 		// if (angle > 127 && angle < 129)
+// 		if (angle > 134 && angle < 136)
+// 			printf("Wall = %d\n", d->wall);
+// 		// draw_col(dist, col, par, 0xFFFFFF);
+// 		// printf("Wall = %d\n", d->wall);
+// 		if (d->wall == 1)
+// 			draw_col(dist, col, par, 0xFFFF00);
+// 		else if (d->wall == 2)
+// 			draw_col(dist, col, par, 0xFF00FF);
+// 		else if (d->wall == 3)
+// 			draw_col(dist, col, par, 0x00FFFF);
+// 		else if (d->wall == 4)
+// 			draw_col(dist, col, par, 0x5500FF);
+// 		// angle = angle + 0.05;
+// 		angle = angle + 0.1;
+// 		ft_angle(&d, angle);
+// 		col++;
+// 	}
+// 	ft_dist_free(d);
+// 	return (1);
+// }

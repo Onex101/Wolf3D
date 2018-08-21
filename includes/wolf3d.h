@@ -130,6 +130,19 @@ typedef struct		s_check
 	
 }					t_check;
 //
+typedef struct		s_dda
+{
+	t_vec2			*dir;
+	t_vec2			*plane;
+	t_vec2			*rayDir;
+	t_vec2			*sideDist; // initially the dist the ray has to travel from its start position to the first x-side and the first y-side. Later in the code their meaning will slightly change
+	t_vec2			*deltaDist; //the distance the ray has to travel to go from one xside and yside to the next
+	t_pnt			*map; //current square on the map the ray is in
+	t_pnt			*step; //what direction  to step in x or y direction(either +1 or -1)
+	int				wall;
+	int				side;
+	void			*pos;
+}					t_dda;
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 t_vec3			*new_vertex(double x, double y, double z);

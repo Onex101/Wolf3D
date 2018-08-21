@@ -4,6 +4,7 @@
 		"algorithm": "c",
 		"iterator": "c",
 		"chrono": "cpp",
-		"__locale": "c"
+		"__locale": "c",
+		"cmath": "c"
 	}
 }
