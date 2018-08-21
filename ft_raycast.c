@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:16 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/20 13:42:57 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/21 08:32:40 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,13 @@ int     ft_rays(t_param *par, t_player *p)
 	{
 		dist = ft_get_dist(p, d, par);
 		// draw_col(dist, col, par, 0xFFFFFF);
-		printf("Wall = %d\n", d->wall);
+		//printf("Wall = %d\n", d->wall);
+		//if (d->wall == 1 || d->wall == 3)
+		// if ((angle > 315 && angle < 45) || (angle > 135 && angle < 225))
+		//	dist = dist * sin_d(angle);
+		// else
+		// 	dist = dist * sin_d(angle);
+		dist *= cos_d(angle - p->v_angle);
 		draw_col(dist, col, par, d->wall);
 		// angle = angle + 0.05;
 		angle = angle + 0.1;

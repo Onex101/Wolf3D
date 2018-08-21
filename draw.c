@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 14:00:45 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/21 07:44:13 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,30 +156,17 @@ int get_wall_colour(double dis, int wall)
 {
 	int colour;
 
+	colour = 255 - (dis / 700) * 255;
+	colour = check_wall_color(22, 255, colour);
 	if (wall == 1)
-	{
-		colour = 43 - (dis / 700) * 250;
-		colour = check_wall_color(20, 43, colour);
-		colour = rgb_to_hex(colour, colour, 255);
-	}
+		colour = rgb_to_hex(colour, 0, 0);
 	else if (wall == 2)
-	{
-		colour = 255 - (dis / 700) * 250;
-		colour = check_wall_color(20, 255, colour);
-		colour = rgb_to_hex(colour, colour, 60);
-	}
+		colour = rgb_to_hex(0, 0, colour);
 	else if (wall == 3)
-	{
-		colour = 250 - (dis / 700) * 250;
-		colour = check_wall_color(20, 250, colour);
-		colour = rgb_to_hex(colour, colour, colour);
-	}
+		colour = rgb_to_hex(0, colour, 0);
 	else if (wall == 4)
-	{
-		colour = 250 - (dis / 700) * 250;
-		colour = check_wall_color(20, 250, colour);
-		colour = rgb_to_hex(colour, colour, colour);
-	}
+		colour = rgb_to_hex(colour, colour, 0);
+	return (colour);
 }
 
 void	draw_col(double dist, int col, t_param *p, int c)
@@ -190,7 +177,7 @@ void	draw_col(double dist, int col, t_param *p, int c)
 	t_pnt pnt2;
 	int colour;
 
-	colour = (dist, c);
+	colour = get_wall_colour(dist, c);
 	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
 	top_wall = HEIGHT - bot_wall;
 	if (bot_wall >= HEIGHT)
