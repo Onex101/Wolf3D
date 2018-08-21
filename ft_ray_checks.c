@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 06:57:25 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/20 11:15:32 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/21 08:00:31 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,22 +92,23 @@ t_vec2		*ft_find_wall(t_check **h, t_param *par)
 		return (NULL);
 	if (!((*h)->pos = vector_get(par->map->ver_vec, (par->map->max_x * (*h)->arr->y + (*h)->arr->x))))
 		return (NULL);
-	printf("h = %f\n", (((t_vec3 *)((*h)->pos))->z));
+	printf("h = %f ", (((t_vec3 *)((*h)->pos))->z));
 	while ((((t_vec3 *)((*h)->pos))->z) == 0)
 	{
 		a->x = a->x + (*h)->xa;
 		a->y = a->y + (*h)->ya;
 		// printf("h = %f\n", (((t_vec3 *)((*h)->pos))->z));
 		i = ft_wall_check(h, par, a);
-		printf("h = %f\n", (((t_vec3 *)((*h)->pos))->z));
+		printf("h = %f ", (((t_vec3 *)((*h)->pos))->z));
 		if (i == 1)
 		{
-			printf("Found wall at x = %f, y = %f\n", a->x, a->y);
+			printf("Found wall at x = %f, y = %f", a->x, a->y);
 			break ;
 		}
 		else if (i == 0)
 			return (NULL);
 	}
+	printf("\n");
 	return (a);
 }
 
@@ -157,11 +158,13 @@ int		ft_hori_check(t_player *p, t_dist **d, t_param *par)
 	h->arr->x = h->col->x / par->x_scale;
 	if (!((*d)->h_dist = ft_find_wall(&h, par)))
 		return (0);
-	if ((*d)->n * (*d)->a > 127 && (*d)->n * (*d)->a < 129)
+	if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
 	{
 		printf("hori: x = %f, y = %f\n", (*d)->h_dist->x, (*d)->h_dist->y);
 		printf("arr: x = %d, y = %d\n", h->arr->x, h->arr->y);
 	}
+	// if (ft_isdown((*d)->n * (*d)->a))
+	// 	(*d)->h_dist->y += 1;
 	(*d)->h_distance = ft_dist_calc(p, (*d)->h_dist, (*d)->n * (*d)->a);
 	ft_check_free(h);
 	return (1);
@@ -213,7 +216,9 @@ int		ft_vert_check(t_player *p, t_dist **d, t_param *par)
 	h->arr->x = h->col->x / par->x_scale;
 	if (!((*d)->v_dist = ft_find_wall(&h, par)))
 		return (0);
-	if ((*d)->n * (*d)->a > 127 && (*d)->n * (*d)->a < 129)
+	// if (ft_isleft((*d)->n * (*d)->a))
+		// (*d)->v_dist->x += 0.99999;
+	if ((*d)->n * (*d)->a > 134 && (*d)->n * (*d)->a < 136)
 	{
 		printf("vert: x = %f, y = %f\n", (*d)->v_dist->x, (*d)->v_dist->y);
 		printf("arr: x = %d, y = %d\n", h->arr->x, h->arr->y);

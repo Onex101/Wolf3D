@@ -3,6 +3,7 @@
 		"bitset": "c",
 		"algorithm": "c",
 		"iterator": "c",
-		"chrono": "cpp"
+		"chrono": "cpp",
+		"__locale": "c"
 	}
 }
