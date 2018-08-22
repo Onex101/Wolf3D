@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 17:27:01 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/22 17:27:45 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 21:36:26 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 #include "trig_tables.h"
 #include <stdio.h>
 
-t_vec2	*ft_dirVec(t_player *p, t_vec2 *ply, t_tables *t)
+t_vec2	*ft_dirVec(t_player *p, t_tables *t)
 {
 	t_vec2	*new;
+	// double	c;
+	// double	s;
 
 	new = NULL;
 	if ((new = (t_vec2 *)malloc(sizeof(t_vec2))))
 	{
-		if (!ply)
-			return (NULL);
 		// new->x = t->t_cos[p->v_angle * 10] + ply->x;
 		// new->y = t->t_sin[p->v_angle * 10] + ply->y;
+		// c = t->t_cos[p->v_angle * 10];
+		// s = t->t_sin[p->v_angle * 10];
 		new->x = t->t_cos[p->v_angle * 10];
 		new->y = t->t_sin[p->v_angle * 10];
 		printf("Dir x = %f y = %f\n", new->x, new->y);
@@ -33,22 +35,29 @@ t_vec2	*ft_dirVec(t_player *p, t_vec2 *ply, t_tables *t)
 	return (NULL);
 }
 
-t_vec2	*ft_planeVec(t_vec2 *p, t_vec2 *dir)
+t_vec2	*ft_planeVec(t_player *p, t_tables *t)
 {
 	t_vec2	*new;
+	int		c;
+	int		s;
+	// int		dist;
 
 	new = NULL;
 	if ((new = (t_vec2 *)malloc(sizeof(t_vec2))))
 	{
+		// a = (dir->x - p->x) * (dir->x - p->x);
+		// b = (dir->y - p->y) * (dir->y - p->y);
 		if (!p)
 			return (NULL);
 		// new->x = dir->x + (1 / sqrt(3)) * (-(p->y - dir->y));
 		// new->y = dir->y + (1 / sqrt(3)) * (-(p->x - dir->x));
-		new->x = dir->x + (1 / sqrt(3)) * (-(0 - dir->y));
-		new->y = dir->y + (1 / sqrt(3)) * (-(0 - dir->x));
+		new->x = 1;
+		new->y = (1 / sqrt(3));
+		c = t->t_cos[p->v_angle * 10];
+		s = t->t_sin[p->v_angle * 10];
 		//
-		new->x = new->x - dir->x;
-		new->y = new->y - dir->y;
+		new->x = (new->x * c) + (new->y * -s);
+		new->y = (new->x * s) + (new->y * c);
 		
 		printf("Plane x = %f y = %f\n", new->x, new->y);
 		return (new);
@@ -81,9 +90,9 @@ t_dda	*ft_dda_init(t_player *p, t_param *par, t_tables *t)
 		if (!(new->p = ft_vec2_init((p->pos->x / par->x_scale), (p->pos->y / par->y_scale))))
 			return (NULL);
 		printf("player pos x = %f y = %f\n", new->p->x, new->p->y);
-		if (!(new->dir = ft_dirVec(p, new->p, t)))
+		if (!(new->dir = ft_dirVec(p, t)))
 			return (NULL);
-		if (!(new->plane = ft_planeVec(new->p, new->dir)))
+		if (!(new->plane = ft_planeVec(p, t)))
 			return (NULL);
 		new->rayDir = NULL;
 		new->sideDist = NULL;

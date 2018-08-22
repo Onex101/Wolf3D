@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/22 20:26:54 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 20:42:21 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		ft_dda(t_dda **l, t_param *par)
 			printf("Not valid square");
 			return (0);
 		}
-		printf("square = %f\n", ((t_vec3 *)((*l)->pos))->z);
+		// printf("square = %f\n", ((t_vec3 *)((*l)->pos))->z);
 		if ((((t_vec3 *)((*l)->pos))->z) > 0)
 			(*l)->wall = 1;
 	}

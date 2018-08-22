@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 17:35:24 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 21:36:27 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef struct		s_dist
 }					t_dist;
 
 //
-t_vec2			*ft_dirVec(t_player *p, t_vec2 *ply, t_tables *t);
-t_vec2			*ft_planeVec(t_vec2 *p, t_vec2 *dir);
+t_vec2			*ft_dirVec(t_player *p, t_tables *t);
+t_vec2			*ft_planeVec(t_player *p, t_tables *t);
 t_vec2			*ft_rayDirVec(t_vec2 *dir, t_vec2 *plane, double cameraX);
 t_dda			*ft_dda_init(t_player *p, t_param *par, t_tables *t);
 t_vec2			*ft_init_deltaDist(t_vec2 *rayDir);
