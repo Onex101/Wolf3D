@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 10:27:29 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 11:39:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct		s_check
 //
 typedef struct		s_dda
 {
+	t_vec2			*p;
 	t_vec2			*dir;
 	t_vec2			*plane;
 	t_vec2			*rayDir;
@@ -139,9 +140,9 @@ typedef struct		s_dda
 	t_vec2			*deltaDist; //the distance the ray has to travel to go from one xside and yside to the next
 	t_pnt			*map; //current square on the map the ray is in
 	t_pnt			*step; //what direction  to step in x or y direction(either +1 or -1)
-	int				wall;
+	int				wall; //which wall was hit
 	int				side;
-	void			*pos;
+	void			*pos; //was wall hit?
 }					t_dda;
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);

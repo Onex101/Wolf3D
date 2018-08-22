@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/21 07:24:50 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 09:21:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 double	cos_d(double i)
 {
-	return(cos((i * M_PI) / 180 + 0.0001));
+	return(cos((i * M_PI) / 180));
 }
 
 double	sin_d(double i)
 {
-	return(sin((i * M_PI) / 180 + 0.0001) );
+	return(sin((i * M_PI) / 180) );
 }
 
 double	tan_d(double i)
 {
-	return(tan((i * M_PI) / 180 + 0.0001));
+	return(tan((i * M_PI) / 180));
 }
 
 void	init_trig_tables(t_tables *tables)
@@ -35,7 +35,7 @@ void	init_trig_tables(t_tables *tables)
 	i = 0;
 	while (i < 7200)
 	{
-		rad = (((double)i / 10) * M_PI) / 180 + 0.0001;
+		rad = (((double)i / 10) * M_PI) / 180;
 		tables->t_sin[i] = sin(rad);
 		tables->t_cos[i] = cos(rad);
 		tables->t_tan[i] = tan(rad);
