@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 11:39:51 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/22 18:10:23 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 
 # define WIDTH 640
 # define HEIGHT 640
-// # define FOV 30
 # define FOV 60
 # define WALL_HEIGHT 100
 # define WALL_COL 0xAAAAAA
@@ -144,6 +143,7 @@ typedef struct		s_dda
 	int				side;
 	void			*pos; //was wall hit?
 }					t_dda;
+
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 t_vec3			*new_vertex(double x, double y, double z);

@@ -5,6 +5,8 @@
 		"iterator": "c",
 		"chrono": "cpp",
 		"__locale": "c",
-		"cmath": "c"
+		"cmath": "c",
+		"stdio.h": "c",
+		"ios": "cpp"
 	}
 }
