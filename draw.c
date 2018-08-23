@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 16:15:02 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 16:58:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int get_wall_colour(double dis, t_dda *l)
 {
 	int colour;
 
-	colour = (dis / 640) * 255;
+	colour = (dis / 500) * 255;
 	colour = check_wall_color(22, 255, colour);
 	if (l->side == 0 && l->step->x == 1)
 		colour = rgb_to_hex(colour, 0, 0);
