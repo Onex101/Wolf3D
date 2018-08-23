@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 17:08:25 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:54:56 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include "libft.h"
+# include "get_next_line.h"
 # include "vector.h"
 # include "os.h"
 
@@ -52,13 +53,13 @@ typedef struct	s_pnt
 	int			y;
 }				t_pnt;
 
-typedef struct	s_line
+typedef struct	s_ln
 {
 	double		x1;
 	double		y1;
 	double		x2;
 	double		y2;
-}				t_line;
+}				t_ln;
 
 typedef struct	s_player
 {
@@ -89,7 +90,8 @@ typedef struct	s_line_p
 
 typedef struct	s_map
 {
-	t_vector	*ver_vec;
+	// t_vector	*ver_vec;
+	char		**m;
 	int			max_x;
 	int			max_y;
 }				t_map;
@@ -147,7 +149,7 @@ void			linux_key_press(int keycode, t_param *p);
 t_vec2			*ft_vec2_init(double x, double y);
 t_vec3			*ft_vec3_init(double x, double y, double z);
 t_pnt			*ft_pnt_init(int x, int y);
-t_line			*ft_line_init(double x1, double y1, double x2, double y2);
+t_ln			*ft_line_init(double x1, double y1, double x2, double y2);
 t_player		*ft_player_init(t_param *par);
 double			ft_dist_calc(t_player *p, t_vec2 *dist, double ang);
 int				key_hook(int keycode, t_param *p);

@@ -7,6 +7,9 @@
 		"__locale": "c",
 		"cmath": "c",
 		"stdio.h": "c",
-		"ios": "cpp"
+		"ios": "cpp",
+		"istream": "c",
+		"locale": "c",
+		"wolf3d.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:54:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:07:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 21:34:20 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,11 @@ int		ft_border(t_dda *l, t_param *par)
 
 int		ft_check_block(t_dda **l, t_param *par)
 {
-	int		i;
+	int			v;
 
-	i = par->map->max_x * (*l)->map->y + (*l)->map->x;
-	if (!((*l)->pos = vector_get(par->map->ver_vec, i)))
+	if(!(v = (par->map->m)[(*l)->map->y][(*l)->map->x]))
 		return (0);
-	if ((((t_vec3 *)((*l)->pos))->z) > 0)
+	if (v > 0)
 		(*l)->wall = 1;
 	return (1);
 }

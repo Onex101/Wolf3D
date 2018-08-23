@@ -6,24 +6,24 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 18:14:21 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:37:52 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
 
-void		free_str_arr(char **str_arr)
-{
-	int i;
+// void		old_free_str_arr(char **str_arr)
+// {
+// 	int i;
 
-	i = 0;
-	while (str_arr[i])
-		i++;
-	while (--i >= 0)
-		free(str_arr[i]);
-	free(str_arr);
-}
+// 	i = 0;
+// 	while (str_arr[i])
+// 		i++;
+// 	while (--i >= 0)
+// 		free(str_arr[i]);
+// 	free(str_arr);
+// }
 
 void		map_check(char *line, int *c_line)
 {
@@ -48,11 +48,12 @@ void		create_vertex_list(t_map *map, char *line, int y)
 	{
 		v = new_vertex(x, y, ft_atoi(s[x]));
 		vector_add(map->ver_vec, v);
+		v = NULL;
 		x++;
 	}
 	map->max_x = x;
 	ft_strclr(line);
-	free_str_arr(s);
+	// free_str_arr(s);
 }
 
 int			get_line(int fd, char *line, t_map *map, int *c_line)
@@ -68,10 +69,13 @@ int			get_line(int fd, char *line, t_map *map, int *c_line)
 		map_check(line, c_line);
 		ft_putendl(line);
 		create_vertex_list(map, line, y);
-		if (line)
-			free(line);
+		// if (line)
+		// 	free(line);
+		ft_strclr(line);
 		y++;
 	}
+	if (line)
+		free(line);
 	return (y);
 }
 

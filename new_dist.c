@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 18:14:22 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 21:42:53 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 
 	x_diff = l->map->x - l->p->x;
 	y_diff = l->map->y - l->p->y;
+	printf("l->map->x = %d l->map-> = %d l->p->x = %f l->p->y = %f ",  l->map->x, l->map->y, l->p->x, l->p->y);
 	if (l->side == 0)
 		perp_wall_dist = (x_diff + (1 - l->step->x) / 2) / l->ray_dir->x;
 	else
 		perp_wall_dist = (y_diff + (1 - l->step->y) / 2) / l->ray_dir->y;
+	printf("perp_wall_dist = %f\n", perp_wall_dist);
 	ft_draw_ray(p, l, perp_wall_dist, par);
 	if (perp_wall_dist == 0)
 		dist = 0;

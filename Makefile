@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/23 18:14:18 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/23 20:52:05 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ FILES =		main.c	\
 			trig_tables_2.c	\
 			draw_line.c	\
 			draw.c	\
-			read_map.c	\
 			vertex.c	\
 			draw_map.c	\
 			ft_struct_init_1.c	\
@@ -30,6 +29,7 @@ FILES =		main.c	\
 			dda_assign.c 	\
 			dda_step.c 	\
 			wall_check.c	\
+			# read_map.c	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 

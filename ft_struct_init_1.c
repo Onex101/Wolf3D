@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 16:16:27 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:52:46 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ t_pnt		*ft_pnt_init(int x, int y)
 	return (new);
 }
 
-t_line		*ft_line_init(double x1, double y1, double x2, double y2)
+t_ln		*ft_line_init(double x1, double y1, double x2, double y2)
 {
-	t_line	*new;
+	t_ln	*new;
 
 	new = NULL;
-	if ((new = (t_line *)malloc(sizeof(t_line))))
+	if ((new = (t_ln *)malloc(sizeof(t_ln))))
 	{
 		new->x1 = x1;
 		new->y1 = y1;
