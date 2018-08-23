@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 10:38:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 11:31:18 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,8 @@ typedef struct	s_param
 	void		*mlx;
 	void		*win;
 	int			*buf;
-	int			*m_buf;
 	void		*image;
-	void		*m_image;
 	int			s_line;
-	int			m_line;
 }				t_param;
 
 typedef struct		s_dda
