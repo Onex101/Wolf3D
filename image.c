@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/01 06:31:29 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/13 07:35:41 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:21:44 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	clear_image(t_param *p)
 }
 
 void	pixel_put_image(t_param *p, int x, int y, int c)
-{	
-	if (WIDTH * y + x < p->s_line * HEIGHT && WIDTH * y + x >= 0)
+{
+	if (x >= WIDTH || y >= HEIGHT || y < 0 || x < 0)
+		return ;
+	if (WIDTH * y + x < WIDTH * HEIGHT && WIDTH * y + x >= 0)
 		p->buf[WIDTH * y + x] = mlx_get_color_value(p->mlx, c);
-}
+ }

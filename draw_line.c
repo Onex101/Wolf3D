@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xeno <xeno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 11:48:50 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/15 18:13:51 by xeno             ###   ########.fr       */
+/*   Updated: 2018/08/23 14:22:01 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static	void	d_line(t_line_p line, t_pnt *pnt1, t_pnt *pnt2, t_param *p)
 	{
 		// ft_putendl("d_line test 1");
 		// printf("pnt1 x = %d y = %d\npnt2 x = %d y = %d\n", pnt1->x, pnt1->y, pnt2->x, pnt2->y);
-		pixel_put_image(p, pnt1->x, pnt1->y, line.c);
+		//if (pnt1->x > 0 && pnt2->y > 0)
+			pixel_put_image(p, pnt1->x, pnt1->y, line.c);
 		// ft_putendl("d_line test 2");
 		if (pnt1->x == pnt2->x && pnt1->y == pnt2->y)
 			break ;

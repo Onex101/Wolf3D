@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 11:11:52 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 14:08:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,10 +180,10 @@ void	draw_col(double dist, int col, t_param *p, t_dda *l)
 	colour = get_wall_colour(dist, l);
 	bot_wall = -dist / 2 + HEIGHT / 2;
 	if (bot_wall < 0)
-		bot_wall = 0;
+		bot_wall = 1;
 	top_wall = dist / 2 + HEIGHT / 2;
 	if (top_wall > HEIGHT)
-		top_wall = HEIGHT;
+		top_wall = HEIGHT - 1;
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;

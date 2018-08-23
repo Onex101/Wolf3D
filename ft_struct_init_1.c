@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_struct_init_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:23:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 11:27:11 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_player	*ft_player_init(t_param *par)
 		return (NULL);
 	p->pos = ft_vec2_init(365, 419);
 	p->dir = ft_vec2_init(0, 0);
+	p->m_pos = (t_pnt){0 , 0};
 	p->v_angle = 90;
 	p->hght = 32;
 	p->spd = 16;
