@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/16 07:22:43 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 11:07:02 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		free_str_arr(char **str_arr)
 	free(str_arr);
 }
 
-void			map_check(char *line, int *c_line)
+void		map_check(char *line, int *c_line)
 {
 	if (!*c_line)
 		*c_line = ft_strcount(line, ' ');
@@ -55,6 +55,24 @@ void		create_vertex_list(t_map *map, char *line, int y)
 	free_str_arr(s);
 }
 
+int			get_line(int fd, char *line, t_map *map, int *c_line)
+{
+	size_t		y;
+	int			gnl;
+
+	y = 0;
+	while ((gnl = get_next_line(fd, &line)) != 0)
+	{
+		if (gnl < 0)
+			return (0);
+		map_check(line, c_line);
+		ft_putendl(line);
+		create_vertex_list(map, line, y);
+		y++;
+	}
+	return (y);
+}
+
 t_map		*read_map(int fd)
 {
 	char		*line;
@@ -67,21 +85,15 @@ t_map		*read_map(int fd)
 	if (!(map->ver_vec = (t_vector *)malloc(sizeof(t_vector))))
 		return (NULL);
 	vector_init(map->ver_vec);
-	y = 0;
 	c_line = 0;
-	while (get_next_line(fd, &line) != 0)
-	{
-		map_check(line, &c_line);
-		ft_putendl(line);
-		create_vertex_list(map, line, y);
-		y++;
-	}
+	line = NULL;
+	y = get_line(fd, line, map, &c_line);
 	if (y == 0 && c_line == 0)
 	{
 		ft_putendl("Error: File does not exist");
 		exit(0);
 	}
-	// free(line);
+	free(line);
 	map->max_y = y;
 	close(fd);
 	return (map);
