@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/20 11:24:05 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 09:29:11 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,32 +136,32 @@ void	draw_back(t_param *p)
 	}
 }
 
-void	draw_col(double dist, int col, t_param *p, int c)
+void	draw_col(double dist, int col, t_param *p, t_dda *l)
 {
 	int bot_wall;
 	int top_wall;
 	t_pnt pnt1;
 	t_pnt pnt2;
-	int colour;
+	int c;
 
-	colour = 250 - (dist / 700) * 250;
-	// c = colour;
-	if (colour < 20)
-		colour = 20;
-	if (colour > 250)
-		colour = 250;
-	colour = rgb_to_hex(colour, colour, colour);
-	bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
-	top_wall = HEIGHT - bot_wall;
-	if (bot_wall >= HEIGHT)
-		bot_wall = HEIGHT - 1;
-	c++;
+	bot_wall = -dist / 2 + HEIGHT / 2;
+	if (bot_wall < 0)
+		bot_wall = 0;
+	top_wall = dist / 2 + HEIGHT / 2;
+	if (top_wall > HEIGHT)
+		top_wall = HEIGHT;
+	c = 0;
+	if (l->side == 0 && l->step->x == 1)
+		c = 0xFFFF00;
+	else if (l->side == 0 && l->step->x == -1)
+		c = 0xFF00FF;
+	else if (l->side == 1 && l->step->y == 1)
+		c = 0x00FFFF;
+	else if (l->side == 1 && l->step->y == -1)
+		c = 0x5500FF;
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;
 	pnt2.y = bot_wall;
-	//printf("pnt1.x = [%d] | pnt2.y = [%d] | pnt2.x = [%d] | pnt2.y = [%d]\n", pnt1.x, pnt1.y, pnt2.x, pnt2.y);
-	//ft_putendl("Draw_line");
 	draw_line(&pnt1, &pnt2, p, c);
-	//ft_putendl("Draw_line done");
 }

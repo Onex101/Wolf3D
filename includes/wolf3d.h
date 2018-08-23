@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 18:10:23 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 09:45:07 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,9 @@ typedef struct		s_dda
 	t_vec2			*p;
 	t_vec2			*dir;
 	t_vec2			*plane;
-	t_vec2			*rayDir;
-	t_vec2			*sideDist; // initially the dist the ray has to travel from its start position to the first x-side and the first y-side. Later in the code their meaning will slightly change
-	t_vec2			*deltaDist; //the distance the ray has to travel to go from one xside and yside to the next
+	t_vec2			*ray_dir;
+	t_vec2			*side_dist; // initially the dist the ray has to travel from its start position to the first x-side and the first y-side. Later in the code their meaning will slightly change
+	t_vec2			*delta_dist; //the distance the ray has to travel to go from one xside and yside to the next
 	t_pnt			*map; //current square on the map the ray is in
 	t_pnt			*step; //what direction  to step in x or y direction(either +1 or -1)
 	int				wall; //which wall was hit
@@ -153,7 +153,7 @@ void			draw_f_square(t_pnt *s, t_param *p, int c);
 void			draw_player(t_param *p);
 void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
-void			draw_col(double dist, int col, t_param *p, int c);
+// void			draw_col(double dist, int col, t_param *p, int c);
 void			draw_back(t_param *p);
 int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);

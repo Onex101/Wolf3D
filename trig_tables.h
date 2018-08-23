@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 21:36:27 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:06:35 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,23 @@ typedef struct		s_dist
 	double			a;
 	int				n;
 	int				wall;
-	int				v_wall;
 	int				h_wall;
+	int				v_wall;
 }					t_dist;
 
 //
-t_vec2			*ft_dirVec(t_player *p, t_tables *t);
-t_vec2			*ft_planeVec(t_player *p, t_tables *t);
-t_vec2			*ft_rayDirVec(t_vec2 *dir, t_vec2 *plane, double cameraX);
+void			ft_step_calc(t_dda **l);
+int				ft_border(t_dda *l, t_param *par);
+int				ft_check_block(t_dda **l, t_param *par);
+int				ft_dda(t_dda **l, t_param *par);
+void			draw_col(double dist, int col, t_param *p, t_dda *l);
+t_vec2			*ft_dir_vec(t_player *p, t_tables *t);
+t_vec2			*ft_plane_vec(t_player *p, t_tables *t);
+t_vec2			*ft_ray_dir_vec(t_vec2 *dir, t_vec2 *plane, double cameraX);
 t_dda			*ft_dda_init(t_player *p, t_param *par, t_tables *t);
-t_vec2			*ft_init_deltaDist(t_vec2 *rayDir);
+t_vec2			*ft_init_delta_dist(t_vec2 *rayDir);
+int				ft_dda_assign(t_dda **l, t_param *par, double cam_x);
+void			ft_dda_unassign(t_dda **l);
 //
 void			init_step_tables(t_tables *tables);
 void			init_fish_table(t_tables *tables);

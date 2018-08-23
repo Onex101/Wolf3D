@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 17:27:01 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/22 21:36:26 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 09:51:22 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,53 @@
 #include "trig_tables.h"
 #include <stdio.h>
 
-t_vec2	*ft_dirVec(t_player *p, t_tables *t)
+t_vec2	*ft_dir_vec(t_player *p, t_tables *t)
 {
 	t_vec2	*new;
-	// double	c;
-	// double	s;
 
 	new = NULL;
 	if ((new = (t_vec2 *)malloc(sizeof(t_vec2))))
 	{
-		// new->x = t->t_cos[p->v_angle * 10] + ply->x;
-		// new->y = t->t_sin[p->v_angle * 10] + ply->y;
-		// c = t->t_cos[p->v_angle * 10];
-		// s = t->t_sin[p->v_angle * 10];
 		new->x = t->t_cos[p->v_angle * 10];
 		new->y = t->t_sin[p->v_angle * 10];
-		printf("Dir x = %f y = %f\n", new->x, new->y);
 		return (new);
 	}
 	return (NULL);
 }
 
-t_vec2	*ft_planeVec(t_player *p, t_tables *t)
+t_vec2	*ft_plane_vec(t_player *p, t_tables *t)
 {
 	t_vec2	*new;
-	int		c;
-	int		s;
-	// int		dist;
+	double	c;
+	double	s;
+	double	x;
+	double	y;
 
 	new = NULL;
 	if ((new = (t_vec2 *)malloc(sizeof(t_vec2))))
 	{
-		// a = (dir->x - p->x) * (dir->x - p->x);
-		// b = (dir->y - p->y) * (dir->y - p->y);
 		if (!p)
 			return (NULL);
-		// new->x = dir->x + (1 / sqrt(3)) * (-(p->y - dir->y));
-		// new->y = dir->y + (1 / sqrt(3)) * (-(p->x - dir->x));
-		new->x = 1;
-		new->y = (1 / sqrt(3));
+		x = 0;
+		y = (1 / sqrt(3));
 		c = t->t_cos[p->v_angle * 10];
 		s = t->t_sin[p->v_angle * 10];
-		//
-		new->x = (new->x * c) + (new->y * -s);
-		new->y = (new->x * s) + (new->y * c);
-		
-		printf("Plane x = %f y = %f\n", new->x, new->y);
+		new->x = (x * c) + (y * (-s));
+		new->y = (x * s) + (y * c);
 		return (new);
 	}
 	return (NULL);
 }
 
-t_vec2	*ft_rayDirVec(t_vec2 *dir, t_vec2 *plane, double cameraX)
+t_vec2	*ft_ray_dir_vec(t_vec2 *dir, t_vec2 *plane, double cam_x)
 {
 	t_vec2	*new;
 
 	new = NULL;
 	if ((new = (t_vec2 *)malloc(sizeof(t_vec2))))
 	{
-		new->x = dir->x + plane->x * cameraX;
-		new->y = dir->y + plane->y * cameraX;
-		printf("RayDir x = %f y = %f\n", new->x, new->y);
+		new->x = dir->x + plane->x * cam_x;
+		new->y = dir->y + plane->y * cam_x;
 		return (new);
 	}
 	return (NULL);
@@ -84,42 +70,43 @@ t_dda	*ft_dda_init(t_player *p, t_param *par, t_tables *t)
 {
 	t_dda	*new;
 
-	new = NULL;
-	if ((new = (t_dda *)malloc(sizeof(t_dda))))
-	{
-		if (!(new->p = ft_vec2_init((p->pos->x / par->x_scale), (p->pos->y / par->y_scale))))
-			return (NULL);
-		printf("player pos x = %f y = %f\n", new->p->x, new->p->y);
-		if (!(new->dir = ft_dirVec(p, t)))
-			return (NULL);
-		if (!(new->plane = ft_planeVec(p, t)))
-			return (NULL);
-		new->rayDir = NULL;
-		new->sideDist = NULL;
-		new->deltaDist = NULL;
-		new->map = NULL;
-		new->step = NULL;
-		new->wall = 0;
-		new->side = 0;
-		new->pos = NULL;
-		return (new);
-	}
-	return (NULL);
+	if (!(new = (t_dda *)malloc(sizeof(t_dda))))
+		return (NULL);
+	if (!(new->p = ft_vec2_init(0, (p->pos->y / par->y_scale))))
+		return (NULL);
+	new->p->x = (p->pos->x / par->x_scale);
+	if (!(new->dir = ft_dir_vec(p, t)))
+		return (NULL);
+	if (!(new->plane = ft_plane_vec(p, t)))
+		return (NULL);
+	new->ray_dir = NULL;
+	new->side_dist = NULL;
+	new->delta_dist = NULL;
+	new->map = NULL;
+	new->step = NULL;
+	new->wall = 0;
+	new->side = 0;
+	new->pos = NULL;
+	return (new);
 }
 
-t_vec2	*ft_init_deltaDist(t_vec2 *rayDir)
+t_vec2	*ft_init_delta_dist(t_vec2 *ray_dir)
 {
-	t_vec2	*deltaDist;
+	t_vec2	*delta_dist;
+	double	x;
+	double	y;
 
-	if (!(deltaDist = ft_vec2_init(0, 0)))
-			return (NULL);
-	if (rayDir->x == 0)
-		deltaDist->x = 0;
+	x = (ray_dir->x * ray_dir->x);
+	y = (ray_dir->y * ray_dir->y);
+	if (!(delta_dist = ft_vec2_init(0, 0)))
+		return (NULL);
+	if (ray_dir->x == 0)
+		delta_dist->x = 0;
 	else
-		deltaDist->x = sqrt(1 + (rayDir->y * rayDir->y) / (rayDir->x * rayDir->x));
-	if (rayDir->y == 0)
-		deltaDist->y = 0;
+		delta_dist->x = sqrt(1 + y / x);
+	if (ray_dir->y == 0)
+		delta_dist->y = 0;
 	else
-		deltaDist->y = sqrt(1 +  (rayDir->x * rayDir->x)/ (rayDir->y * rayDir->y));
-	return (deltaDist);
+		delta_dist->y = sqrt(1 + x / y);
+	return (delta_dist);
 }
