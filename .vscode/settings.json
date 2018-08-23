@@ -7,10 +7,6 @@
 		"__locale": "c",
 		"cmath": "c",
 		"stdio.h": "c",
-		"ios": "cpp",
-		"memory": "c",
-		"utility": "c",
-		"trig_tables.h": "c",
-		"wolf3d.h": "c"
+		"ios": "cpp"
 	}
 }

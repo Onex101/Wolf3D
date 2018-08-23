@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 14:20:52 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 15:16:30 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		free_str_arr(char **str_arr)
 	i = 0;
 	while (str_arr[i])
 		i++;
-	while (--i)
+	while (--i >= 0)
 		free(str_arr[i]);
 	free(str_arr);
 }

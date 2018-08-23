@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 15:10:46 by shillebr         ###   ########.fr       */
+/*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
+/*   Updated: 2018/08/23 15:14:37 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,8 @@ typedef struct	s_param
 	void		*mlx;
 	void		*win;
 	int			*buf;
-	int			*m_buf;
 	void		*image;
-	void		*m_image;
 	int			s_line;
-	int			m_line;
 }				t_param;
 
 typedef struct		s_dda
