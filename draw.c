@@ -6,7 +6,7 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 11:07:09 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 11:11:52 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,22 +178,15 @@ void	draw_col(double dist, int col, t_param *p, t_dda *l)
 	int colour;
 
 	colour = get_wall_colour(dist, l);
-	// bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
-	// top_wall = HEIGHT - bot_wall;
 	bot_wall = -dist / 2 + HEIGHT / 2;
 	if (bot_wall < 0)
 		bot_wall = 0;
 	top_wall = dist / 2 + HEIGHT / 2;
 	if (top_wall > HEIGHT)
 		top_wall = HEIGHT;
-	// if (bot_wall >= HEIGHT)
-	// 	bot_wall = HEIGHT - 1;
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;
 	pnt2.y = bot_wall;
-	//printf("pnt1.x = [%d] | pnt2.y = [%d] | pnt2.x = [%d] | pnt2.y = [%d]\n", pnt1.x, pnt1.y, pnt2.x, pnt2.y);
-	//ft_putendl("Draw_line");
 	draw_line(&pnt1, &pnt2, p, colour);
-	//ft_putendl("Draw_line done");
 }
