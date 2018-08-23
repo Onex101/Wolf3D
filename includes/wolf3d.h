@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 10:31:57 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:38:14 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,14 @@ typedef struct		s_dda
 	t_vec2			*dir;
 	t_vec2			*plane;
 	t_vec2			*ray_dir;
-	t_vec2			*side_dist; // initially the dist the ray has to travel from its start position to the first x-side and the first y-side. Later in the code their meaning will slightly change
-	t_vec2			*delta_dist; //the distance the ray has to travel to go from one xside and yside to the next
-	t_pnt			*map; //current square on the map the ray is in
-	t_pnt			*step; //what direction  to step in x or y direction(either +1 or -1)
-	int				wall; //which wall was hit
+	t_vec2			*side_dist;
+	t_vec2			*delta_dist;
+	t_pnt			*map;
+	t_pnt			*step;
+	int				wall;
 	int				side;
-	void			*pos; //was wall hit?
+	int				col;
+	void			*pos;
 }					t_dda;
 
 

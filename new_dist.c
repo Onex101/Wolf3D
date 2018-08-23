@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:12:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:40:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 	double	x_diff;
 	double	y_diff;
 
-	//Calculate distance projected on camera direction
 	x_diff = l->map->x - l->p->x;
 	y_diff = l->map->y - l->p->y;
 	if (l->side == 0)
@@ -48,7 +47,7 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 		perp_wall_dist = (y_diff + (1 - l->step->y) / 2) / l->ray_dir->y;
 	ft_draw_ray(p, l, perp_wall_dist, par);
 	dist = (int)(HEIGHT / perp_wall_dist);
-	if (col <= WIDTH)
+	if (col < WIDTH)
 		draw_col(dist, col, par, l);
 }
 
@@ -57,13 +56,11 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 	t_dda	*l;
 	double	cam_x;
 	double	x;
-	int		col;
 
 	if (!(l = ft_dda_init(p, par, t)))
 		return (0);
 	x = 0;
-	col = 0;
-	while (x < FOV)
+	while (x < FOV && l->col++ < WIDTH)
 	{
 		cam_x = (2 * x) / (double)(FOV) - 1;
 		if (!(ft_dda_assign(&l, par, cam_x)))
@@ -71,11 +68,11 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 		ft_step_calc(&l);
 		if (!(ft_dda(&l, par)))
 			return (0);
-		ft_d_calc(l, par, p, col);
+		ft_d_calc(l, par, p, l->col);
 		ft_dda_unassign(&l);
 		x += 0.05;
-		col++;
 	}
+	free(l);
 	return (1);
 }
 

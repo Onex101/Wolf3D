@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 17:27:01 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 09:51:22 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:38:48 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_dda	*ft_dda_init(t_player *p, t_param *par, t_tables *t)
 	new->step = NULL;
 	new->wall = 0;
 	new->side = 0;
+	new->col = 0;
 	new->pos = NULL;
 	return (new);
 }
