@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 10:32:09 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:26:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ typedef	struct	s_tables
 	double		t_step_y[WIDTH * 6 + 1];
 }					t_tables;
 
+int				wall_block_check(t_vec3 *i,  t_param *par);
+int				wall_check(t_param *par, t_player *p, int x_inc, int y_inc);
+void			move_forward(t_param *p, double x_change, double y_change);
+void			move_back(t_param *p, double x_change, double y_change);
 void			ft_step_calc(t_dda **l);
 int				ft_border(t_dda *l, t_param *par);
 int				ft_check_block(t_dda **l, t_param *par);
@@ -60,6 +64,7 @@ double			cos_d(double i);
 double			sin_d(double i);
 double			tan_d(double i);
 void			ft_vec2_free(t_vec2 *p);
+void			ft_vec3_free(t_vec3 *p);
 void			ft_pnt_free(t_pnt *p);
 void			ft_line_free(t_line *p);
 void			ft_player_free(t_player *p);

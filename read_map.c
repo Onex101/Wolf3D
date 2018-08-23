@@ -6,12 +6,16 @@
 /*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/08/23 14:28:11 by xrhoda           ###   ########.fr       */
+=======
+/*   Updated: 2018/08/23 14:20:52 by shillebr         ###   ########.fr       */
+>>>>>>> 7ee11ca7eec4d9a1257fbeb3730acb7712218098
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "wolf3d.h"
+#include "trig_tables.h"
 
 void		free_str_arr(char **str_arr)
 {
