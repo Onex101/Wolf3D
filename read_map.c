@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 17:37:22 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 18:14:21 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int			get_line(int fd, char *line, t_map *map, int *c_line)
 		map_check(line, c_line);
 		ft_putendl(line);
 		create_vertex_list(map, line, y);
+		if (line)
+			free(line);
 		y++;
 	}
 	return (y);
@@ -93,7 +95,6 @@ t_map		*read_map(int fd)
 		ft_putendl("Error: File does not exist");
 		exit(0);
 	}
-	free(line);
 	map->max_y = y;
 	close(fd);
 	return (map);

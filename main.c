@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 17:44:25 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 18:20:38 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ int		main(void)
 	void *mlx;
 	void *win;
 
+	mlx = NULL;
+	win = NULL;
 	mlx =  mlx_init();
-	if (!mlx)
+	if (mlx == NULL)
 		return (-1);
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D");
 	if (!win)
@@ -62,21 +64,21 @@ int		main(void)
 		return (-1);
 	// if (argc == 2)
 	// {
-		if ((param = (t_param *)malloc(sizeof(t_param))))
-		{
-			param->mlx = mlx;
-			param->win = win;
-			if (!(init_param(param, "maps/8")))
-				return (-1);
-			if (!param->mlx)
-				return (-1);
-			mlx_hook(win, 2, 0, key_press, param);
-			mlx_loop_hook(mlx, draw_to_screen, param);
-			if (mlx)
-				mlx_loop(mlx);
-			else
-				return (-1);
-		}
+	if ((param = (t_param *)malloc(sizeof(t_param))))
+	{
+		param->mlx = mlx;
+		param->win = win;
+		if (!(init_param(param, "maps/8")))
+			return (-1);
+		if (!param->mlx)
+			return (-1);
+		mlx_hook(win, 2, 0, key_press, param);
+		mlx_loop_hook(mlx, draw_to_screen, param);
+		if (mlx)
+			mlx_loop(mlx);
+		else
+			return (-1);
+	}
 	//}
 	return (0);
 }
