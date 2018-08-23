@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trig_tables.c                                      :+:      :+:    :+:   */
+/*   trig_tables_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/24 07:05:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/22 09:21:29 by shillebr         ###   ########.fr       */
+/*   Created: 2018/08/23 14:49:38 by shillebr          #+#    #+#             */
+/*   Updated: 2018/08/23 15:00:25 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "trig_tables.h"
 
-double	cos_d(double i)
-{
-	return(cos((i * M_PI) / 180));
-}
-
-double	sin_d(double i)
-{
-	return(sin((i * M_PI) / 180) );
-}
-
-double	tan_d(double i)
-{
-	return(tan((i * M_PI) / 180));
-}
-
-void	init_trig_tables(t_tables *tables)
+void		init_trig_tables(t_tables *tables)
 {
 	int		i;
 	double	rad;
@@ -46,21 +31,23 @@ void	init_trig_tables(t_tables *tables)
 	}
 }
 
-void	init_fish_table(t_tables *tables)
+void		init_step_up(t_tables *tables, int i)
 {
-	int		i;
-	double	rad;
-
-	i = -ANGLE_30;
-	while (i < ANGLE_30)
+	if (i >= ANGLE_0 && i <= ANGLE_180)
 	{
-		rad = (i * M_PI) / ANGLE_180;
-		tables->t_fish[(int)ANGLE_30 + i] = (1 / cos(rad));
-		i++;
+		tables->t_step_y[i] = WALL_HEIGHT / tables->t_tan[i];
+		if (tables->t_step_y[i] < 0)
+			tables->t_step_y[i] *= -1;
+	}
+	else
+	{
+		tables->t_step_y[i] = WALL_HEIGHT / tables->t_tan[i];
+		if (tables->t_step_y[i] > 0)
+			tables->t_step_y[i] *= -1;
 	}
 }
 
-void	init_step_tables(t_tables *tables)
+void		init_step_tables(t_tables *tables)
 {
 	int i;
 
@@ -79,39 +66,23 @@ void	init_step_tables(t_tables *tables)
 			if (tables->t_step_x[i] < 0)
 				tables->t_step_x[i] *= -1;
 		}
-		if (i >= ANGLE_0 && i <= ANGLE_180)
-		{
-			tables->t_step_y[i] = WALL_HEIGHT / tables->t_tan[i];
-			if (tables->t_step_y[i] < 0)
-				tables->t_step_y[i] *= -1;
-		}
-		else
-		{
-			tables->t_step_y[i] = WALL_HEIGHT / tables->t_tan[i];
-			if (tables->t_step_y[i] > 0)
-				tables->t_step_y[i] *= -1;
-		}
+		init_step_up(tables, i);
 		i++;
 	}
 }
 
-void    init_tables(t_tables *tables)
+void		init_tables(t_tables *tables)
 {
-    init_trig_tables(tables);
-    init_step_tables(tables);
-    init_fish_table(tables);
+	init_trig_tables(tables);
+	init_step_tables(tables);
 }
 
 t_tables	*get_tables(void)
 {
-	// static t_tables *t;
 	t_tables *t;
 
-	// if (!t)
-	// {
 	if (!(t = (t_tables *)malloc(sizeof(t_tables))))
 		return (NULL);
 	init_tables(t);
-	// }
 	return (t);
 }

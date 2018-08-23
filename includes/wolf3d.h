@@ -6,14 +6,14 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 14:20:48 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 15:10:46 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #if defined(__APPLE__) && defined(__MACH__)
-#  define OS 1
+#	define OS 1
 #elif defined(__linux__)
-#  define OS 0
+#	define OS 0
 #endif
 
 #ifndef WOLF3D_H
@@ -23,11 +23,10 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
-# include "libft.h"
-# include "vector.h"
-//
 # include <fcntl.h>
 # include <stdio.h>
+# include "libft.h"
+# include "vector.h"
 
 # define M_WIDTH 8
 # define M_HEIGHT 8
@@ -43,7 +42,7 @@
 # define P_COL 0xFF0000
 # define PLANE_DIST 277
 # define SKY_COL 0x000055
-# define FLOOR_COL 0x550000 
+# define FLOOR_COL 0x550000
 
 typedef struct	s_vec2
 {
@@ -138,7 +137,6 @@ typedef struct		s_dda
 	void			*pos;
 }					t_dda;
 
-
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 t_vec3			*new_vertex(double x, double y, double z);
 t_map			*read_map(int fd);
@@ -146,16 +144,16 @@ void			draw_map(t_param *p);
 void			draw_f_square(t_pnt *s, t_param *p, int c);
 void			draw_player(t_param *p);
 void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
-void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
+void			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
 void			draw_back(t_param *p);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);
 int				key_press(int keycode, t_param *p);
 void			mac_key_press(int keycode, t_param *p);
 void			linux_key_press(int keycode, t_param *p);
-t_vec2  		*ft_vec2_init(double x, double y);
+t_vec2			*ft_vec2_init(double x, double y);
 t_vec3			*ft_vec3_init(double x, double y, double z);
-t_pnt  			*ft_pnt_init(int x, int y);
+t_pnt			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
 t_player		*ft_player_init(t_param *par);
 double			ft_dist_calc(t_player *p, t_vec2 *dist, double ang);

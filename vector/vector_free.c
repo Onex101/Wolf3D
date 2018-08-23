@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vector_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 08:34:37 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/17 08:34:38 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 14:59:52 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-void vector_free(t_vector *v)
+void	vector_free(t_vector *v)
 {
 	free(v->items);
 }

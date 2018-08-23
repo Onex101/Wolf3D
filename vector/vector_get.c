@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 08:34:44 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/07/17 08:34:45 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 14:30:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	*vector_get(t_vector *v, int index)
 	{
 		return (v->items[index]);
 	}
-	return NULL;
+	return (NULL);
 }
