@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:23:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:25:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ t_vec2		*ft_vec2_init(double x, double y)
 	{
 		new->x = x;
 		new->y = y;
+	}
+	return (new);
+}
+
+t_vec3		*ft_vec3_init(double x, double y, double z)
+{
+	t_vec3	*new;
+
+	new = NULL;
+	if ((new = (t_vec3 *)malloc(sizeof(t_vec3))))
+	{
+		new->x = x;
+		new->y = y;
+		new->y = z;
 	}
 	return (new);
 }

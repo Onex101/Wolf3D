@@ -6,15 +6,12 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 10:49:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:20:06 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
 
 int		init_param(t_param *p, char *str)
 {

@@ -6,13 +6,12 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 11:10:15 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:20:57 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <stdio.h>
 
 void	ft_draw_ray(t_player *p, t_dda *l, double perp_wall_dist, t_param *par)
 {

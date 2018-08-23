@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 10:38:14 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:20:48 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <math.h>
 # include "libft.h"
 # include "vector.h"
+//
+# include <fcntl.h>
+# include <stdio.h>
 
 # define M_WIDTH 8
 # define M_HEIGHT 8
@@ -151,6 +154,7 @@ int				key_press(int keycode, t_param *p);
 void			mac_key_press(int keycode, t_param *p);
 void			linux_key_press(int keycode, t_param *p);
 t_vec2  		*ft_vec2_init(double x, double y);
+t_vec3			*ft_vec3_init(double x, double y, double z);
 t_pnt  			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
 t_player		*ft_player_init(t_param *par);

@@ -6,13 +6,12 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 17:27:01 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:38:48 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 14:20:13 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <stdio.h>
 
 t_vec2	*ft_dir_vec(t_player *p, t_tables *t)
 {
