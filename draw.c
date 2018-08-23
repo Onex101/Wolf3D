@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 09:29:11 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 11:07:09 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static void draw_c(t_param *p, int x, int y, int c)
 	pnt1.y = y;
 	pnt2.x = p->player->pos->x;
 	pnt2.y = p->player->pos->y;
+	ft_putendl("draw_c test 1");
 	draw_line(&pnt1, &pnt2, p, c);
+	ft_putendl("draw_c test 2");
 }
 
 void draw_f_circle(t_pnt *s, t_param *p, int radius, int c)
@@ -49,6 +51,7 @@ void draw_f_circle(t_pnt *s, t_param *p, int radius, int c)
 	int dy = 1;
 	int err = dx - (radius << 1);
 
+	ft_putendl("draw_circle test 1");
 	while (x >= y)
 	{
 		draw_c(p, s->x + x, s->y + y, c);
@@ -59,6 +62,7 @@ void draw_f_circle(t_pnt *s, t_param *p, int radius, int c)
 		draw_c(p, s->x - y, s->y - x, c);
 		draw_c(p, s->x + y, s->y - x, c);
 		draw_c(p, s->x + x, s->y - y, c);
+		ft_putendl("draw_circle test 1_1");
 
 		if (err <= 0)
 		{
@@ -74,6 +78,7 @@ void draw_f_circle(t_pnt *s, t_param *p, int radius, int c)
 			err += dx - (radius << 1);
 		}
 	}
+	ft_putendl("draw_circle test 2");
 }
 
 void	draw_player(t_param *p)
@@ -82,7 +87,9 @@ void	draw_player(t_param *p)
 
 	s.x = (p->player->pos->x);
 	s.y = (p->player->pos->y);
+	ft_putendl("draw_player test 1");
 	draw_f_circle(&s, p, TILE_SIZE / 8, P_COL);
+	ft_putendl("draw_player test 2");
 }
 
 void	draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c)
@@ -136,32 +143,57 @@ void	draw_back(t_param *p)
 	}
 }
 
+int	check_wall_color(int c1, int c2, int colour)
+{
+	if (colour < c1)
+		colour = c1;
+	if (colour > c2)
+		colour = c2;
+	return (colour);
+}
+
+int get_wall_colour(double dis, t_dda *l)
+{
+	int colour;
+
+	colour = (dis / 640) * 255;
+	colour = check_wall_color(22, 255, colour);
+	if (l->side == 0 && l->step->x == 1)
+		colour = rgb_to_hex(colour, 0, 0);
+	else if (l->side == 0 && l->step->x == -1)
+		colour = rgb_to_hex(0, 0, colour);
+	else if (l->side == 1 && l->step->y == 1)
+		colour = rgb_to_hex(0, colour, 0);
+	else if (l->side == 1 && l->step->y == -1)
+		colour = rgb_to_hex(colour, colour, 0);
+	return (colour);
+}
+
 void	draw_col(double dist, int col, t_param *p, t_dda *l)
 {
 	int bot_wall;
 	int top_wall;
 	t_pnt pnt1;
 	t_pnt pnt2;
-	int c;
+	int colour;
 
+	colour = get_wall_colour(dist, l);
+	// bot_wall = (HEIGHT / 2) + ((WALL_HEIGHT * (PLANE_DIST / dist))) * 0.5;
+	// top_wall = HEIGHT - bot_wall;
 	bot_wall = -dist / 2 + HEIGHT / 2;
 	if (bot_wall < 0)
 		bot_wall = 0;
 	top_wall = dist / 2 + HEIGHT / 2;
 	if (top_wall > HEIGHT)
 		top_wall = HEIGHT;
-	c = 0;
-	if (l->side == 0 && l->step->x == 1)
-		c = 0xFFFF00;
-	else if (l->side == 0 && l->step->x == -1)
-		c = 0xFF00FF;
-	else if (l->side == 1 && l->step->y == 1)
-		c = 0x00FFFF;
-	else if (l->side == 1 && l->step->y == -1)
-		c = 0x5500FF;
+	// if (bot_wall >= HEIGHT)
+	// 	bot_wall = HEIGHT - 1;
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;
 	pnt2.y = bot_wall;
-	draw_line(&pnt1, &pnt2, p, c);
+	//printf("pnt1.x = [%d] | pnt2.y = [%d] | pnt2.x = [%d] | pnt2.y = [%d]\n", pnt1.x, pnt1.y, pnt2.x, pnt2.y);
+	//ft_putendl("Draw_line");
+	draw_line(&pnt1, &pnt2, p, colour);
+	//ft_putendl("Draw_line done");
 }
