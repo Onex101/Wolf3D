@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 16:19:41 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 17:08:25 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <limits.h>
 # include "libft.h"
 # include "vector.h"
 # include "os.h"

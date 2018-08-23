@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 16:15:05 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 17:31:01 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 	else
 		perp_wall_dist = (y_diff + (1 - l->step->y) / 2) / l->ray_dir->y;
 	ft_draw_ray(p, l, perp_wall_dist, par);
-	dist = (int)(HEIGHT / perp_wall_dist);
+	if (perp_wall_dist == 0)
+		dist = 0;
+	else
+		dist = (int)(HEIGHT / perp_wall_dist);
 	if (col < WIDTH)
 		draw_col(dist, col, par, l);
 }

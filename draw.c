@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 16:58:52 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 17:30:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,9 +145,9 @@ void	draw_back(t_param *p)
 
 int	check_wall_color(int c1, int c2, int colour)
 {
-	if (colour < c1)
+	if (colour < c1 && colour != 0)
 		colour = c1;
-	if (colour > c2)
+	else if (colour > c2 || colour == 0)
 		colour = c2;
 	return (colour);
 }
@@ -184,6 +184,11 @@ void	draw_col(double dist, int col, t_param *p, t_dda *l)
 	top_wall = dist / 2 + HEIGHT / 2;
 	if (top_wall > HEIGHT)
 		top_wall = HEIGHT - 1;
+	if (dist == 0)
+	{
+		bot_wall = 0;
+		top_wall = HEIGHT;
+	}
 	pnt1.x = col;
 	pnt1.y = top_wall;
 	pnt2.x = col;
