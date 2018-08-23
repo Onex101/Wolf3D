@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 15:20:25 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 16:15:02 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c)
 {
 	pnt1->x = p->player->m_pos.x; 
 	pnt1->y = p->player->m_pos.y;
-	pnt2->x = WIDTH + ((pnt2->x * MAP_SIZE) / p->x_scale);
+	pnt2->x = ((pnt2->x * MAP_SIZE) / p->x_scale);
 	pnt2->y = (pnt2->y * MAP_SIZE) / p->y_scale;
 	draw_line(pnt1, pnt2, p, c);
 }

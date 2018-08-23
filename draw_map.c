@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/16 11:58:42 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/23 15:53:01 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		draw_map(t_param *p)
 		while (i < M_WIDTH)
 		{
 			v = (t_vec3 *)vector_get(p->map->ver_vec, (M_WIDTH * j + i));
-			s.x = WIDTH + (i * MAP_SIZE);
+			s.x = (i * MAP_SIZE);
 			s.y = (j * MAP_SIZE);
 			if (v->z > 0)
 				draw_f_square(&s, p, WALL_COL);
@@ -38,6 +38,6 @@ void		draw_map(t_param *p)
 		}
 		j++;
 	}
-	p->player->m_pos.x = WIDTH + ((p->player->pos->x / p->x_scale) * MAP_SIZE);
+	p->player->m_pos.x = ((p->player->pos->x / p->x_scale) * MAP_SIZE);
 	p->player->m_pos.y = (p->player->pos->y / p->y_scale) * MAP_SIZE;
 }
