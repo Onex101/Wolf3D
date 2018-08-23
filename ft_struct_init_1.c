@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 07:43:05 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/20 10:29:10 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:23:59 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,46 +66,4 @@ t_player	*ft_player_init(t_param *par)
 	p->hght = 32;
 	p->spd = 16;
 	return (p);
-}
-
-t_dist	*ft_init_dist(t_player *p, t_tables *t)
-{
-	t_dist	*dist;
-
-	if ((dist = (t_dist *)malloc(sizeof(t_dist))))
-	{
-		if (!t)
-			return (NULL);
-		dist->t = t;
-		dist->h_dist = NULL;
-		dist->v_dist = NULL;
-		if(!(dist->p1 = ft_pnt_init((p->pos)->x, (p->pos)->y)))
-			return (NULL);
-		dist->p2 = NULL;
-		dist->h_distance = 0;
-		dist->v_distance = 0;
-		dist->a = 0;
-		dist->n = 1;
-		dist->wall = 0;
-		dist->v_wall = 0;
-		dist->h_wall = 0;
-		return (dist);
-	}
-	else
-		return (NULL);
-}
-
-t_check	*ft_init_check(void)
-{
-	t_check	*ret;
-
-	if (!(ret = (t_check *)malloc(sizeof(t_check))))
-		return (NULL);
-	if (!(ret->col = ft_vec2_init(0, 0)) || !(ret->arr = ft_pnt_init(0, 0)))
-		return (NULL);
-	ret->ya = 0;
-	ret->xa = 0;
-	ret->pos = NULL;
-	
-	return (ret);
 }

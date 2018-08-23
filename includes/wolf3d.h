@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 09:24:05 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 09:45:07 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 10:31:57 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,7 @@ typedef struct	s_param
 	int			s_line;
 	int			m_line;
 }				t_param;
-//
-typedef struct		s_check
-{
-	t_vec2			*col;
-	t_pnt			*arr;
-	double			ya;
-	double			xa;
-	void			*pos;
-	
-}					t_check;
-//
+
 typedef struct		s_dda
 {
 	t_vec2			*p;
@@ -153,29 +143,17 @@ void			draw_f_square(t_pnt *s, t_param *p, int c);
 void			draw_player(t_param *p);
 void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
 void 			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
-// void			draw_col(double dist, int col, t_param *p, int c);
 void			draw_back(t_param *p);
-int				a_ind(double d);
 void			pixel_put_image(t_param *p, int x, int y, int c);
 void			clear_image(t_param *p);
 int				key_press(int keycode, t_param *p);
 void			mac_key_press(int keycode, t_param *p);
 void			linux_key_press(int keycode, t_param *p);
-
-//
-void			ft_flip(t_check **h, t_player *p);
-double			ft_diff(t_player *p, double theta);
 t_vec2  		*ft_vec2_init(double x, double y);
 t_pnt  			*ft_pnt_init(int x, int y);
 t_line			*ft_line_init(double x1, double y1, double x2, double y2);
 t_player		*ft_player_init(t_param *par);
-int				ft_isup(double theta);
-int				ft_isdown(double theta);
-int				ft_isleft(double theta);
-int				ft_isright(double theta);
-// double			ft_dist_calc(t_player *p, t_vec2 *dist);
-double	ft_dist_calc(t_player *p, t_vec2 *dist, double ang);
-//
+double			ft_dist_calc(t_player *p, t_vec2 *dist, double ang);
 int				key_hook(int keycode, t_param *p);
 
 #endif

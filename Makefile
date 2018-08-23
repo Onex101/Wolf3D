@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/23 09:54:41 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/23 10:15:21 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,7 @@ FILES =		main.c	\
 			read_map.c	\
 			vertex.c	\
 			draw_map.c	\
-			ft_check_ray.c	\
 			ft_struct_init_1.c	\
-			ft_raycast.c	\
-			ft_ray_checks.c	\
-			a_ind.c	\
 			input.c	\
 			image.c	\
 			ft_struct_free.c	\
