@@ -6,15 +6,9 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 15:14:37 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 16:19:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#if defined(__APPLE__) && defined(__MACH__)
-#	define OS 1
-#elif defined(__linux__)
-#	define OS 0
-#endif
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
@@ -27,6 +21,7 @@
 # include <stdio.h>
 # include "libft.h"
 # include "vector.h"
+# include "os.h"
 
 # define M_WIDTH 8
 # define M_HEIGHT 8
