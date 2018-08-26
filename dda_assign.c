@@ -20,14 +20,18 @@ int		ft_dda_assign(t_dda **l, t_param *par, double cam_x)
 		return (0);
 	if (!((*l)->ray_dir = ft_ray_dir_vec((*l)->dir, (*l)->plane, cam_x)))
 		return (0);
+	printf("raydir x = %f y = %f\n", (*l)->ray_dir->x, (*l)->ray_dir->y);
 	if (!((*l)->map = ft_pnt_init(floor((*l)->p->x), floor((*l)->p->y))))
 		return (0);
+	printf("map x = %d y = %d\n", (*l)->map->x, (*l)->map->y);
 	if (!((*l)->step = ft_pnt_init(1, 1)))
 		return (0);
+	printf("step x = %d y = %d\n", (*l)->step->x, (*l)->step->y);
 	if (!((*l)->side_dist = ft_vec2_init(0, 0)))
 		return (0);
 	if (!((*l)->delta_dist = ft_init_delta_dist((*l)->ray_dir)))
 		return (0);
+	printf("delta dist x = %f y = %f\n", (*l)->delta_dist->x, (*l)->delta_dist->y);
 	return (1);
 }
 

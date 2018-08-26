@@ -98,6 +98,7 @@ t_vec2	*ft_init_delta_dist(t_vec2 *ray_dir)
 
 	x = (ray_dir->x * ray_dir->x);
 	y = (ray_dir->y * ray_dir->y);
+	printf("delta_dist x = %f y = %f\n", x, y);
 	if (!(delta_dist = ft_vec2_init(0, 0)))
 		return (NULL);
 	if (ray_dir->x == 0)

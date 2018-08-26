@@ -40,7 +40,7 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 
 	x_diff = l->map->x - l->p->x;
 	y_diff = l->map->y - l->p->y;
-	printf("l->map->x = %d l->map-> = %d l->p->x = %f l->p->y = %f ",  l->map->x, l->map->y, l->p->x, l->p->y);
+	printf("l->map->x = %d l->map-> = %d l->p->x = %f l->p->y = %f\n",  l->map->x, l->map->y, l->p->x, l->p->y);
 	if (l->side == 0)
 		perp_wall_dist = (x_diff + (1 - l->step->x) / 2) / l->ray_dir->x;
 	else
@@ -51,6 +51,7 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 		dist = 0;
 	else
 		dist = (int)(HEIGHT / perp_wall_dist);
+	printf("dist = %f\n", dist);
 	if (col < WIDTH)
 		draw_col(dist, col, par, l);
 }
@@ -67,6 +68,8 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 	while (x < FOV && l->col++ < WIDTH)
 	{
 		cam_x = (2 * x) / (double)(FOV) - 1;
+		printf("x = [%f] cam_x = [%f]\n", x, cam_x);
+		printf("player pos x = [%f] y = [%f] x_scale = %d y_scale = %d\ndda pos x = [%f] y = [%f]\n", p->pos->x, p->pos->y, par->x_scale, par->y_scale, l->p->x, l->p->y);
 		if (!(ft_dda_assign(&l, par, cam_x)))
 			return (0);
 		ft_step_calc(&l);

@@ -91,7 +91,7 @@ int		init_param(t_param **p, char *str, void *mlx)
 		return (0);	
 	if (!((*p)->map->max_y = ft_readfile(&(file), str)))
 		return (0);
-	(*p)->map->max_x = ft_strlen(file[0]);
+	(*p)->map->max_x = ft_wrdcnt(file[0], ' ');
 	(*p)->map->m = file;
 	(*p)->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	(*p)->x_scale = WIDTH / (*p)->map->max_x;
@@ -105,13 +105,17 @@ int		init_param(t_param **p, char *str, void *mlx)
 
 int		draw_to_screen(t_param *p)
 {
+	if (p->buf)
+	{
+		sleep(1);
+		clear_image(p);
+	}
 	draw_back(p);
 	draw_map(p);
 	if (!(ft_rays(p, p->player)))
 		return (0);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
-	if (p->buf)
-		clear_image(p);
+	
 	return (1);
 }
 
@@ -145,7 +149,8 @@ int		main(void)
 		if (!param->mlx)
 			return (-1);
 		printf("main 4\n");
-		mlx_hook(win, 2, 0, key_press, param);
+		// mlx_hook(win, 2, 0, key_press, param);
+		mlx_key_hook(win, key_press, param);
 		printf("main 5\n");
 		mlx_loop_hook(mlx, draw_to_screen, param);
 		printf("main 6\n");

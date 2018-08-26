@@ -38,6 +38,7 @@ void	ft_step_calc(t_dda **l)
 		(*l)->side_dist->y = ((*l)->map->y + 1 - (*l)->p->y);
 		(*l)->side_dist->y = (*l)->side_dist->y * (*l)->delta_dist->y;
 	}
+	printf("side_dist x = %f y = %f\n", (*l)->side_dist->x, (*l)->side_dist->y);
 }
 
 int		ft_border(t_dda *l, t_param *par)
