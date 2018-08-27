@@ -24,15 +24,11 @@ void	ft_make_line(char **dest, char *src)
 	j = 0;
 	while (src[i])
 	{
-		// printf("src[%d] = %c", i, src[i]);
 		if (src[i] != ' ' && src[i] != '\0')
 		{
-			
 			(*dest)[j] = src[i];
-			// printf("      dest[%d] = %d", j, (*dest)[j]);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 	(*dest)[j] = '\0';
@@ -47,20 +43,14 @@ void	ft_arradd(char ***file, char *line, int size)
 	if (!(tmp = (char **)ft_memalloc(sizeof(char *) * (size + 1))))
 		return ;
 	tmp[size] = NULL;
-	// printf("i = %d c = %d  line = %s\n", i, size, line);
 	while (i < size)
 	{
-		// printf("entered while\n");
 		tmp[i] = ft_strdup((*file)[i]);
-		// ft_putendl(tmp[i]);
 		i++;
 	}
-	// printf("i = %d\nline = %s\n", i, line);
 	if(!(tmp[i] = (char *)malloc(sizeof(char) * (ft_wrdcnt(line, ' ') + 1 ))))
 		return ;
-	// printf("test1\n");
 	ft_make_line(&tmp[i], line);
-	// printf("test2\n");
 	free(*file);
 	*file = tmp;
 }
@@ -82,12 +72,10 @@ int		ft_readfile(char ***f, char *av)
 	while (i != 0)
 	{
 		i = get_next_line(fd, &line);
-		// printf("i = %d    c = %d\n", i, c);
 		if (i != 0)
 		{
-			// printf("line = %s\n", line);
 			ft_arradd(f, line, c++);
-			ft_putendl(line);
+			// ft_putendl(line);
 			ft_strdel(&line);
 		}
 	}
@@ -115,7 +103,8 @@ int		init_param(t_param **p, char *str, void *mlx)
 
 	if (!(*p) || !str || !mlx)
 	{
-		printf("FAIL\n");
+		ft_putendl("FAIL");
+		return (0);
 	}
 	if (!((*p)->map = (t_map *)malloc(sizeof(t_map))))
 		return (0);	
@@ -125,9 +114,7 @@ int		init_param(t_param **p, char *str, void *mlx)
 	(*p)->map->m = file;
 	(*p)->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	(*p)->x_scale = WIDTH / (*p)->map->max_x;
-	printf("x_scale [%d] = WIDTH / map->max_x [%d]\n", (*p)->x_scale, (*p)->map->max_x);
 	(*p)->y_scale = HEIGHT / (*p)->map->max_y;
-	printf("y_scale [%d] = WIDTH / map->max_y [%d]\n", (*p)->y_scale, (*p)->map->max_y);
 	if(!((*p)->player = ft_player_init((*p))))
 		return (0);
 	(*p)->buf = (int *)mlx_get_data_addr((*p)->image, &bpp, &s_line, &end);
@@ -135,34 +122,10 @@ int		init_param(t_param **p, char *str, void *mlx)
 	return (1);
 }
 
-void	ft_print_arr(char **s, t_param *p)
-{
-	int		i;
-	int		j;
-
-	j = 0;
-	while (j < p->map->max_y )
-	{
-		i = 0;
-		while (s[j][i])
-		{
-			printf(" %c",s[j][i]);
-			i++;
-		}
-		printf("\n");
-		j++;
-	}
-}
-
 int		draw_to_screen(t_param *p)
 {
-	// ft_print_arr(p->map->m, p);
-	printf("test1\n");
 	if (p->buf)
-	{
-		// sleep(1);
 		clear_image(p);
-	}
 	draw_back(p);
 	draw_map(p);
 	if (!(ft_rays(p, p->player)))
@@ -186,27 +149,19 @@ int		main(void)
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D");
 	if (!win)
 		return (-1);
-	if (!win)
-		return (-1);
 	// if (argc == 2)
 	// {
 	if ((param = (t_param *)malloc(sizeof(t_param))))
 	{
 		if (!(init_param(&param, "maps/8", mlx)))
 			return (-1);
-		printf("main 1\n");
 		param->mlx = mlx;
-		printf("main 2\n");
 		param->win = win;
-		printf("main 3\n");
 		if (!param->mlx)
 			return (-1);
-		printf("main 4\n");
-		mlx_hook(win, 2, 0, key_press, param);
-		// mlx_key_hook(win, key_press, param);
-		printf("main 5\n");
+		// mlx_hook(win, 2, 0, key_press, param);
+		mlx_key_hook(win, key_press, param);
 		mlx_loop_hook(mlx, draw_to_screen, param);
-		printf("main 6\n");
 		if (mlx)
 			mlx_loop(mlx);
 		else
@@ -215,33 +170,3 @@ int		main(void)
 	//}
 	return (0);
 }
-
-// int		main(void)
-// {
-// 	void 	*mlx;
-// 	void 	*win;
-// 	t_param	*param;
-
-// 	mlx =  mlx_init();
-// 	// while (1)
-// 	// {
-// 		// if (mlx)
-// 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D");
-// 		// printf("main 1\n");
-// 	if (!(param = (t_param *)malloc(sizeof(t_param))))
-// 		return (-1);
-// 		// printf("main 2\n");
-// 	if (!(init_param(&param, "maps/8", mlx)))
-// 		return (-1);
-// 		// printf("main 3\n");
-// 		// free(param->map->m);
-// 		// free(param->map);
-// 		// free(param);
-// 		// if (win)
-// 	// mlx_destroy_window(mlx, win);
-// 		// win = NULL;
-// 	// }
-// 	// printf("main 4\n");
-// 	mlx_loop(mlx);
-// 	return (0);
-// }

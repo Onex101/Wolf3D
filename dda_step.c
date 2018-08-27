@@ -12,7 +12,6 @@
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <stdio.h>
 
 void	ft_step_calc(t_dda **l)
 {
@@ -38,7 +37,6 @@ void	ft_step_calc(t_dda **l)
 		(*l)->side_dist->y = ((*l)->map->y + 1 - (*l)->p->y);
 		(*l)->side_dist->y = (*l)->side_dist->y * (*l)->delta_dist->y;
 	}
-	printf("side_dist x = %f y = %f\n", (*l)->side_dist->x, (*l)->side_dist->y);
 }
 
 int		ft_border(t_dda *l, t_param *par)
@@ -67,10 +65,7 @@ int		ft_check_block(t_dda **l, t_param *par)
 {
 	int			v;
 
-	printf("In row:\n%s\nwhere block is = %c\n", (par->map)->m[(*l)->map->y], (par->map)->m[(*l)->map->y][(*l)->map->x]);
-	if (!(v = ((par->map)->m[(*l)->map->y][(*l)->map->x]  - '0')))
-		return (0);
-	printf("block = %d\n", v);
+	v = ((par->map)->m[(*l)->map->y][(*l)->map->x]  - '0');
 	if (v > 0)
 		(*l)->wall = 1;
 	return (1);
@@ -81,7 +76,6 @@ int		ft_dda(t_dda **l, t_param *par)
 	(*l)->wall = 0;
 	while ((*l)->wall == 0)
 	{
-		printf("l->map->y = %d l->map->x = %d\n", (*l)->map->y, (*l)->map->x);
 		if (((*l)->side_dist->x < (*l)->side_dist->y
 			&& (*l)->delta_dist->x != 0) ||
 			(*l)->delta_dist->y == 0)

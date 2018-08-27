@@ -12,8 +12,6 @@
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <math.h>
-#include <stdio.h>
 
 void	mac_rotate(int keycode, t_param *p)
 {

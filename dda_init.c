@@ -74,7 +74,6 @@ t_dda	*ft_dda_init(t_player *p, t_param *par, t_tables *t)
 	if (!(new->p = ft_vec2_init(0, (p->pos->y / par->y_scale))))
 		return (NULL);
 	new->p->x = (p->pos->x / par->x_scale);
-	printf("p->x [%f] = pox->x [%f] / par->x_scale [%d]\np->y [%f] = pox->y [%f] / par->y_scale [%d]\n", new->p->x, p->pos->x, par->x_scale, new->p->y, p->pos->y, par->y_scale);
 	if (!(new->dir = ft_dir_vec(p, t)))
 		return (NULL);
 	if (!(new->plane = ft_plane_vec(p, t)))
@@ -99,7 +98,6 @@ t_vec2	*ft_init_delta_dist(t_vec2 *ray_dir)
 
 	x = (ray_dir->x * ray_dir->x);
 	y = (ray_dir->y * ray_dir->y);
-	// printf("delta_dist x = %f y = %f\n", x, y);
 	if (!(delta_dist = ft_vec2_init(0, 0)))
 		return (NULL);
 	if (ray_dir->x == 0)
