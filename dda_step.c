@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:54:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 21:34:20 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:03:11 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ int		ft_check_block(t_dda **l, t_param *par)
 {
 	int			v;
 
-	if(!(v = (par->map->m)[(*l)->map->y][(*l)->map->x]))
+	printf("In row:\n%s\nwhere block is = %c\n", (par->map)->m[(*l)->map->y], (par->map)->m[(*l)->map->y][(*l)->map->x]);
+	if (!(v = ((par->map)->m[(*l)->map->y][(*l)->map->x]  - '0')))
 		return (0);
+	printf("block = %d\n", v);
 	if (v > 0)
 		(*l)->wall = 1;
 	return (1);
@@ -79,6 +81,7 @@ int		ft_dda(t_dda **l, t_param *par)
 	(*l)->wall = 0;
 	while ((*l)->wall == 0)
 	{
+		printf("l->map->y = %d l->map->x = %d\n", (*l)->map->y, (*l)->map->x);
 		if (((*l)->side_dist->x < (*l)->side_dist->y
 			&& (*l)->delta_dist->x != 0) ||
 			(*l)->delta_dist->y == 0)

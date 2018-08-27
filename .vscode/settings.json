@@ -10,6 +10,10 @@
 		"ios": "cpp",
 		"istream": "c",
 		"locale": "c",
-		"wolf3d.h": "c"
+		"wolf3d.h": "c",
+		"__bit_reference": "c",
+		"__split_buffer": "c",
+		"string": "c",
+		"vector": "c"
 	}
 }

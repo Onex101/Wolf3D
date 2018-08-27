@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 21:30:55 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/27 14:00:01 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,28 @@
 #include "trig_tables.h"
 
 
+void	ft_make_line(char **dest, char *src)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (src[i])
+	{
+		// printf("src[%d] = %c", i, src[i]);
+		if (src[i] != ' ' && src[i] != '\0')
+		{
+			
+			(*dest)[j] = src[i];
+			// printf("      dest[%d] = %d", j, (*dest)[j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	(*dest)[j] = '\0';
+}
 
 void	ft_arradd(char ***file, char *line, int size)
 {
@@ -25,13 +47,20 @@ void	ft_arradd(char ***file, char *line, int size)
 	if (!(tmp = (char **)ft_memalloc(sizeof(char *) * (size + 1))))
 		return ;
 	tmp[size] = NULL;
-	while (i < size - 1)
+	// printf("i = %d c = %d  line = %s\n", i, size, line);
+	while (i < size)
 	{
+		// printf("entered while\n");
 		tmp[i] = ft_strdup((*file)[i]);
 		// ft_putendl(tmp[i]);
 		i++;
 	}
-	tmp[i] = ft_strdup(line);
+	// printf("i = %d\nline = %s\n", i, line);
+	if(!(tmp[i] = (char *)malloc(sizeof(char) * (ft_wrdcnt(line, ' ') + 1 ))))
+		return ;
+	// printf("test1\n");
+	ft_make_line(&tmp[i], line);
+	// printf("test2\n");
 	free(*file);
 	*file = tmp;
 }
@@ -49,19 +78,20 @@ int		ft_readfile(char ***f, char *av)
 		return (-1);
 	**f = NULL;
 	i = 1;
-	c = 1;
+	c = 0;
 	while (i != 0)
 	{
 		i = get_next_line(fd, &line);
-		printf("i = %d\n", i);
+		// printf("i = %d    c = %d\n", i, c);
 		if (i != 0)
 		{
+			// printf("line = %s\n", line);
 			ft_arradd(f, line, c++);
 			ft_putendl(line);
 			ft_strdel(&line);
 		}
 	}
-	return (c - 1);
+	return (c);
 }
 
 void		free_str_arr(char **str_arr)
@@ -91,11 +121,13 @@ int		init_param(t_param **p, char *str, void *mlx)
 		return (0);	
 	if (!((*p)->map->max_y = ft_readfile(&(file), str)))
 		return (0);
-	(*p)->map->max_x = ft_wrdcnt(file[0], ' ');
+	(*p)->map->max_x = ft_strlen(file[0]);
 	(*p)->map->m = file;
 	(*p)->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	(*p)->x_scale = WIDTH / (*p)->map->max_x;
+	printf("x_scale [%d] = WIDTH / map->max_x [%d]\n", (*p)->x_scale, (*p)->map->max_x);
 	(*p)->y_scale = HEIGHT / (*p)->map->max_y;
+	printf("y_scale [%d] = WIDTH / map->max_y [%d]\n", (*p)->y_scale, (*p)->map->max_y);
 	if(!((*p)->player = ft_player_init((*p))))
 		return (0);
 	(*p)->buf = (int *)mlx_get_data_addr((*p)->image, &bpp, &s_line, &end);
@@ -103,11 +135,32 @@ int		init_param(t_param **p, char *str, void *mlx)
 	return (1);
 }
 
+void	ft_print_arr(char **s, t_param *p)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	while (j < p->map->max_y )
+	{
+		i = 0;
+		while (s[j][i])
+		{
+			printf(" %c",s[j][i]);
+			i++;
+		}
+		printf("\n");
+		j++;
+	}
+}
+
 int		draw_to_screen(t_param *p)
 {
+	// ft_print_arr(p->map->m, p);
+	printf("test1\n");
 	if (p->buf)
 	{
-		sleep(1);
+		// sleep(1);
 		clear_image(p);
 	}
 	draw_back(p);
@@ -149,8 +202,8 @@ int		main(void)
 		if (!param->mlx)
 			return (-1);
 		printf("main 4\n");
-		// mlx_hook(win, 2, 0, key_press, param);
-		mlx_key_hook(win, key_press, param);
+		mlx_hook(win, 2, 0, key_press, param);
+		// mlx_key_hook(win, key_press, param);
 		printf("main 5\n");
 		mlx_loop_hook(mlx, draw_to_screen, param);
 		printf("main 6\n");

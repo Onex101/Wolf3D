@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/23 20:56:28 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:28:15 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void		draw_map(t_param *p)
 		i = 0;
 		while (i < M_WIDTH)
 		{
-			v = p->map->m[j][i];
+			v = p->map->m[j][i]  - '0';
+			// printf("test map[%d][%d] v = %d\n", j, i, v);
 			s.x = (i * MAP_SIZE);
 			s.y = (j * MAP_SIZE);
 			if (v > 0)

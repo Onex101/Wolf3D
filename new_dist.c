@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 21:42:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/27 10:07:27 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 	{
 		cam_x = (2 * x) / (double)(FOV) - 1;
 		printf("x = [%f] cam_x = [%f]\n", x, cam_x);
-		printf("player pos x = [%f] y = [%f] x_scale = %d y_scale = %d\ndda pos x = [%f] y = [%f]\n", p->pos->x, p->pos->y, par->x_scale, par->y_scale, l->p->x, l->p->y);
+		printf("player pos x = [%f] y = [%f] p x = [%f] y = [%f] x_scale = %d y_scale = %d\ndda pos x = [%f] y = [%f]\n", p->pos->x, p->pos->y, l->p->x, l->p->y, par->x_scale, par->y_scale, l->p->x, l->p->y);
 		if (!(ft_dda_assign(&l, par, cam_x)))
 			return (0);
 		ft_step_calc(&l);
@@ -77,7 +77,8 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 			return (0);
 		ft_d_calc(l, par, p, l->col);
 		ft_dda_unassign(&l);
-		x += 0.05;
+		// x += 0.05;
+		x += 1;
 	}
 	free(l);
 	return (1);
