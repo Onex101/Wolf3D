@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/27 10:07:27 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:48:29 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_draw_ray(t_player *p, t_dda *l, double perp_wall_dist, t_param *par)
 
 	if (!(p1 = ft_pnt_init(p->pos->x, p->pos->y)))
 		exit(0);
+	// x2 = (((l->ray_dir->x) * perp_wall_dist) + l->p->x) * par->map->max_y;
+	// y2 = (((l->ray_dir->y) * perp_wall_dist) + l->p->y) * par->map->max_y;
 	x2 = (((l->ray_dir->x) * perp_wall_dist) + l->p->x) * par->x_scale;
 	y2 = (((l->ray_dir->y) * perp_wall_dist) + l->p->y) * par->y_scale;
 	if (!(p2 = ft_pnt_init(x2, y2)))
@@ -44,12 +46,13 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 		perp_wall_dist = (x_diff + (1 - l->step->x) / 2) / l->ray_dir->x;
 	else
 		perp_wall_dist = (y_diff + (1 - l->step->y) / 2) / l->ray_dir->y;
-	ft_draw_ray(p, l, perp_wall_dist, par);
+	if (par->scrn == 1)
+		ft_draw_ray(p, l, perp_wall_dist, par);
 	if (perp_wall_dist == 0)
 		dist = 0;
 	else
 		dist = (int)(HEIGHT / perp_wall_dist);
-	if (col < WIDTH)
+	if (col < WIDTH && par->scrn == 0)
 		draw_col(dist, col, par, l);
 }
 

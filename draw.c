@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:50:52 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 07:44:45 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:56:43 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	draw_f_square(t_pnt *s, t_param *p, int c)
 	int		i;
 
 	i = 0;
-	while (i <= (MAP_SIZE))
+	while (i < p->y_scale)
 	{
-		e.x = s->x + (MAP_SIZE);
+		e.x = s->x + p->x_scale;
 		e.y = s->y;
 		draw_line(&e, s, p, c); 
 		s->y++;
@@ -33,8 +33,8 @@ void	draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c)
 {
 	pnt1->x = p->player->m_pos.x; 
 	pnt1->y = p->player->m_pos.y;
-	pnt2->x = ((pnt2->x * MAP_SIZE) / p->x_scale);
-	pnt2->y = (pnt2->y * MAP_SIZE) / p->y_scale;
+	pnt2->x = pnt2->x ;
+	pnt2->y = pnt2->y;
 	draw_line(pnt1, pnt2, p, c);
 }
 

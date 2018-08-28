@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 08:40:28 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:45:48 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 # include "vector.h"
 # include "os.h"
 
-# define M_WIDTH 8
-# define M_HEIGHT 8
 # define MAP_SIZE 10
 
 # define WIDTH 640
@@ -113,6 +111,7 @@ typedef struct	s_param
 	int			*buf;
 	void		*image;
 	int			s_line;
+	int			scrn;
 }				t_param;
 
 typedef struct		s_dda

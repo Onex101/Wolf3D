@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 14:02:53 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 21:05:35 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 08:47:04 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			wall_check(t_param *par, t_player *p, int x_inc, int y_inc)
 		return (0);
 	arr->x = (p->pos->x + x_inc) / par->x_scale;
 	arr->y = (p->pos->y + y_inc) / par->y_scale;
-	ret = wall_block_check(par,p , arr);
+	ret = wall_block_check(par, p , arr);
 	ft_pnt_free(arr);
 	return (ret);
 }

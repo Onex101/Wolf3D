@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 08:44:00 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 09:48:49 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		init_param(t_param **p, char *str, void *mlx)
 		return (0);
 	(*p)->buf = (int *)mlx_get_data_addr((*p)->image, &bpp, &s_line, &end);
 	(*p)->s_line = s_line;
+	(*p)->scrn = 0;
 	return (1);
 }
 
@@ -46,8 +47,10 @@ int		draw_to_screen(t_param *p)
 {
 	if (p->buf)
 		clear_image(p);
-	draw_back(p);
-	draw_map(p);
+	if (p->scrn == 0)
+		draw_back(p);
+	if (p->scrn == 1)
+		draw_map(p);
 	if (!(ft_rays(p, p->player)))
 		return (0);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
@@ -55,38 +58,35 @@ int		draw_to_screen(t_param *p)
 	return (1);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
 	t_param	*param;
 	void *mlx;
 	void *win;
 
-	mlx = NULL;
-	win = NULL;
-	mlx =  mlx_init();
-	if (mlx == NULL)
+	if (!(mlx =  mlx_init()))
 		return (-1);
-	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D");
-	if (!win)
+	if (!(win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D")))
 		return (-1);
-	// if (argc == 2)
-	// {
+	if (ac != 2)
+	{
+		ft_putendl("Incorrect number of inputs.");
+		return (0);
+	}
 	if ((param = (t_param *)malloc(sizeof(t_param))))
 	{
-		if (!(init_param(&param, "maps/8", mlx)))
+		if (!(init_param(&param, av[1], mlx)))
 			return (-1);
 		param->mlx = mlx;
 		param->win = win;
 		if (!param->mlx)
 			return (-1);
 		mlx_hook(win, 2, 0, key_press, param);
-		// mlx_key_hook(win, key_press, param);
 		mlx_loop_hook(mlx, draw_to_screen, param);
 		if (mlx)
 			mlx_loop(mlx);
 		else
 			return (-1);
 	}
-	//}
 	return (0);
 }
