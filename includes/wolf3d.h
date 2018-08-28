@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 11:04:57 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:18:49 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ int					ft_readfile(char ***f, char *av);
 ** Main File
 */
 int					draw_to_screen(t_param *p);
-int					init_param(t_param **p, char *str, void *mlx);
+int					map_init(t_param **p, char *str);
+int					init_param(t_param **p, char *str);
 
 #endif

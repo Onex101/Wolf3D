@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 10:09:03 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:23:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,35 @@
 #include <string.h>
 #include "trig_tables.h"
 
-int		init_param(t_param **p, char *str, void *mlx)
+int		map_init(t_param **p, char *str)
 {
-	static int	bpp;
-	static int	s_line;
-	static int	end;
 	char		**file;
 
-	if (!(*p) || !str || !mlx)
-	{
-		ft_putendl("FAIL");
-		return (0);
-	}
 	if (!((*p)->map = (t_map *)malloc(sizeof(t_map))))
 		return (0);
 	if (!((*p)->map->max_y = ft_readfile(&(file), str)))
 		return (0);
 	(*p)->map->max_x = ft_strlen(file[0]);
 	(*p)->map->m = file;
-	(*p)->image = mlx_new_image(mlx, WIDTH, HEIGHT);
+	return (1);
+}
+
+int		init_param(t_param **p, char *str)
+{
+	static int	bpp;
+	static int	s_line;
+	static int	end;
+
+	if (!(*p) || !str)
+		return (0);
+	if (!map_init(p, str))
+		return (0);
+	(*p)->mlx = mlx_init();
+	if ((*p)->mlx)
+		(*p)->win = mlx_new_window((*p)->mlx, WIDTH, HEIGHT, "Wolf3D");
+	if (!((*p)->mlx) || !((*p)->win))
+		return (-1);
+	(*p)->image = mlx_new_image((*p)->mlx, WIDTH, HEIGHT);
 	(*p)->x_scale = WIDTH / (*p)->map->max_x;
 	(*p)->y_scale = HEIGHT / (*p)->map->max_y;
 	if (!((*p)->player = ft_player_init((*p))))
@@ -60,13 +70,7 @@ int		draw_to_screen(t_param *p)
 int		main(int ac, char **av)
 {
 	t_param	*param;
-	void	*mlx;
-	void	*win;
 
-	if (!(mlx = mlx_init()))
-		return (-1);
-	if (!(win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D")))
-		return (-1);
 	if (ac != 2)
 	{
 		ft_putendl("Incorrect number of inputs.");
@@ -74,18 +78,13 @@ int		main(int ac, char **av)
 	}
 	if ((param = (t_param *)malloc(sizeof(t_param))))
 	{
-		if (!(init_param(&param, av[1], mlx)))
+		if (!(init_param(&param, av[1])))
 			return (-1);
-		param->mlx = mlx;
-		param->win = win;
 		if (!param->mlx)
 			return (-1);
-		mlx_hook(win, 2, 0, key_press, param);
-		mlx_loop_hook(mlx, draw_to_screen, param);
-		if (mlx)
-			mlx_loop(mlx);
-		else
-			return (-1);
+		mlx_hook(param->win, 2, 0, key_press, param);
+		mlx_loop_hook(param->mlx, draw_to_screen, param);
+		mlx_loop(param->mlx);
 	}
 	return (0);
 }
