@@ -39,8 +39,24 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
 
 MLX_INC	= -I /usr/X11/include -g
-MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
-#MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+
+uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
+
+ifeq ($(uname_S),Linux)
+    MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+endif
+ifeq ($(uname_S),Darwin)
+    MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+endif
+
+# if [ "$(uname)" == "Darwin" ]; then
+#     MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit   
+# elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+#     MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+# figet = app
+# endif
+# MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+# MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 FT		= ./libft/
 FT_LIB	= $(addprefix $(FT),libft.a)

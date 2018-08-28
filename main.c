@@ -81,7 +81,8 @@ int		main(int ac, char **av)
 			return (-1);
 		if (!param->mlx)
 			return (-1);
-		mlx_hook(param->win, 2, 0, key_press, param);
+		// mlx_hook(param->win, 2, 0, key_press, param);
+		mlx_key_hook(param->win, key_press, param);
 		mlx_loop_hook(param->mlx, draw_to_screen, param);
 		mlx_loop(param->mlx);
 	}
