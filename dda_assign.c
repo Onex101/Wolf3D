@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:49:11 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 13:03:06 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:56:00 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_dda_unassign(t_dda **l)
 {
 	ft_vec2_free((*l)->ray_dir);
 	ft_pnt_free((*l)->map);
+	ft_pnt_free((*l)->step);
 	ft_vec2_free((*l)->side_dist);
 	ft_vec2_free((*l)->delta_dist);
 }
