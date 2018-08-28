@@ -6,13 +6,12 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:49:11 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/27 07:37:37 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:03:06 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
-#include <stdio.h>
 
 int		ft_dda_assign(t_dda **l, t_param *par, double cam_x)
 {

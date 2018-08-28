@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 12:18:49 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:31:32 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <limits.h>
+# include <string.h>
 # include "libft.h"
 # include "get_next_line.h"
 # include "vector.h"
@@ -208,7 +209,6 @@ void				draw_back(t_param *p);
 /*
 ** Read Map
 */
-void				free_str_arr(char **str_arr);
 void				ft_make_line(char **dest, char *src);
 void				ft_arradd(char ***file, char *line, int size);
 int					ft_readfile(char ***f, char *av);

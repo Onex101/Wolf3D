@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 11:08:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:42:39 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef	struct	s_tables
 }				t_tables;
 
 /*
+** Exit
+*/
+void			free_map(t_param *p);
+void			free_map_arr(char **str_arr, int y_max);
+void			ft_exit(t_param *p);
+/*
 ** Trig Tables 2
 */
 double			cos_d(double i);
@@ -55,6 +61,7 @@ t_tables		*get_tables(void);
 /*
 ** Struct Free 2
 */
+void			free_str_arr(char **str_arr);
 void			ft_player_free(t_player *p);
 void			ft_tables_free(t_tables *p);
 /*

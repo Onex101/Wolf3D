@@ -6,12 +6,11 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 12:23:41 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 12:29:16 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <string.h>
 #include "trig_tables.h"
 
 int		map_init(t_param **p, char *str)

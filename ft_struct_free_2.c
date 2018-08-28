@@ -6,20 +6,43 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 14:23:43 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 11:15:12 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:47:18 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
 
+void	free_str_arr(char **str_arr)
+{
+	int i;
+
+	i = 0;
+	while (str_arr[i])
+		i++;
+	while (--i >= 0)
+		free(str_arr[i]);
+	free(str_arr);
+}
+
+void	free_map_arr(char **str_arr, int y_max)
+{
+	int i;
+
+	i = y_max;
+	while (--i >= 0)
+		free(str_arr[i]);
+	free(str_arr);
+}
+
 void	ft_player_free(t_player *p)
 {
 	if (p)
 	{
-		ft_vec2_free(p->pos);
-		ft_vec2_free(p->dir);
-		ft_pnt_free((&(p->m_pos)));
+		if (p->pos)
+			ft_vec2_free(p->pos);
+		if (p->dir)
+			ft_vec2_free(p->dir);
 		free(p);
 		p = NULL;
 	}

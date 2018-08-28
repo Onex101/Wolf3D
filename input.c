@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 06:40:54 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 10:10:19 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 13:29:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	mac_key_press(int keycode, t_param *p)
 		p->scrn = p->scrn == 0 ? 1 : 0;
 	if (keycode == 53)
 	{
-		mlx_destroy_window(p->mlx, p->win);
-		exit(0);
+		// mlx_destroy_window(p->mlx, p->win);
+		ft_exit(p);
+		// exit(0);
 	}
 }
 

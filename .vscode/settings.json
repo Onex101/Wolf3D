@@ -14,6 +14,8 @@
 		"__bit_reference": "c",
 		"__split_buffer": "c",
 		"string": "c",
-		"vector": "c"
+		"vector": "c",
+		"trig_tables.h": "c",
+		"get_next_line.h": "c"
 	}
 }

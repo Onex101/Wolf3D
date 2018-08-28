@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/28 08:44:10 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/28 13:31:38 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ FILES =		main.c	\
 			read_map.c	\
 			draw_colour.c	\
 			draw_background.c	\
+			exit.c 	\
 
 OBJ = $(FILES:%.c=./obj/%.o)
 
