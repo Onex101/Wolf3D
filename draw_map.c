@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/28 09:53:49 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 10:02:37 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void		draw_map(t_param *p)
 				draw_f_square(&s, p, SPC_COL);
 		}
 	}
-	p->player->m_pos.x = (p->player->pos->x);
-	p->player->m_pos.y = (p->player->pos->y);
+	p->player->m_pos.x = p->player->pos->x;
+	p->player->m_pos.y = p->player->pos->y;
 }
