@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:54:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/27 10:03:11 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 11:13:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_check_block(t_dda **l, t_param *par)
 {
 	int			v;
 
-	v = ((par->map)->m[(*l)->map->y][(*l)->map->x]  - '0');
+	v = ((par->map)->m[(*l)->map->y][(*l)->map->x] - '0');
 	if (v > 0)
 		(*l)->wall = 1;
 	return (1);

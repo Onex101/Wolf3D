@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 07:39:27 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 08:41:09 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 11:12:24 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_sky(int *c, int *l, int *col, t_param *p)
 {
 	t_pnt s1;
 	t_pnt s2;
-	
+
 	*col = 22;
 	while (*l < HEIGHT)
 	{
@@ -36,7 +36,6 @@ void	draw_floor(int *c, int *l, int *col, t_param *p)
 	t_pnt s1;
 	t_pnt s2;
 
-	
 	while (*l < HEIGHT / 2)
 	{
 		*col = rgb_to_hex(0, 0, *c);

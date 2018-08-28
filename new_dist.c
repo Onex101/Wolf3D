@@ -6,14 +6,14 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 09:48:29 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 11:06:01 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
 
-void	ft_draw_ray(t_player *p, t_dda *l, double perp_wall_dist, t_param *par)
+void	ft_drawray(t_player *p, t_dda *l, double d, t_param *par)
 {
 	t_pnt	*p1;
 	t_pnt	*p2;
@@ -22,10 +22,8 @@ void	ft_draw_ray(t_player *p, t_dda *l, double perp_wall_dist, t_param *par)
 
 	if (!(p1 = ft_pnt_init(p->pos->x, p->pos->y)))
 		exit(0);
-	// x2 = (((l->ray_dir->x) * perp_wall_dist) + l->p->x) * par->map->max_y;
-	// y2 = (((l->ray_dir->y) * perp_wall_dist) + l->p->y) * par->map->max_y;
-	x2 = (((l->ray_dir->x) * perp_wall_dist) + l->p->x) * par->x_scale;
-	y2 = (((l->ray_dir->y) * perp_wall_dist) + l->p->y) * par->y_scale;
+	x2 = (((l->ray_dir->x) * d) + l->p->x) * par->x_scale;
+	y2 = (((l->ray_dir->y) * d) + l->p->y) * par->y_scale;
 	if (!(p2 = ft_pnt_init(x2, y2)))
 		exit(0);
 	draw_ray(p1, p2, par, 0xFFFFFF);
@@ -47,7 +45,7 @@ void	ft_d_calc(t_dda *l, t_param *par, t_player *p, int col)
 	else
 		perp_wall_dist = (y_diff + (1 - l->step->y) / 2) / l->ray_dir->y;
 	if (par->scrn == 1)
-		ft_draw_ray(p, l, perp_wall_dist, par);
+		ft_drawray(p, l, perp_wall_dist, par);
 	if (perp_wall_dist == 0)
 		dist = 0;
 	else

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 06:40:54 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 09:47:28 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 10:10:19 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ void	mac_key_press(int keycode, t_param *p)
 		move_forward(p, x_change, y_change);
 	else if (keycode == 1)
 		move_back(p, x_change, y_change);
-	if (keycode == 48) //TAB
-	{
+	if (keycode == 48)
 		p->scrn = p->scrn == 0 ? 1 : 0;
-	}
 	if (keycode == 53)
 	{
 		mlx_destroy_window(p->mlx, p->win);
@@ -82,6 +80,8 @@ void	linux_key_press(int keycode, t_param *p)
 		move_forward(p, x_change, y_change);
 	else if (keycode == 115)
 		move_back(p, x_change, y_change);
+	if (keycode == 65289)
+		p->scrn = p->scrn == 0 ? 1 : 0;
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(p->mlx, p->win);

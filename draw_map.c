@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 16:41:59 by xeno              #+#    #+#             */
-/*   Updated: 2018/08/28 10:02:37 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 11:15:08 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		draw_map(t_param *p)
 		i = -1;
 		while (++i < p->map->max_x)
 		{
-			v = p->map->m[j][i]  - '0';
+			v = p->map->m[j][i] - '0';
 			s = (t_pnt){(i * p->x_scale), (j * p->y_scale)};
 			if (v > 0)
 				draw_f_square(&s, p, WALL_COL);

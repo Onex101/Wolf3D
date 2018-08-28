@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 07:09:05 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 10:07:25 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_arradd(char ***file, char *line, int size)
 		tmp[i] = ft_strdup((*file)[i]);
 		i++;
 	}
-	if(!(tmp[i] = (char *)malloc(sizeof(char) * (ft_wrdcnt(line, ' ') + 1 ))))
+	if (!(tmp[i] = (char *)malloc(sizeof(char) * (ft_wrdcnt(line, ' ') + 1))))
 		return ;
 	ft_make_line(&tmp[i], line);
 	free(*file);
@@ -85,7 +85,6 @@ int		ft_readfile(char ***f, char *av)
 		if (i != 0)
 		{
 			ft_arradd(f, line, c++);
-			// ft_putendl(line);
 			ft_strdel(&line);
 		}
 	}

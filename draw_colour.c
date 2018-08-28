@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 07:14:37 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 07:46:10 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 11:14:07 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				check_wall_color(int c1, int c2, int colour)
 	return (colour);
 }
 
-int 			get_wall_colour(double dis, t_dda *l)
+int				get_wall_colour(double dis, t_dda *l)
 {
 	int colour;
 

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 10:01:51 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 10:09:03 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		init_param(t_param **p, char *str, void *mlx)
 		return (0);
 	}
 	if (!((*p)->map = (t_map *)malloc(sizeof(t_map))))
-		return (0);	
+		return (0);
 	if (!((*p)->map->max_y = ft_readfile(&(file), str)))
 		return (0);
 	(*p)->map->max_x = ft_strlen(file[0]);
@@ -35,7 +35,7 @@ int		init_param(t_param **p, char *str, void *mlx)
 	(*p)->image = mlx_new_image(mlx, WIDTH, HEIGHT);
 	(*p)->x_scale = WIDTH / (*p)->map->max_x;
 	(*p)->y_scale = HEIGHT / (*p)->map->max_y;
-	if(!((*p)->player = ft_player_init((*p))))
+	if (!((*p)->player = ft_player_init((*p))))
 		return (0);
 	(*p)->buf = (int *)mlx_get_data_addr((*p)->image, &bpp, &s_line, &end);
 	(*p)->s_line = s_line;
@@ -54,17 +54,16 @@ int		draw_to_screen(t_param *p)
 	if (!(ft_rays(p, p->player)))
 		return (0);
 	mlx_put_image_to_window(p->mlx, p->win, p->image, 0, 0);
-	
 	return (1);
 }
 
 int		main(int ac, char **av)
 {
 	t_param	*param;
-	void *mlx;
-	void *win;
+	void	*mlx;
+	void	*win;
 
-	if (!(mlx =  mlx_init()))
+	if (!(mlx = mlx_init()))
 		return (-1);
 	if (!(win = mlx_new_window(mlx, WIDTH, HEIGHT, "Wolf3D")))
 		return (-1);
