@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
+#    By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/27 07:10:06 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/28 07:16:48 by xrhoda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,8 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
 
 MLX_INC	= -I /usr/X11/include -g
-# MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
-MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
+MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+#MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 FT		= ./libft/
 FT_LIB	= $(addprefix $(FT),libft.a)

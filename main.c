@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/27 14:00:01 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 07:17:41 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,8 @@ int		main(void)
 		param->win = win;
 		if (!param->mlx)
 			return (-1);
-		// mlx_hook(win, 2, 0, key_press, param);
-		mlx_key_hook(win, key_press, param);
+		mlx_hook(win, 2, 0, key_press, param);
+		//mlx_key_hook(win, key_press, param);
 		mlx_loop_hook(mlx, draw_to_screen, param);
 		if (mlx)
 			mlx_loop(mlx);
