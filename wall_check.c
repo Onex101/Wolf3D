@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 14:02:53 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 14:19:38 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:32:28 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 int			wall_block_check(t_vec3 *i, t_param *par)
 {
 	int		ret;
-	void	*pos;
-	void	*posx;
-	void	*posy;
+	int		pos;
+	int		posx;
+	int		posy;
 
-	pos = vector_get(par->map->ver_vec, i->x);
-	posx = vector_get(par->map->ver_vec, i->y);
-	posy = vector_get(par->map->ver_vec, i->z);
-	if (((t_vec3 *)(pos))->z == 0)
+	pos = par->map->wall_list[(int)(i->x)];
+	posx = par->map->wall_list[(int)i->y];
+	posy = par->map->wall_list[(int)i->z];
+	if ((pos) == 0)
 		ret = 1;
-	else if (((t_vec3 *)(posx))->z == 0 && ((t_vec3 *)(posy))->z != 0)
+	else if ((posx == 0 && posy != 0))
 		ret = 2;
-	else if (((t_vec3 *)(posx))->z != 0 && ((t_vec3 *)(posy))->z == 0)
+	else if (posx != 0 && posy == 0)
 		ret = 3;
 	else
 		ret = 0;

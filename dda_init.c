@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 17:27:01 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 14:20:13 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:28:08 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_dda	*ft_dda_init(t_player *p, t_param *par, t_tables *t)
 	new->wall = 0;
 	new->side = 0;
 	new->col = 0;
-	new->pos = NULL;
+	new->pos = 0;
 	return (new);
 }
 

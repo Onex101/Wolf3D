@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 17:08:25 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:27:50 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct	s_line_p
 
 typedef struct	s_map
 {
-	t_vector	*ver_vec;
+	int			*wall_list;
 	int			max_x;
 	int			max_y;
 }				t_map;
@@ -127,7 +127,7 @@ typedef struct		s_dda
 	int				wall;
 	int				side;
 	int				col;
-	void			*pos;
+	int				pos;
 }					t_dda;
 
 void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);

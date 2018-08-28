@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 18:14:21 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:46:29 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,43 +36,36 @@ void		map_check(char *line, int *c_line)
 	}
 }
 
-void		create_vertex_list(t_map *map, char *line, int y)
-{
-	char			**s;
-	size_t			x;
-	t_vec3			*v;
-
-	x = 0;
-	s = ft_strsplit(line, ' ');
-	while (s[x])
-	{
-		v = new_vertex(x, y, ft_atoi(s[x]));
-		vector_add(map->ver_vec, v);
-		x++;
-	}
-	map->max_x = x;
-	ft_strclr(line);
-	free_str_arr(s);
-}
-
 int			get_line(int fd, char *line, t_map *map, int *c_line)
 {
 	size_t		y;
 	int			gnl;
+	char		**s;
+	int			x;
 
 	y = 0;
+	gnl = 0;
 	while ((gnl = get_next_line(fd, &line)) != 0)
 	{
 		if (gnl < 0)
 			return (0);
 		map_check(line, c_line);
 		ft_putendl(line);
-		create_vertex_list(map, line, y);
-		if (line)
-			free(line);
-		y++;
+		s = ft_strsplit(line, ' ');
+		x = 0;
+		while (s[x] != '\0')
+		{
+			map->wall_list[y] = ft_atoi(s[x]);
+			y++;
+			x++;
+		}
+		ft_strclr(line);
+		free_str_arr(s);
 	}
-	return (y);
+	if (line)
+			free(line);
+	map->max_x = x;
+	return (y / x);
 }
 
 t_map		*read_map(int fd)
@@ -84,9 +77,8 @@ t_map		*read_map(int fd)
 
 	if (!(map = (t_map *)malloc(sizeof(t_map))))
 		return (NULL);
-	if (!(map->ver_vec = (t_vector *)malloc(sizeof(t_vector))))
+	if (!(map->wall_list = (int *)malloc(64)))
 		return (NULL);
-	vector_init(map->ver_vec);
 	c_line = 0;
 	line = NULL;
 	y = get_line(fd, line, map, &c_line);

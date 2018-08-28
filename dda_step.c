@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_step.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 09:54:06 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 10:07:53 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:28:37 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int		ft_check_block(t_dda **l, t_param *par)
 	int		i;
 
 	i = par->map->max_x * (*l)->map->y + (*l)->map->x;
-	if (!((*l)->pos = vector_get(par->map->ver_vec, i)))
+	if (!((*l)->pos = par->map->wall_list[i]))
 		return (0);
-	if ((((t_vec3 *)((*l)->pos))->z) > 0)
+	if (((*l)->pos) > 0)
 		(*l)->wall = 1;
 	return (1);
 }

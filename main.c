@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 18:20:38 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 20:44:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "trig_tables.h"
 
 int		init_param(t_param *p, char *str)
+//int		init_param(t_param *p)
 {
 	static int bpp;
 	static int s_line;
@@ -22,14 +23,16 @@ int		init_param(t_param *p, char *str)
 
 	if (!(p->map = read_map(open(str, O_RDONLY))))
 		return (0);
-	p->image = mlx_new_image(p->mlx, WIDTH, HEIGHT);
+	if (!(p->image = mlx_new_image(p->mlx, WIDTH, HEIGHT)))
+	 	return (0);
 	p->x_scale = WIDTH / p->map->max_x;
 	p->y_scale = HEIGHT / p->map->max_y;
 	if(!(p->player = ft_player_init(p)))
 		return (0);
 	p->buf = (int *)mlx_get_data_addr(p->image, &bpp, &s_line, &end);
+	if (!p->buf)
+		return (0);
 	p->s_line = s_line;
-
 	return (1);
 }
 
@@ -64,21 +67,24 @@ int		main(void)
 		return (-1);
 	// if (argc == 2)
 	// {
-	if ((param = (t_param *)malloc(sizeof(t_param))))
-	{
-		param->mlx = mlx;
-		param->win = win;
-		if (!(init_param(param, "maps/8")))
-			return (-1);
-		if (!param->mlx)
-			return (-1);
-		mlx_hook(win, 2, 0, key_press, param);
-		mlx_loop_hook(mlx, draw_to_screen, param);
-		if (mlx)
-			mlx_loop(mlx);
-		else
-			return (-1);
-	}
-	//}
+		if ((param = (t_param *)malloc(sizeof(t_param))))
+		{
+			param->mlx = mlx;
+			param->win = win;
+			// while (1)
+			// {
+				if (!(init_param(param, "maps/8")))
+					return (-1);
+			// }
+			if (!param->mlx)
+				return (-1);
+			mlx_hook(win, 2, 0, key_press, param);
+			mlx_loop_hook(mlx, draw_to_screen, param);
+			if (mlx)
+				mlx_loop(mlx);
+			else
+				return (-1);
+		}
+	// }
 	return (0);
 }

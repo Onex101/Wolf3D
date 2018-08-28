@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 06:40:54 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 14:11:42 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/23 19:10:09 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	mac_key_press(int keycode, t_param *p)
 	double			y_change;
 	static t_tables	*tab;
 
+	if (keycode == 53)
+	{
+		mlx_destroy_window(p->mlx, p->win);
+		exit(0);
+	}
 	if (!tab)
 		tab = get_tables();
 	mac_rotate(keycode, p);
@@ -44,11 +49,6 @@ void	mac_key_press(int keycode, t_param *p)
 		move_forward(p, x_change, y_change);
 	else if (keycode == 1)
 		move_back(p, x_change, y_change);
-	if (keycode == 53)
-	{
-		mlx_destroy_window(p->mlx, p->win);
-		exit(0);
-	}
 }
 
 void	linux_rotate(int keycode, t_param *p)
