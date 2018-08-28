@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/23 20:54:56 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 08:40:28 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ typedef struct	s_line_p
 
 typedef struct	s_map
 {
-	// t_vector	*ver_vec;
 	char		**m;
 	int			max_x;
 	int			max_y;
@@ -132,26 +131,92 @@ typedef struct		s_dda
 	void			*pos;
 }					t_dda;
 
-void			draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
-t_vec3			*new_vertex(double x, double y, double z);
-t_map			*read_map(int fd);
-void			draw_map(t_param *p);
-void			draw_f_square(t_pnt *s, t_param *p, int c);
-void			draw_player(t_param *p);
-void			draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
-void			draw_f_circle(t_pnt *s, t_param *p, int radius, int c);
-void			draw_back(t_param *p);
-void			pixel_put_image(t_param *p, int x, int y, int c);
-void			clear_image(t_param *p);
-int				key_press(int keycode, t_param *p);
-void			mac_key_press(int keycode, t_param *p);
-void			linux_key_press(int keycode, t_param *p);
-t_vec2			*ft_vec2_init(double x, double y);
-t_vec3			*ft_vec3_init(double x, double y, double z);
-t_pnt			*ft_pnt_init(int x, int y);
-t_ln			*ft_line_init(double x1, double y1, double x2, double y2);
-t_player		*ft_player_init(t_param *par);
-double			ft_dist_calc(t_player *p, t_vec2 *dist, double ang);
-int				key_hook(int keycode, t_param *p);
+/*
+* Wall Check
+*/
+int					wall_block_check(t_param *par, t_player *p, t_pnt *arr);
+int					wall_check(t_param *par, t_player *p, int x_inc, int y_inc);
+void				move_forward(t_param *p, double x_change, double y_change);
+void				move_back(t_param *p, double x_change, double y_change);
+/*
+* Inputs
+*/
+void				mac_rotate(int keycode, t_param *p);
+void				mac_key_press(int keycode, t_param *p);
+void				linux_rotate(int keycode, t_param *p);
+void				linux_key_press(int keycode, t_param *p);
+int					key_press(int keycode, t_param *p);
+/*
+* Struct Free 1
+*/
+void				ft_vec2_free(t_vec2 *p);
+void				ft_vec3_free(t_vec3 *p);
+void				ft_pnt_free(t_pnt *p);
+void				ft_line_free(t_line *p);
+/*
+* Struct init
+*/
+t_vec2				*ft_vec2_init(double x, double y);
+t_vec3				*ft_vec3_init(double x, double y, double z);
+t_pnt				*ft_pnt_init(int x, int y);
+t_ln				*ft_line_init(double x1, double y1, double x2, double y2);
+t_player			*ft_player_init(t_param *par);
+/*
+* Draw Line
+*/
+void				pnt_check(t_pnt *pnt1);
+void				draw_line(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
+/*
+* Draw Colour
+*/
+unsigned long		rgb_to_hex(int r, int g, int b);
+int					check_wall_color(int c1, int c2, int colour);
+int 				get_wall_colour(double dis, t_dda *l);
+/*
+* Draw
+*/
+void				ft_draw_ray(t_player *p, t_dda *l, double perp_wall_dist, t_param *par);
+void				draw_f_square(t_pnt *s, t_param *p, int c);
+void				draw_ray(t_pnt *pnt1, t_pnt *pnt2, t_param *p, int c);
+void				draw_col(double dist, int col, t_param *p, t_dda *l);
+/*
+* Image
+*/
+void	clear_image(t_param *p);
+void	pixel_put_image(t_param *p, int x, int y, int c);
+/*
+* DDA Step
+*/
+void				ft_step_calc(t_dda **l);
+int					ft_border(t_dda *l, t_param *par);
+int					ft_check_block(t_dda **l, t_param *par);
+int					ft_dda(t_dda **l, t_param *par);
+/*
+* DDA Assign
+*/
+int					ft_dda_assign(t_dda **l, t_param *par, double cam_x);
+void				ft_dda_unassign(t_dda **l);
+/*
+* Draw Map
+*/
+void				draw_map(t_param *p);
+/*
+* Draw Background
+*/
+void				draw_sky(int *c, int *l, int *col, t_param *p);
+void				draw_floor(int *c, int *l, int *col, t_param *p);
+void				draw_back(t_param *p);
+/*
+* Read Map
+*/
+void				free_str_arr(char **str_arr);
+void				ft_make_line(char **dest, char *src);
+void				ft_arradd(char ***file, char *line, int size);
+int					ft_readfile(char ***f, char *av);
+/*
+* Main File
+*/
+int					draw_to_screen(t_param *p);
+int					init_param(t_param **p, char *str, void *mlx);
 
 #endif

@@ -6,100 +6,88 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/23 20:37:52 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 07:09:05 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 #include "trig_tables.h"
 
-// void		old_free_str_arr(char **str_arr)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (str_arr[i])
-// 		i++;
-// 	while (--i >= 0)
-// 		free(str_arr[i]);
-// 	free(str_arr);
-// }
-
-void		map_check(char *line, int *c_line)
+void	free_str_arr(char **str_arr)
 {
-	if (!*c_line)
-		*c_line = ft_strcount(line, ' ');
-	else if (*c_line != ft_strcount(line, ' '))
-	{
-		ft_putendl("Error: Map is not rectangular");
-		exit(0);
-	}
+	int i;
+
+	i = 0;
+	while (str_arr[i])
+		i++;
+	while (--i >= 0)
+		free(str_arr[i]);
+	free(str_arr);
 }
 
-void		create_vertex_list(t_map *map, char *line, int y)
+void	ft_make_line(char **dest, char *src)
 {
-	char			**s;
-	size_t			x;
-	t_vec3			*v;
+	int		i;
+	int		j;
 
-	x = 0;
-	s = ft_strsplit(line, ' ');
-	while (s[x])
+	i = 0;
+	j = 0;
+	while (src[i])
 	{
-		v = new_vertex(x, y, ft_atoi(s[x]));
-		vector_add(map->ver_vec, v);
-		v = NULL;
-		x++;
+		if (src[i] != ' ' && src[i] != '\0')
+		{
+			(*dest)[j] = src[i];
+			j++;
+		}
+		i++;
 	}
-	map->max_x = x;
-	ft_strclr(line);
-	// free_str_arr(s);
+	(*dest)[j] = '\0';
 }
 
-int			get_line(int fd, char *line, t_map *map, int *c_line)
+void	ft_arradd(char ***file, char *line, int size)
 {
-	size_t		y;
-	int			gnl;
+	char	**tmp;
+	int		i;
 
-	y = 0;
-	while ((gnl = get_next_line(fd, &line)) != 0)
+	i = 0;
+	if (!(tmp = (char **)ft_memalloc(sizeof(char *) * (size + 1))))
+		return ;
+	tmp[size] = NULL;
+	while (i < size)
 	{
-		if (gnl < 0)
-			return (0);
-		map_check(line, c_line);
-		ft_putendl(line);
-		create_vertex_list(map, line, y);
-		// if (line)
-		// 	free(line);
-		ft_strclr(line);
-		y++;
+		tmp[i] = ft_strdup((*file)[i]);
+		i++;
 	}
-	if (line)
-		free(line);
-	return (y);
+	if(!(tmp[i] = (char *)malloc(sizeof(char) * (ft_wrdcnt(line, ' ') + 1 ))))
+		return ;
+	ft_make_line(&tmp[i], line);
+	free(*file);
+	*file = tmp;
 }
 
-t_map		*read_map(int fd)
+int		ft_readfile(char ***f, char *av)
 {
-	char		*line;
-	t_map		*map;
-	size_t		y;
-	int			c_line;
+	char	*line;
+	int		i;
+	int		fd;
+	int		c;
 
-	if (!(map = (t_map *)malloc(sizeof(t_map))))
-		return (NULL);
-	if (!(map->ver_vec = (t_vector *)malloc(sizeof(t_vector))))
-		return (NULL);
-	vector_init(map->ver_vec);
-	c_line = 0;
-	line = NULL;
-	y = get_line(fd, line, map, &c_line);
-	if (y == 0 && c_line == 0)
+	if (!(*f = (char **)ft_memalloc(sizeof(char *))))
+		return (-1);
+	if ((fd = open(av, O_RDONLY)) == -1)
+		return (-1);
+	**f = NULL;
+	i = 1;
+	c = 0;
+	while (i != 0)
 	{
-		ft_putendl("Error: File does not exist");
-		exit(0);
+		i = get_next_line(fd, &line);
+		if (i != 0)
+		{
+			ft_arradd(f, line, c++);
+			// ft_putendl(line);
+			ft_strdel(&line);
+		}
 	}
-	map->max_y = y;
-	close(fd);
-	return (map);
+	return (c);
 }
