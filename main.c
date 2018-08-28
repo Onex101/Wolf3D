@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 09:48:49 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/28 10:01:51 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 int		init_param(t_param **p, char *str, void *mlx)
 {
-	static int bpp;
-	static int s_line;
-	static int end;
-	char	**file;
+	static int	bpp;
+	static int	s_line;
+	static int	end;
+	char		**file;
 
 	if (!(*p) || !str || !mlx)
 	{
