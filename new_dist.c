@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 11:06:01 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/29 08:16:09 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		ft_distance(t_param *par, t_player *p, t_tables *t)
 		ft_dda_unassign(&l);
 		x += 0.05;
 	}
-	free(l);
+	ft_dda_free(l);
 	return (1);
 }
 

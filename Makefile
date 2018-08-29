@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/28 13:31:38 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/29 07:50:12 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,15 +48,6 @@ endif
 ifeq ($(uname_S),Darwin)
     MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
 endif
-
-# if [ "$(uname)" == "Darwin" ]; then
-#     MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit   
-# elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-#     MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
-# figet = app
-# endif
-# MLX_LNK	= -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
-# MLX_LNK = -Wl,--no-as-needed -I /usr/local/include  -lX11 -lXext -L. /usr/local/lib/libmlx_Linux.a
 
 FT		= ./libft/
 FT_LIB	= $(addprefix $(FT),libft.a)

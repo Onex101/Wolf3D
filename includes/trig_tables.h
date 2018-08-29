@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 07:04:57 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 13:42:39 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/29 08:14:16 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_tables		*get_tables(void);
 void			free_str_arr(char **str_arr);
 void			ft_player_free(t_player *p);
 void			ft_tables_free(t_tables *p);
+void			ft_dda_free(t_dda *p);
 /*
 ** DDA Init
 */
