@@ -45,11 +45,7 @@ void	mac_key_press(int keycode, t_param *p)
 	if (keycode == 48)
 		p->scrn = p->scrn == 0 ? 1 : 0;
 	if (keycode == 53)
-	{
-		// mlx_destroy_window(p->mlx, p->win);
 		ft_exit(p);
-		// exit(0);
-	}
 }
 
 void	linux_rotate(int keycode, t_param *p)
@@ -84,10 +80,7 @@ void	linux_key_press(int keycode, t_param *p)
 	if (keycode == 65289)
 		p->scrn = p->scrn == 0 ? 1 : 0;
 	if (keycode == 65307)
-	{
-		mlx_destroy_window(p->mlx, p->win);
-		exit(0);
-	}
+		ft_exit(p);
 }
 
 int		key_press(int keycode, t_param *p)

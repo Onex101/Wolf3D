@@ -74,7 +74,7 @@ t_player	*ft_player_init(t_param *par)
 
 	if (!(p = (t_player *)malloc(sizeof(t_player))) || !par)
 		return (NULL);
-	p->pos = ft_vec2_init(365, 419);
+	p->pos = ft_vec2_init(365, 365);
 	p->dir = ft_vec2_init(0, 0);
 	p->m_pos = (t_pnt){0, 0};
 	p->v_angle = 90;

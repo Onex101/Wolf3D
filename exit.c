@@ -22,6 +22,13 @@ void	free_map(t_param *p)
 
 void	ft_exit(t_param *p)
 {
+	t_tables		*t;
+
+	if (!p)
+		return ;
+	t = get_tables();
+	if (t)
+		ft_tables_free(t);
 	if (p->map)
 		free_map(p);
 	if (p->player)
@@ -32,8 +39,5 @@ void	ft_exit(t_param *p)
 		mlx_destroy_window(p->mlx, p->win);
 	if (p->mlx)
 		free(p->mlx);
-	// if (p->buf)
-	// 	free(p->buf);
 	exit (0);
 }
-//tables

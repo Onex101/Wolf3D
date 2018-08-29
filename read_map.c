@@ -50,8 +50,6 @@ void	ft_arradd(char ***file, char *line, int size)
 		return ;
 	ft_make_line(&tmp[i], line);
 	free_map_arr(*file, size);
-	// free_str_arr(*file);
-	// free(*file);
 	*file = tmp;
 }
 
