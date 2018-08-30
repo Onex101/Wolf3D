@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/28 12:29:16 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/30 07:40:16 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		main(int ac, char **av)
 			mlx_hook(param->win, 2, 0, key_press, param);
 		else
 			mlx_hook(param->win, 2, 1, key_press, param);
+		mlx_hook(param->win, 17, 0, ft_exit, param);
 		mlx_loop_hook(param->mlx, draw_to_screen, param);
 		mlx_loop(param->mlx);
 	}
