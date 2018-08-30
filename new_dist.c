@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 09:52:46 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/29 08:16:09 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/30 07:16:34 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	ft_drawray(t_player *p, t_dda *l, double d, t_param *par)
 	int		y2;
 
 	if (!(p1 = ft_pnt_init(p->pos->x, p->pos->y)))
-		exit(0);
+		ft_exit(par);
 	x2 = (((l->ray_dir->x) * d) + l->p->x) * par->x_scale;
 	y2 = (((l->ray_dir->y) * d) + l->p->y) * par->y_scale;
 	if (!(p2 = ft_pnt_init(x2, y2)))
-		exit(0);
+		ft_exit(par);
 	draw_ray(p1, p2, par, 0xFFFFFF);
 	ft_pnt_free(p1);
 	ft_pnt_free(p2);
