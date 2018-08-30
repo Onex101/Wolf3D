@@ -6,7 +6,7 @@
 #    By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/25 07:42:02 by xrhoda            #+#    #+#              #
-#    Updated: 2018/08/29 07:50:12 by shillebr         ###   ########.fr        #
+#    Updated: 2018/08/30 07:03:50 by shillebr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,18 +54,13 @@ FT_LIB	= $(addprefix $(FT),libft.a)
 FT_INC	= -I ./libft/includes
 FT_LNK	= -L ./libft -l ft
 
-VECT	= ./vector/
-VECT_LIB = $(addprefix $(V_),vector.a)
-VECT_INC = -I ./vector/includes
-VECT_LNK = -L. ./vector/vector.a
-
 WOLF_INC = -I ./includes
 
-INCLUDES = $(WOLF_INC) $(FT_INC) $(MLX_INC) $(VECT_INC)
+INCLUDES = $(WOLF_INC) $(FT_INC) $(MLX_INC)
 
 OBJDIR	= ./obj/
 
-all: obj $(OBJ) $(FT_LIB) $(VECT_LIB) $(NAME)
+all: obj $(OBJ) $(FT_LIB) $(NAME)
 
 obj:
 	mkdir -p $(OBJDIR)
@@ -76,20 +71,15 @@ $(OBJDIR)%.o: %.c
 $(FT_LIB):
 	make -C $(FT)
 
-$(VECT_LIB):
-	make -C $(VECT)
-
 $(NAME):
-	$(CC) $(OBJ) $(INCLUDES) $(MLX_LNK) $(FT_LNK) $(VECT_LNK) $(VECT_INC) -lm -o $(NAME)
+	$(CC) $(OBJ) $(INCLUDES) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
 
 clean:
 	rm -rf $(OBJDIR)
 	make -C $(FT) clean
-	make -C $(VECT) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	make -C $(FT) fclean
-	make -C $(VECT) fclean
 
 re: fclean all

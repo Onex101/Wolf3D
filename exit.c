@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/28 12:29:22 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 13:57:59 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/30 07:00:40 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	ft_exit(t_param *p)
 		mlx_destroy_window(p->mlx, p->win);
 	if (p->mlx)
 		free(p->mlx);
-	exit (0);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 15:14:31 by shillebr          #+#    #+#             */
-/*   Updated: 2018/08/28 13:31:32 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/30 07:07:41 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@
 # include <string.h>
 # include "libft.h"
 # include "get_next_line.h"
-# include "vector.h"
 # include "os.h"
 
 # define MAP_SIZE 10
-
 # define WIDTH 640
 # define HEIGHT 640
 # define FOV 60
