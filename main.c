@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/31 08:23:57 by xrhoda           ###   ########.fr       */
+/*   Updated: 2018/08/31 09:01:43 by shillebr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		draw_to_screen(t_param *p)
 	return (1);
 }
 
-int	map_check(t_map *map)
+int		map_check(t_map *map)
 {
 	int i;
 	int j;
@@ -83,12 +83,12 @@ int	map_check(t_map *map)
 			if ((j == 0 || j == map->max_y - 1) && map->m[j][i] == '0')
 			{
 				ft_putendl("Error: invalid map (no border)");
-					return (0);
+				return (0);
 			}
 			if ((i == 0 || i == map->max_x - 1) && map->m[j][i] == '0')
 			{
 				ft_putendl("Error: invalid map (no border)");
-					return (0);
+				return (0);
 			}
 		}
 	}
