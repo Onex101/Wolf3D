@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 08:36:22 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/29 07:57:51 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/31 07:58:51 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ int		ft_readfile(char ***f, char *av)
 
 	if (!(*f = (char **)ft_memalloc(sizeof(char *))))
 		return (-1);
-	if ((fd = open(av, O_RDONLY)) == -1)
-		return (-1);
+	if (((fd = open(av, O_RDONLY))) == -1)
+		return (0);
 	**f = NULL;
 	i = 1;
 	c = 0;
 	while (i != 0)
 	{
 		i = get_next_line(fd, &line);
-		if (i != 0)
+		if (i > 0)
 		{
 			ft_arradd(f, line, c++);
 			ft_strdel(&line);

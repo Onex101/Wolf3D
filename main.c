@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shillebr <shillebr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xrhoda <xrhoda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:40:00 by xrhoda            #+#    #+#             */
-/*   Updated: 2018/08/30 07:40:16 by shillebr         ###   ########.fr       */
+/*   Updated: 2018/08/31 08:23:57 by xrhoda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int		map_init(t_param **p, char *str)
 	if (!((*p)->map = (t_map *)malloc(sizeof(t_map))))
 		return (0);
 	if (!((*p)->map->max_y = ft_readfile(&(file), str)))
+	{
+		ft_putendl("Invalid map");
 		return (0);
+	}
 	(*p)->map->max_x = ft_strlen(file[0]);
 	(*p)->map->m = file;
 	return (1);
@@ -66,6 +69,32 @@ int		draw_to_screen(t_param *p)
 	return (1);
 }
 
+int	map_check(t_map *map)
+{
+	int i;
+	int j;
+
+	j = -1;
+	while (++j < map->max_y)
+	{
+		i = -1;
+		while (++i < map->max_x)
+		{
+			if ((j == 0 || j == map->max_y - 1) && map->m[j][i] == '0')
+			{
+				ft_putendl("Error: invalid map (no border)");
+					return (0);
+			}
+			if ((i == 0 || i == map->max_x - 1) && map->m[j][i] == '0')
+			{
+				ft_putendl("Error: invalid map (no border)");
+					return (0);
+			}
+		}
+	}
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_param	*param;
@@ -79,6 +108,8 @@ int		main(int ac, char **av)
 	{
 		if (!(init_param(&param, av[1])))
 			return (-1);
+		if (!(map_check(param->map)))
+			ft_exit(param);
 		if (!param->mlx)
 			return (-1);
 		if (OS)
